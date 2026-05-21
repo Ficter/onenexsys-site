@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OneNexsys Option C Globe</title>
+<title>OneNexsys Option C Globe — V2</title>
 <style>
   :root{
-    --graphite:#0B0D10;
+    --bg:#0B0D10;
     --panel:#14181D;
     --panel2:#1F242B;
     --steel:#37414A;
@@ -21,24 +21,21 @@
     min-height:100vh;
     display:grid;
     place-items:center;
-    background:
-      radial-gradient(circle at 62% 44%,rgba(16,185,129,.10),transparent 34%),
-      linear-gradient(180deg,#0B0D10,#07090B);
-    font-family:Inter,system-ui,sans-serif;
-    color:white;
+    background:#0B0D10;
+    overflow:hidden;
   }
 
   .stage{
-    width:min(92vw,720px);
-    aspect-ratio:1.18/1;
-    border:1px solid rgba(167,177,189,.16);
-    border-radius:18px;
-    background:
-      radial-gradient(circle at 68% 46%,rgba(16,185,129,.13),transparent 38%),
-      linear-gradient(180deg,rgba(20,24,29,.68),rgba(11,13,16,.92));
-    overflow:hidden;
+    width:min(94vw,760px);
+    aspect-ratio:1.48/1;
+    border:1px solid rgba(167,177,189,.18);
+    border-radius:14px;
     position:relative;
-    box-shadow:0 34px 90px rgba(0,0,0,.55);
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 78% 45%,rgba(16,185,129,.14),transparent 34%),
+      radial-gradient(circle at 68% 52%,rgba(16,185,129,.08),transparent 28%),
+      linear-gradient(180deg,#101418,#0B0D10 72%);
   }
 
   .stage::before{
@@ -49,154 +46,169 @@
       linear-gradient(rgba(167,177,189,.025) 1px,transparent 1px),
       linear-gradient(90deg,rgba(167,177,189,.025) 1px,transparent 1px);
     background-size:34px 34px;
-    mask-image:radial-gradient(circle at 68% 48%,black,transparent 75%);
+    opacity:.65;
+    mask-image:radial-gradient(circle at 77% 47%,black,transparent 72%);
   }
 
-  .globe{
+  svg{
     position:absolute;
     inset:0;
     width:100%;
     height:100%;
-    filter:drop-shadow(0 0 28px rgba(16,185,129,.20));
+    filter:drop-shadow(0 0 28px rgba(16,185,129,.14));
   }
 
-  .sphere-shell{
-    transform-origin:430px 252px;
-    animation:verySlowTurn 90s linear infinite;
+  .halo{
+    animation:haloBreath 5s ease-in-out infinite;
+    transform-origin:500px 245px;
   }
 
-  .foreground-links{
-    transform-origin:430px 252px;
-    animation:slowCounter 54s linear infinite;
+  .mesh-back{
+    transform-origin:500px 245px;
+    animation:rotateBack 95s linear infinite;
   }
 
-  .back-links{
-    transform-origin:430px 252px;
-    animation:slowTurn 68s linear infinite;
+  .mesh-front{
+    transform-origin:500px 245px;
+    animation:rotateFront 120s linear infinite reverse;
   }
+
+  .arc-a{
+    stroke-dasharray:760;
+    stroke-dashoffset:760;
+    animation:drawArc 2.4s ease forwards;
+  }
+
+  .arc-b{
+    stroke-dasharray:760;
+    stroke-dashoffset:760;
+    animation:drawArc 2.8s ease .25s forwards;
+  }
+
+  .arc-c{
+    stroke-dasharray:760;
+    stroke-dashoffset:760;
+    animation:drawArc 3.1s ease .45s forwards;
+  }
+
+  .signal{
+    stroke-dasharray:9 355;
+    animation:signalMove 6.5s linear infinite;
+  }
+
+  .signal.two{animation-delay:1.4s}
+  .signal.three{animation-delay:2.6s}
 
   .node{
     transform-origin:center;
-    animation:nodePulse 3.8s ease-in-out infinite;
+    animation:pulse 3.2s ease-in-out infinite;
   }
 
-  .node:nth-child(2n){animation-delay:.55s}
-  .node:nth-child(3n){animation-delay:1.15s}
-  .node:nth-child(5n){animation-delay:1.65s}
+  .node:nth-child(2n){animation-delay:.45s}
+  .node:nth-child(3n){animation-delay:1s}
 
-  .signal{
-    stroke-dasharray:8 320;
-    stroke-dashoffset:0;
-    animation:signalTravel 6.8s linear infinite;
-  }
-
-  .signal:nth-child(2){animation-delay:1.4s}
-  .signal:nth-child(3){animation-delay:2.8s}
-
-  @keyframes verySlowTurn{to{transform:rotate(360deg)}}
-  @keyframes slowTurn{to{transform:rotate(360deg)}}
-  @keyframes slowCounter{to{transform:rotate(-360deg)}}
-  @keyframes signalTravel{to{stroke-dashoffset:-328}}
-  @keyframes nodePulse{
-    0%,100%{opacity:.72;transform:scale(1)}
-    50%{opacity:1;transform:scale(1.32)}
-  }
+  @keyframes drawArc{to{stroke-dashoffset:0}}
+  @keyframes signalMove{to{stroke-dashoffset:-364}}
+  @keyframes rotateBack{to{transform:rotate(360deg)}}
+  @keyframes rotateFront{to{transform:rotate(360deg)}}
+  @keyframes pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.28)}}
+  @keyframes haloBreath{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.025)}}
 </style>
 </head>
 <body>
-  <div class="stage">
-    <svg class="globe" viewBox="0 0 720 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Option C animated emerald network globe">
-      <defs>
-        <radialGradient id="sphereFill" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#10B981" stop-opacity="0.16"/>
-          <stop offset="42%" stop-color="#10B981" stop-opacity="0.06"/>
-          <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
-        </radialGradient>
+<div class="stage">
+<svg viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Option C premium animated globe">
+  <defs>
+    <radialGradient id="sphere" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity=".20"/>
+      <stop offset="45%" stop-color="#10B981" stop-opacity=".07"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
 
-        <radialGradient id="nodeFill" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#D1FAE5"/>
-          <stop offset="36%" stop-color="#34D399"/>
-          <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
-        </radialGradient>
+    <radialGradient id="nodeFill" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D1FAE5"/>
+      <stop offset="35%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
 
-        <filter id="softGlow">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
-          <feMerge>
-            <feMergeNode in="blur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
 
-        <clipPath id="clipSphere">
-          <circle cx="430" cy="252" r="168"/>
-        </clipPath>
-      </defs>
+    <clipPath id="clip">
+      <circle cx="500" cy="245" r="162"/>
+    </clipPath>
+  </defs>
 
-      <!-- base orbit platform -->
-      <ellipse cx="430" cy="430" rx="230" ry="54" stroke="#10B981" stroke-opacity=".34"/>
-      <ellipse cx="430" cy="430" rx="180" ry="40" stroke="#10B981" stroke-opacity=".22"/>
-      <ellipse cx="430" cy="430" rx="126" ry="28" stroke="#10B981" stroke-opacity=".15"/>
+  <!-- base rings like Option C -->
+  <ellipse cx="500" cy="405" rx="215" ry="52" stroke="#10B981" stroke-opacity=".32"/>
+  <ellipse cx="500" cy="405" rx="166" ry="38" stroke="#10B981" stroke-opacity=".20"/>
+  <ellipse cx="500" cy="405" rx="112" ry="24" stroke="#10B981" stroke-opacity=".13"/>
 
-      <!-- sphere body -->
-      <circle cx="430" cy="252" r="168" fill="url(#sphereFill)" stroke="#10B981" stroke-opacity=".33"/>
+  <!-- main sphere -->
+  <g class="halo">
+    <circle cx="500" cy="245" r="162" fill="url(#sphere)" stroke="#10B981" stroke-opacity=".30"/>
+  </g>
 
-      <!-- inner technical mesh -->
-      <g class="sphere-shell" clip-path="url(#clipSphere)">
-        <g stroke="#34D399" stroke-opacity=".13" stroke-width="1">
-          <ellipse cx="430" cy="252" rx="168" ry="45"/>
-          <ellipse cx="430" cy="252" rx="168" ry="86"/>
-          <ellipse cx="430" cy="252" rx="168" ry="128"/>
-          <ellipse cx="430" cy="252" rx="52" ry="168"/>
-          <ellipse cx="430" cy="252" rx="98" ry="168"/>
-          <line x1="262" y1="252" x2="598" y2="252"/>
-          <line x1="430" y1="84" x2="430" y2="420"/>
-        </g>
+  <!-- dotted world / data texture, clipped to sphere -->
+  <g clip-path="url(#clip)" opacity=".55">
+    <g fill="#A7B1BD" opacity=".34">
+      <circle cx="425" cy="150" r="1.5"/><circle cx="439" cy="154" r="1.3"/><circle cx="454" cy="160" r="1.2"/><circle cx="468" cy="166" r="1.1"/>
+      <circle cx="518" cy="143" r="1.5"/><circle cx="535" cy="150" r="1.3"/><circle cx="552" cy="160" r="1.2"/><circle cx="568" cy="173" r="1.1"/>
+      <circle cx="390" cy="227" r="1.5"/><circle cx="406" cy="236" r="1.3"/><circle cx="421" cy="245" r="1.2"/><circle cx="436" cy="254" r="1.1"/>
+      <circle cx="518" cy="304" r="1.5"/><circle cx="536" cy="311" r="1.3"/><circle cx="554" cy="320" r="1.2"/><circle cx="570" cy="331" r="1.1"/>
+      <circle cx="455" cy="350" r="1.5"/><circle cx="472" cy="354" r="1.3"/><circle cx="489" cy="357" r="1.2"/><circle cx="506" cy="360" r="1.1"/>
+      <circle cx="610" cy="236" r="1.4"/><circle cx="620" cy="252" r="1.2"/><circle cx="625" cy="270" r="1.1"/>
+    </g>
+  </g>
 
-        <!-- dotted world texture, intentionally subtle -->
-        <g fill="#A7B1BD" opacity=".36">
-          <circle cx="348" cy="160" r="1.6"/><circle cx="362" cy="164" r="1.4"/><circle cx="376" cy="170" r="1.3"/><circle cx="390" cy="176" r="1.2"/>
-          <circle cx="508" cy="160" r="1.6"/><circle cx="524" cy="168" r="1.4"/><circle cx="540" cy="178" r="1.3"/><circle cx="554" cy="190" r="1.2"/>
-          <circle cx="326" cy="250" r="1.5"/><circle cx="342" cy="258" r="1.4"/><circle cx="358" cy="266" r="1.3"/><circle cx="374" cy="276" r="1.2"/>
-          <circle cx="500" cy="315" r="1.6"/><circle cx="518" cy="322" r="1.4"/><circle cx="536" cy="330" r="1.3"/><circle cx="552" cy="340" r="1.2"/>
-          <circle cx="400" cy="360" r="1.5"/><circle cx="416" cy="365" r="1.4"/><circle cx="432" cy="369" r="1.3"/><circle cx="448" cy="372" r="1.2"/>
-        </g>
-      </g>
+  <!-- subtle mesh -->
+  <g clip-path="url(#clip)">
+    <g class="mesh-back" stroke="#34D399" stroke-opacity=".11" stroke-width="1">
+      <ellipse cx="500" cy="245" rx="162" ry="42"/>
+      <ellipse cx="500" cy="245" rx="162" ry="82"/>
+      <ellipse cx="500" cy="245" rx="162" ry="122"/>
+      <ellipse cx="500" cy="245" rx="52" ry="162"/>
+      <ellipse cx="500" cy="245" rx="94" ry="162"/>
+    </g>
+    <g class="mesh-front" stroke="#34D399" stroke-opacity=".075" stroke-width="1">
+      <ellipse cx="500" cy="245" rx="132" ry="162" transform="rotate(35 500 245)"/>
+      <ellipse cx="500" cy="245" rx="84" ry="162" transform="rotate(-38 500 245)"/>
+    </g>
+  </g>
 
-      <!-- back network arcs -->
-      <g class="back-links" stroke="#34D399" stroke-opacity=".26" stroke-width="1.05">
-        <path d="M300 150C405 205 515 270 608 346"/>
-        <path d="M318 380C370 205 516 118 608 168"/>
-        <path d="M300 302C405 220 504 196 612 230"/>
-        <path d="M332 104C442 210 458 326 420 410"/>
-      </g>
+  <!-- clean connected Option C arcs -->
+  <g stroke-linecap="round">
+    <path class="arc-a" d="M355 210 C430 112, 575 112, 642 240" stroke="#10B981" stroke-opacity=".58" stroke-width="1.35"/>
+    <path class="arc-b" d="M372 332 C452 405, 600 350, 640 185" stroke="#10B981" stroke-opacity=".54" stroke-width="1.35"/>
+    <path class="arc-c" d="M398 120 C495 218, 505 332, 468 405" stroke="#10B981" stroke-opacity=".50" stroke-width="1.25"/>
+    <path d="M344 285 C450 188, 555 178, 655 250" stroke="#34D399" stroke-opacity=".36" stroke-width="1.15"/>
+    <path d="M388 155 C495 210, 573 278, 640 350" stroke="#34D399" stroke-opacity=".30" stroke-width="1.05"/>
+  </g>
 
-      <!-- main clean connection arcs -->
-      <g class="foreground-links" stroke="#10B981" stroke-opacity=".58" stroke-width="1.35">
-        <path d="M286 202C366 96 528 98 610 252"/>
-        <path d="M290 320C374 406 550 352 606 190"/>
-        <path d="M318 278C410 186 516 174 620 248"/>
-        <path d="M350 112C430 210 438 334 404 405"/>
-      </g>
+  <!-- animated data signals -->
+  <g stroke="#34D399" stroke-opacity=".88" stroke-width="1.7" stroke-linecap="round" filter="url(#glow)">
+    <path class="signal" d="M355 210 C430 112, 575 112, 642 240"/>
+    <path class="signal two" d="M372 332 C452 405, 600 350, 640 185"/>
+    <path class="signal three" d="M344 285 C450 188, 555 178, 655 250"/>
+  </g>
 
-      <!-- moving highlights -->
-      <g stroke="#34D399" stroke-opacity=".88" stroke-width="1.8" filter="url(#softGlow)">
-        <path class="signal" d="M286 202C366 96 528 98 610 252"/>
-        <path class="signal" d="M290 320C374 406 550 352 606 190"/>
-        <path class="signal" d="M318 278C410 186 516 174 620 248"/>
-      </g>
-
-      <!-- emerald nodes -->
-      <g filter="url(#softGlow)">
-        <circle class="node" cx="330" cy="174" r="4.3" fill="url(#nodeFill)"/>
-        <circle class="node" cx="512" cy="148" r="4.3" fill="url(#nodeFill)"/>
-        <circle class="node" cx="590" cy="245" r="4.3" fill="url(#nodeFill)"/>
-        <circle class="node" cx="548" cy="346" r="4.3" fill="url(#nodeFill)"/>
-        <circle class="node" cx="416" cy="402" r="4.3" fill="url(#nodeFill)"/>
-        <circle class="node" cx="314" cy="306" r="4.3" fill="url(#nodeFill)"/>
-        <circle class="node" cx="294" cy="238" r="4.3" fill="url(#nodeFill)"/>
-        <circle class="node" cx="430" cy="106" r="4.3" fill="url(#nodeFill)"/>
-      </g>
-    </svg>
-  </div>
+  <!-- nodes placed like a deliberate network, not random dots -->
+  <g filter="url(#glow)">
+    <circle class="node" cx="386" cy="178" r="4.3" fill="url(#nodeFill)"/>
+    <circle class="node" cx="548" cy="148" r="4.3" fill="url(#nodeFill)"/>
+    <circle class="node" cx="630" cy="238" r="4.3" fill="url(#nodeFill)"/>
+    <circle class="node" cx="590" cy="335" r="4.3" fill="url(#nodeFill)"/>
+    <circle class="node" cx="485" cy="392" r="4.3" fill="url(#nodeFill)"/>
+    <circle class="node" cx="380" cy="315" r="4.3" fill="url(#nodeFill)"/>
+    <circle class="node" cx="360" cy="252" r="4.3" fill="url(#nodeFill)"/>
+    <circle class="node" cx="500" cy="106" r="4.3" fill="url(#nodeFill)"/>
+  </g>
+</svg>
+</div>
 </body>
 </html>
