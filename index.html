@@ -6,7 +6,6 @@
   <title>OneNexsys | IT Infrastructure Solutions</title>
   <meta name="description" content="OneNexsys delivers secure, scalable and high-performance IT infrastructure solutions for modern businesses." />
 
-  <!-- Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
@@ -32,12 +31,14 @@
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      background: #020909;
+      background:
+        radial-gradient(circle at 78% 7%, rgba(53, 229, 142, 0.13), transparent 30%),
+        radial-gradient(circle at 17% 38%, rgba(53, 229, 142, 0.08), transparent 32%),
+        linear-gradient(180deg, #020808 0%, #03100f 48%, #020707 100%);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* Grid Background Effect */
     body::before {
       content: "";
       position: fixed;
@@ -82,15 +83,47 @@
       color: #04110d;
       font-weight: 950;
       font-size: 30px;
+      line-height: 1;
       box-shadow: 0 0 34px rgba(53,229,142,0.22);
     }
 
-    .brand-text strong { display: block; font-size: 1.24rem; line-height: 1; letter-spacing: -0.055em; }
-    .brand-text span { display: block; margin-top: 5px; font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.72); }
+    .brand-text strong {
+      display: block;
+      font-size: 1.24rem;
+      line-height: 1;
+      letter-spacing: -0.055em;
+    }
 
-    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 0.9rem; font-weight: 800; }
-    .nav-links a:hover, .nav-links a.active { color: var(--green); }
+    .brand-text span {
+      display: block;
+      margin-top: 5px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.72);
+    }
 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .nav-links a { color: rgba(255,255,255,0.86); position: relative; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -20px;
+      height: 2px;
+      background: var(--green);
+      box-shadow: 0 0 18px rgba(53,229,142,0.7);
+    }
+
+    .nav-cta,
     .btn {
       display: inline-flex;
       align-items: center;
@@ -102,34 +135,105 @@
       font-size: 0.86rem;
       font-weight: 850;
       transition: 0.2s ease;
+      white-space: nowrap;
       cursor: pointer;
     }
 
-    .btn-primary { background: linear-gradient(135deg, #46e998, #22cd7a); color: #03120d; border: none; }
-    .btn-secondary { border: 1px solid rgba(53,229,142,0.35); background: rgba(3, 13, 13, 0.35); color: #fff; }
+    .nav-cta, .btn-secondary {
+      border: 1px solid rgba(53,229,142,0.35);
+      background: rgba(3, 13, 13, 0.35);
+      color: #fff;
+    }
 
-    /* Hero Section */
-    .hero { position: relative; min-height: 700px; padding: 80px 0; overflow: visible; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-    
-    h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.04em; }
-    .accent { color: var(--green); }
-    .hero-copy { color: var(--muted); font-size: 1.1rem; margin-bottom: 32px; max-width: 500px; }
+    .nav-cta:hover, .btn-secondary:hover { background: rgba(53,229,142,0.08); }
+    .btn-primary {
+      background: linear-gradient(135deg, #46e998, #22cd7a);
+      color: #03120d;
+      border: none;
+      box-shadow: 0 16px 48px rgba(53,229,142,0.23);
+    }
 
-    /* Interactive Globe Container */
-    .hero-visual {
+    .mobile-toggle,
+    .mobile-menu { display: none; }
+
+    .hero {
       position: relative;
-      height: 600px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
+      min-height: 592px;
+      padding: 52px 0 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.045);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 0.46fr 0.54fr;
+      gap: 34px;
       align-items: center;
     }
 
-    #globe-container { width: 100%; height: 100%; cursor: grab; }
+    .hero-content { max-width: 510px; padding-top: 10px; }
+
+    .label {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 950;
+      font-size: 0.78rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(3.1rem, 4.55vw, 4.95rem);
+      line-height: 1.02;
+      letter-spacing: -0.068em;
+      margin-bottom: 24px;
+    }
+
+    .accent { color: var(--green); }
+
+    .hero-copy {
+      max-width: 510px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.72;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions { display: flex; gap: 16px; align-items: center; margin-bottom: 34px; }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 600px;
+    }
+
+    .feature-item {
+      min-height: 112px;
+      padding: 0 18px;
+      border-left: 1px solid rgba(255,255,255,0.11);
+    }
+    .feature-item:first-child { border-left: 0; padding-left: 0; }
+    .feature-icon { color: var(--green); font-size: 1.55rem; margin-bottom: 12px; line-height: 1; }
+    .feature-item strong { display: block; font-size: 0.82rem; line-height: 1.35; margin-bottom: 8px; }
+    .feature-item span { display: block; color: var(--muted-2); font-size: 0.72rem; line-height: 1.55; }
+
+    /* 3D WebGL Globe UI Setup */
+    .hero-visual {
+      position: relative;
+      min-height: 508px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #globe-container {
+      width: 100%;
+      height: 550px;
+      cursor: grab;
+    }
     #globe-container:active { cursor: grabbing; }
 
-    /* 3D UI Elements */
     #globe-tooltip {
       position: fixed;
       background: var(--card);
@@ -138,36 +242,192 @@
       padding: 8px 12px;
       border-radius: 6px;
       font-size: 12px;
+      font-weight: bold;
       pointer-events: none;
       display: none;
       z-index: 1000;
       backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
 
     .reset-btn {
       position: absolute;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(9, 24, 25, 0.8);
+      bottom: 10px;
+      right: 10px;
+      background: rgba(9, 24, 25, 0.7);
       border: 1px solid var(--green);
       color: var(--green);
-      padding: 10px 16px;
+      padding: 8px 14px;
       border-radius: 6px;
       font-size: 0.75rem;
       font-weight: 800;
       cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+      z-index: 101;
       opacity: 0;
       pointer-events: none;
-      transition: 0.3s ease;
-      z-index: 100;
     }
-
     .reset-btn.visible { opacity: 1; pointer-events: auto; }
 
-    @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .hero-copy { margin-inline: auto; }
-      .hero-visual { height: 450px; }
+    /* Stats Section */
+    .stats-wrap { padding: 22px 0 8px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+      box-shadow: 0 22px 70px rgba(0,0,0,0.25);
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 78px;
+      padding: 18px 28px;
+      border-left: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat:first-child { border-left: 0; }
+    .stat-icon { color: var(--green); font-size: 2rem; line-height: 1; }
+    .stat strong { display: block; color: var(--green); font-size: 1.62rem; line-height: 1; letter-spacing: -0.055em; }
+    .stat span { color: rgba(255,255,255,0.78); font-size: 0.78rem; }
+
+    /* Services Section */
+    .section { padding: 42px 0; scroll-margin-top: 100px; }
+    #services { padding-top: 34px; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 2.7vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.06em;
+    }
+
+    .view-link { color: var(--green); font-weight: 850; font-size: 0.9rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .service-card {
+      min-height: 208px;
+      padding: 24px 20px;
+      border-radius: 9px;
+      border: 1px solid rgba(255,255,255,0.09);
+      background:
+        radial-gradient(circle at 80% 0%, rgba(53,229,142,0.09), transparent 34%),
+        linear-gradient(180deg, rgba(12, 29, 29, 0.78), rgba(5, 15, 16, 0.93));
+      box-shadow: 0 18px 55px rgba(0,0,0,0.22);
+    }
+    .service-icon { color: var(--green); font-size: 2.15rem; margin-bottom: 26px; line-height: 1; }
+    .service-card h3 { font-size: 0.88rem; margin-bottom: 10px; letter-spacing: -0.025em; }
+    .service-card p { color: var(--muted); font-size: 0.78rem; line-height: 1.65; }
+
+    /* Infrastructure Section */
+    .infra-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 0.58fr 1.07fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .infra-image {
+      min-height: 230px;
+      margin-top: 18px;
+      border-radius: 9px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        linear-gradient(rgba(3,8,8,0.10), rgba(3,8,8,0.38)),
+        url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80") center/cover;
+      box-shadow: inset 0 0 60px rgba(53,229,142,0.08), 0 18px 70px rgba(0,0,0,0.34);
+    }
+
+    .check-list { display: grid; gap: 22px; }
+    .check-item { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
+    .check { width: 22px; height: 22px; border: 1px solid rgba(53,229,142,0.42); color: var(--green); border-radius: 50%; display: grid; place-items: center; font-size: 0.78rem; }
+    .check-item strong { display: block; font-size: 0.9rem; margin-bottom: 3px; }
+    .check-item span { display: block; color: var(--muted); font-size: 0.8rem; line-height: 1.55; }
+
+    .about-panel { padding-left: 26px; border-left: 1px solid rgba(255,255,255,0.09); }
+    .about-panel p { color: var(--muted); font-size: 0.9rem; line-height: 1.75; margin: 16px 0 22px; }
+
+    .partner-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      margin-bottom: 18px;
+    }
+    .partner-strip span { min-height: 58px; display: grid; place-items: center; padding: 12px; border-left: 1px solid rgba(255,255,255,0.07); text-align: center; font-size: 0.86rem; font-weight: 950; line-height: 1.05; opacity: 0.88; }
+    .partner-strip span:first-child { border-left: 0; }
+
+    /* CTA Banner Section */
+    .cta {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 26px;
+      padding: 28px 32px;
+      border-radius: 9px;
+      border: 1px solid rgba(255,255,255,0.09);
+      background:
+        radial-gradient(circle at 65% 50%, rgba(53,229,142,0.15), transparent 29%),
+        linear-gradient(180deg, rgba(12, 27, 28, 0.86), rgba(5, 13, 14, 0.94));
+      box-shadow: 0 20px 80px rgba(0,0,0,0.28);
+    }
+    .cta-icon { width: 72px; height: 72px; border: 1px solid rgba(53,229,142,0.42); border-radius: 50%; display: grid; place-items: center; color: var(--green); font-size: 1.9rem; }
+    .cta p { color: var(--muted); }
+
+    /* Footer Layout */
+    footer { padding: 38px 0 32px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 70px; align-items: start; }
+    .footer-brand { display: flex; gap: 13px; align-items: center; margin-bottom: 20px; }
+    .footer-copy { color: var(--muted-2); font-size: 0.84rem; }
+    .footer-title { color: var(--green); font-weight: 850; margin-bottom: 14px; }
+    .footer-links { display: grid; grid-template-columns: repeat(2, max-content); gap: 9px 58px; color: rgba(255,255,255,0.72); font-size: 0.86rem; }
+    .socials { display: flex; gap: 14px; }
+    .socials a { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.22); display: grid; place-items: center; font-weight: 850; }
+
+    /* Responsive Breakdown System */
+    @media (max-width: 1100px) {
+      .container { width: min(100% - 34px, var(--max)); }
+      .nav-links, .nav-cta { display: none; }
+      .mobile-toggle { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,0.04); color: #fff; font-size: 1.1rem; }
+      .mobile-menu.open { display: block; padding: 14px 0 20px; border-top: 1px solid var(--line-soft); }
+      .mobile-menu a { display: block; padding: 10px 0; color: var(--muted); }
+      .hero-grid, .infra-grid, .cta, .footer-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 44px; }
+      .hero-visual { min-height: 420px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(odd) { border-left: 0; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-panel { border-left: 0; padding-left: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .brand-text span { display: none; }
+      h1 { font-size: clamp(2.7rem, 14vw, 4.1rem); }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .feature-row { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      .feature-item, .feature-item:first-child { border-left: 0; padding-left: 0; }
+      .stats, .services-grid, .partner-strip { grid-template-columns: 1fr; }
+      .stat { border-left: 0; border-top: 1px solid rgba(255,255,255,0.08); }
+      .stat:first-child { border-top: 0; }
+      .section-head { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -175,15 +435,30 @@
 <body>
   <header>
     <div class="container nav">
-      <a href="#" class="brand">
-        <span class="brand-mark">N</span>
+      <a href="#" class="brand" aria-label="OneNexsys home">
+        <span class="brand-mark" aria-hidden="true">N</span>
         <span class="brand-text"><strong>OneNexsys</strong><span>Building Secure. Delivering Trust.</span></span>
       </a>
-      <nav class="nav-links">
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#" class="active">Home</a>
+        <a href="#about">About Us</a>
         <a href="#services">Services</a>
         <a href="#infrastructure">Infrastructure</a>
-        <a href="mailto:contact@onenexsys.com" class="btn btn-secondary">Contact</a>
+        <a href="#career">Career</a>
+        <a href="mailto:contact@onenexsys.com">Contact Us</a>
       </nav>
+
+      <a class="nav-cta" href="mailto:contact@onenexsys.com">Get in Touch <span>→</span></a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+    </div>
+
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="#">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#infrastructure">Infrastructure</a>
+      <a href="mailto:contact@onenexsys.com">Contact Us</a>
     </div>
   </header>
 
@@ -191,26 +466,118 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-content">
-          <div style="color:var(--green); letter-spacing: 0.2em; font-weight: 900; margin-bottom: 1rem;">INFRASTRUCTURE 2.0</div>
-          <h1>Powering Digital <span class="accent">Performance</span></h1>
-          <p class="hero-copy">We deliver secure, scalable IT infrastructure. Click the nodes on our global network to explore our hubs.</p>
-          <div style="display: flex; gap: 15px;">
-            <button class="btn btn-primary">Explore Solutions</button>
-            <button class="btn btn-secondary">View Network</button>
+          <div class="label">One Nexsys</div>
+          <h1>Infrastructure that Powers Digital <span class="accent">Performance</span></h1>
+          <p class="hero-copy">OneNexsys delivers secure, scalable and high-performance IT infrastructure solutions that help businesses connect, compute and grow without limits.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#services">Explore Our Services <span>→</span></a>
+            <a class="btn btn-secondary" href="mailto:contact@onenexsys.com">Contact Sales <span>→</span></a>
+          </div>
+
+          <div class="feature-row">
+            <div class="feature-item"><div class="feature-icon">♢</div><strong>Secure by Design</strong><span>Enterprise-grade security at every layer.</span></div>
+            <div class="feature-item"><div class="feature-icon">↗</div><strong>High Performance</strong><span>Built for speed, uptime and reliability.</span></div>
+            <div class="feature-item"><div class="feature-icon">☁</div><strong>Scalable Solutions</strong><span>Infrastructure that grows as you grow.</span></div>
+            <div class="feature-item"><div class="feature-icon">↯</div><strong>24/7 Expert Support</strong><span>Always-on support from real experts.</span></div>
           </div>
         </div>
 
         <div class="hero-visual">
           <div id="globe-container"></div>
           <div id="globe-tooltip"></div>
-          <button id="reset-view" class="reset-btn">↺ RESET CAMERA</button>
+          <button id="reset-view" class="reset-btn">↺ Reset View</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-wrap">
+      <div class="container">
+        <div class="stats">
+          <div class="stat"><div class="stat-icon">♧</div><div><strong>500+</strong><span>Happy Clients</span></div></div>
+          <div class="stat"><div class="stat-icon">▯</div><div><strong>15+</strong><span>Years Experience</span></div></div>
+          <div class="stat"><div class="stat-icon">◎</div><div><strong>10+</strong><span>Global Locations</span></div></div>
+          <div class="stat"><div class="stat-icon">▤</div><div><strong>99.99%</strong><span>Uptime Guarantee</span></div></div>
+          <div class="stat"><div class="stat-icon">☆</div><div><strong>100%</strong><span>Commitment</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="label">Our Services</div>
+            <h2>End-to-End Infrastructure Solutions</h2>
+          </div>
+          <a href="#services" class="view-link">View All Services →</a>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card"><div class="service-icon">☁</div><h3>Cloud Solutions</h3><p>Scalable cloud infrastructure and migration for modern businesses.</p></article>
+          <article class="service-card"><div class="service-icon">▤</div><h3>Data Center Services</h3><p>Reliable colocation, hosting and data center management.</p></article>
+          <article class="service-card"><div class="service-icon">⌬</div><h3>Network Solutions</h3><p>High-performance networks that keep your business always connected.</p></article>
+          <article class="service-card"><div class="service-icon">♢</div><h3>Cybersecurity</h3><p>Protect your infrastructure with advanced security and compliance.</p></article>
+          <article class="service-card"><div class="service-icon">↗</div><h3>IT Consulting</h3><p>Strategic IT guidance to optimize, transform and drive growth.</p></article>
+          <article class="service-card"><div class="service-icon">⚙</div><h3>Managed Services</h3><p>Proactive monitoring and management for complete peace of mind.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="infrastructure">
+      <div class="container infra-grid">
+        <div>
+          <div class="label">Our Infrastructure</div>
+          <h2>Built on Strength.<br>Backed by Technology.</h2>
+          <div class="infra-image"></div>
+        </div>
+
+        <div class="check-list">
+          <div class="check-item"><span class="check">✓</span><div>export <strong>Tier III+ Data Centers</strong><span>Enterprise-grade facilities with maximum reliability.</span></div></div>
+          <div class="check-item"><span class="check">✓</span><div><strong>Redundant Network</strong><span>Multiple carriers and failover architecture.</span></div></div>
+          <div class="check-item"><span class="check">✓</span><div><strong>Advanced Security</strong><span>Biometric access, CCTV, fire suppression and more.</span></div></div>
+          <div class="check-item"><span class="check">✓</span><div><strong>Sustainable Operations</strong><span>Energy-efficient infrastructure for a greener tomorrow.</span></div></div>
+        </div>
+
+        <div class="about-panel" id="about">
+          <div class="label">About OneNexsys</div>
+          <h2>Your Trusted Infrastructure Partner</h2>
+          <p>OneNexsys is a leading IT infrastructure solutions provider delivering secure, scalable and innovative technology services to businesses worldwide. We combine deep expertise with cutting-edge infrastructure to help organizations build, connect and grow in the digital era.</p>
+          <div class="partner-strip"><span>DELL<br>Technologies</span><span>vmware</span><span>CISCO</span><span>HPE</span></div>
+          <a class="btn btn-secondary" href="#about">Learn More About Us <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <div class="cta-icon">✉</div>
+          <div><div class="label">Let’s Build The Future Together</div><h2>Ready to Power Your Business?</h2><p>Connect with our experts today and discover the right infrastructure solution for you.</p></div>
+          <a class="btn btn-primary" href="mailto:contact@onenexsys.com">Get in Touch <span>→</span></a>
         </div>
       </div>
     </section>
   </main>
 
+  <footer id="career">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand"><span class="brand-mark">N</span><span class="brand-text"><strong>OneNexsys</strong><span>Building Secure. Delivering Trust.</span></span></div>
+        <div class="footer-copy">© <span id="year"></span> OneNexsys. All Rights Reserved.</div>
+      </div>
+      <div><div class="footer-title">Quick Links</div><div class="footer-links"><a href="#">Home</a><a href="#infrastructure">Infrastructure</a><a href="#about">About Us</a><a href="#career">Career</a><a href="#services">Services</a><a href="mailto:contact@onenexsys.com">Contact Us</a></div></div>
+      <div><div class="footer-title">Follow Us</div><div class="socials"><a href="#">in</a><a href="#">f</a><a href="#">𝕏</a><a href="#">▶</a></div></div>
+    </div>
+  </footer>
+
   <script>
-    // --- Configuration ---
+    // 1. Mobile Menu View Toggles
+    const toggle = document.getElementById("mobileToggle");
+    const menu = document.getElementById("mobileMenu");
+    toggle.addEventListener("click", () => menu.classList.toggle("open"));
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // 2. Global Node Matrix Array
     const locations = [
       { name: "New York Hub", lat: 40.7128, lon: -74.0060 },
       { name: "London Data Center", lat: 51.5074, lon: -0.1278 },
@@ -223,7 +590,7 @@
     const tooltip = document.getElementById('globe-tooltip');
     const resetBtn = document.getElementById('reset-view');
 
-    // --- Three.js Setup ---
+    // 3. Three.js Environment Context Configurations
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -235,18 +602,25 @@
     const globeGroup = new THREE.Group();
     scene.add(globeGroup);
 
-    // 1. Globe Point Cloud
-    const globeGeo = new THREE.SphereGeometry(globeRadius, 50, 50);
+    // 4. Structural Grid Base Shell (Point Cloud Primitive)
+    const globeGeo = new THREE.SphereGeometry(globeRadius, 48, 48);
     const globeMat = new THREE.PointsMaterial({
       color: 0x35e58e,
-      size: 0.015,
+      size: 0.018,
       transparent: true,
-      opacity: 0.6
+      opacity: 0.55
     });
     const globePoints = new THREE.Points(globeGeo, globeMat);
     globeGroup.add(globePoints);
 
-    // 2. Lat/Lon to Vector3 Helper
+    // 5. Linear Topology Network Wire Ring Layer
+    const wireSphere = new THREE.Mesh(
+      new THREE.SphereGeometry(globeRadius + 0.005, 22, 22),
+      new THREE.MeshBasicMaterial({ color: 0x35e58e, wireframe: true, transparent: true, opacity: 0.04 })
+    );
+    globeGroup.add(wireSphere);
+
+    // 6. Coordinates Spatial Conversion Formula Function
     function latLongToVector3(lat, lon, radius) {
       const phi = (90 - lat) * (Math.PI / 180);
       const theta = (lon + 180) * (Math.PI / 180);
@@ -257,9 +631,8 @@
       );
     }
 
-    // 3. Add Markers & Arcs
+    // 7. Inject Infrastructure Node Objects & Network Arcs
     const markers = [];
-    const arcs = [];
     const markerGeo = new THREE.SphereGeometry(0.06, 16, 16);
     const markerMat = new THREE.MeshBasicMaterial({ color: 0x35e58e });
 
@@ -269,21 +642,32 @@
       marker.position.copy(pos);
       marker.userData = { name: loc.name };
       
-      // Hit Area for Raycaster
-      const hitArea = new THREE.Mesh(new THREE.SphereGeometry(0.2, 8, 8), new THREE.MeshBasicMaterial({ visible: false }));
+      // Ring Pulse Core Effect
+      const ring = new THREE.Mesh(
+        new THREE.RingGeometry(0.09, 0.13, 32),
+        new THREE.MeshBasicMaterial({ color: 0x35e58e, side: THREE.DoubleSide, transparent: true, opacity: 0.6 })
+      );
+      ring.lookAt(new THREE.Vector3(0,0,0));
+      marker.add(ring);
+
+      // Raycaster Invisible Proxy Target
+      const hitArea = new THREE.Mesh(
+        new THREE.SphereGeometry(0.24, 8, 8),
+        new THREE.MeshBasicMaterial({ visible: false })
+      );
       marker.add(hitArea);
 
       globeGroup.add(marker);
       markers.push(marker);
 
-      // Create Arcs to the next location
+      // Render Bezier Transit Intersections
       if (i < locations.length - 1) {
         const nextPos = latLongToVector3(locations[i+1].lat, locations[i+1].lon, globeRadius);
-        const mid = new THREE.Vector3().addVectors(pos, nextPos).multiplyScalar(0.5).normalize().multiplyScalar(globeRadius + 0.5);
+        const mid = new THREE.Vector3().addVectors(pos, nextPos).multiplyScalar(0.5).normalize().multiplyScalar(globeRadius + 0.4);
         const curve = new THREE.QuadraticBezierCurve3(pos, mid, nextPos);
-        const points = curve.getPoints(50);
+        const points = curve.getPoints(40);
         const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-        const line = new THREE.Line(lineGeo, new THREE.LineBasicMaterial({ color: 0x35e58e, transparent: true, opacity: 0.2 }));
+        const line = new THREE.Line(lineGeo, new THREE.LineBasicMaterial({ color: 0x35e58e, transparent: true, opacity: 0.15 }));
         globeGroup.add(line);
       }
     });
@@ -291,12 +675,12 @@
     camera.position.z = 8;
     const controlsTarget = new THREE.Vector3(0, 0, 0);
 
-    // --- Interaction Logic ---
+    // 8. Projection Tracking Realtime Mathematical Logic Parameters
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
     let isFlying = false;
 
-    container.addEventListener('mousemove', (e) => {
+    window.addEventListener('mousemove', (e) => {
       const rect = container.getBoundingClientRect();
       mouse.x = ((e.clientX - rect.left) / container.offsetWidth) * 2 - 1;
       mouse.y = -((e.clientY - rect.top) / container.offsetHeight) * 2 + 1;
@@ -305,48 +689,71 @@
       tooltip.style.top = (e.clientY + 15) + 'px';
     });
 
+    // 9. Interactive Clicking and Zoom-In Transition Controls
     container.addEventListener('click', () => {
       raycaster.setFromCamera(mouse, camera);
       const intersects = raycaster.intersectObjects(markers, true);
 
       if (intersects.length > 0) {
-        const target = intersects[0].object.parent.type === "Mesh" ? intersects[0].object.parent : intersects[0].object;
-        const targetPos = target.position.clone().normalize().multiplyScalar(8);
+        let baseObject = intersects[0].object;
+        if (baseObject.parent && baseObject.parent.type === "Mesh") {
+          baseObject = baseObject.parent;
+        }
+        
+        // Convert local point system target metrics up towards world metrics
+        const worldPos = new THREE.Vector3();
+        baseObject.getWorldPosition(worldPos);
+        const zoomCamPos = worldPos.clone().normalize().multiplyScalar(7.2);
         
         isFlying = true;
         resetBtn.classList.add('visible');
         tooltip.style.display = 'block';
-        tooltip.innerHTML = `<strong>NODE ACTIVE</strong><br>${target.userData.name || "System Core"}`;
+        tooltip.innerHTML = `<span style="color:var(--green);font-size:10px;text-transform:uppercase;">Network Node</span><br>${baseObject.userData.name || "System Core"}`;
 
-        gsap.to(camera.position, { x: targetPos.x, y: targetPos.y, z: targetPos.z, duration: 1.5, ease: "power2.inOut" });
+        gsap.to(camera.position, { x: zoomCamPos.x, y: zoomCamPos.y, z: zoomCamPos.z, duration: 1.6, ease: "power2.inOut" });
         gsap.to(controlsTarget, { 
-          x: target.position.x, y: target.position.y, z: target.position.z, 
-          duration: 1.5, onUpdate: () => camera.lookAt(controlsTarget) 
+          x: worldPos.x, y: worldPos.y, z: worldPos.z, 
+          duration: 1.6, ease: "power2.inOut", onUpdate: () => camera.lookAt(controlsTarget) 
         });
       }
     });
 
-    resetBtn.addEventListener('click', () => {
+    // 10. Camera Matrix Calibration Global Reset Command Execution
+    resetBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       isFlying = true;
       tooltip.style.display = 'none';
-      gsap.to(camera.position, { x: 0, y: 0, z: 8, duration: 1.5, ease: "expo.inOut" });
+      
+      gsap.to(camera.position, { x: 0, y: 0, z: 8, duration: 1.8, ease: "expo.inOut" });
       gsap.to(controlsTarget, { 
-        x: 0, y: 0, z: 0, duration: 1.5, 
+        x: 0, y: 0, z: 0, duration: 1.8, ease: "expo.inOut",
         onUpdate: () => camera.lookAt(controlsTarget),
         onComplete: () => { isFlying = false; resetBtn.classList.remove('visible'); }
       });
     });
 
-    // --- Animation Loop ---
+    // 11. Core Constant Frame Render Update Mechanics Pipeline
     function animate() {
       requestAnimationFrame(animate);
+      
+      const pulseTime = Date.now() * 0.006;
+      markers.forEach((m, idx) => {
+        if(m.children[0]) {
+          const ringScale = 1 + Math.sin(pulseTime + idx) * 0.4;
+          m.children[0].scale.set(ringScale, ringScale, 1);
+          m.children[0].material.opacity = 0.7 - (ringScale * 0.3);
+        }
+      });
+
       if (!isFlying) {
-        globeGroup.rotation.y += 0.002;
-        camera.lookAt(0,0,0);
+        globeGroup.rotation.y += 0.0025;
+        camera.lookAt(0, 0, 0);
       }
+      
       renderer.render(scene, camera);
     }
 
+    // 12. Viewport Dimension Calculations Update Fix Listener
     window.addEventListener('resize', () => {
       camera.aspect = container.offsetWidth / container.offsetHeight;
       camera.updateProjectionMatrix();
