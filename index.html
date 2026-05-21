@@ -55,6 +55,7 @@
     a { color: inherit; text-decoration: none; }
     .container { width: min(100% - 76px, var(--max)); margin-inline: auto; }
 
+    /* Header & Navigation Elements */
     header {
       position: sticky;
       top: 0;
@@ -87,347 +88,207 @@
       box-shadow: 0 0 34px rgba(53,229,142,0.22);
     }
 
-    .brand-text strong {
-      display: block;
-      font-size: 1.24rem;
-      line-height: 1;
-      letter-spacing: -0.055em;
-    }
+    .brand-text strong { display: block; font-size: 1.24rem; line-height: 1; letter-spacing: -0.055em; }
+    .brand-text span { display: block; margin-top: 5px; font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.72); }
 
-    .brand-text span {
-      display: block;
-      margin-top: 5px;
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.72);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      font-size: 0.9rem;
-      font-weight: 800;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 0.9rem; font-weight: 800; }
     .nav-links a { color: rgba(255,255,255,0.86); position: relative; }
     .nav-links a:hover, .nav-links a.active { color: #fff; }
     .nav-links a.active::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -20px;
-      height: 2px;
-      background: var(--green);
-      box-shadow: 0 0 18px rgba(53,229,142,0.7);
+      content: ""; position: absolute; left: 0; right: 0; bottom: -20px; height: 2px;
+      background: var(--green); box-shadow: 0 0 18px rgba(53,229,142,0.7);
     }
 
-    .nav-cta,
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 46px;
-      padding: 0 23px;
-      border-radius: 8px;
-      font-size: 0.86rem;
-      font-weight: 850;
-      transition: 0.2s ease;
-      white-space: nowrap;
-      cursor: pointer;
+    .nav-cta, .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 46px; padding: 0 23px; border-radius: 8px; font-size: 0.86rem;
+      font-weight: 850; transition: 0.2s ease; white-space: nowrap; cursor: pointer;
     }
 
-    .nav-cta, .btn-secondary {
-      border: 1px solid rgba(53,229,142,0.35);
-      background: rgba(3, 13, 13, 0.35);
-      color: #fff;
-    }
-
-    .nav-cta:hover, .btn-secondary:hover { background: rgba(53,229,142,0.08); }
+    .nav-cta, .btn-secondary { border: 1px solid rgba(53,229,142,0.35); background: rgba(3, 13, 13, 0.35); color: #fff; }
+    .nav-cta:hover, .btn-secondary:hover { background: rgba(53,229,142,0.08); border-color: var(--green); }
+    
     .btn-primary {
-      background: linear-gradient(135deg, #46e998, #22cd7a);
-      color: #03120d;
-      border: none;
+      background: linear-gradient(135deg, #46e998, #22cd7a); color: #03120d; border: none;
       box-shadow: 0 16px 48px rgba(53,229,142,0.23);
     }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 48px rgba(53,229,142,0.35); }
 
-    .mobile-toggle,
-    .mobile-menu { display: none; }
+    .mobile-toggle, .mobile-menu { display: none; }
 
-    .hero {
-      position: relative;
-      min-height: 592px;
-      padding: 52px 0 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.045);
-    }
+    /* Hero Layout Section */
+    .hero { position: relative; min-height: 592px; padding: 52px 0 40px; border-bottom: 1px solid rgba(255,255,255,0.045); }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 0.52fr 0.48fr; gap: 40px; align-items: center; }
+    .hero-content { max-width: 540px; }
 
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 0.46fr 0.54fr;
-      gap: 34px;
-      align-items: center;
-    }
-
-    .hero-content { max-width: 510px; padding-top: 10px; }
-
-    .label {
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-weight: 950;
-      font-size: 0.78rem;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      font-size: clamp(3.1rem, 4.55vw, 4.95rem);
-      line-height: 1.02;
-      letter-spacing: -0.068em;
-      margin-bottom: 24px;
-    }
-
+    .label { color: var(--green); text-transform: uppercase; letter-spacing: 0.22em; font-weight: 950; font-size: 0.78rem; margin-bottom: 14px; }
+    h1 { font-size: clamp(2.8rem, 4.3vw, 4.8rem); line-height: 1.05; letter-spacing: -0.05em; margin-bottom: 24px; }
     .accent { color: var(--green); }
+    .hero-copy { color: var(--muted); font-size: 1rem; line-height: 1.65; margin-bottom: 32px; }
+    .hero-actions { display: flex; gap: 16px; align-items: center; margin-bottom: 48px; }
 
-    .hero-copy {
-      max-width: 510px;
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.72;
-      margin-bottom: 28px;
-    }
-
-    .hero-actions { display: flex; gap: 16px; align-items: center; margin-bottom: 34px; }
-
-    .feature-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      max-width: 600px;
-    }
-
-    .feature-item {
-      min-height: 112px;
-      padding: 0 18px;
-      border-left: 1px solid rgba(255,255,255,0.11);
-    }
+    /* Four-Column Hero Feature Layout */
+    .feature-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .feature-item { padding: 0 4px; border-left: 1px solid rgba(255,255,255,0.08); }
     .feature-item:first-child { border-left: 0; padding-left: 0; }
-    .feature-icon { color: var(--green); font-size: 1.55rem; margin-bottom: 12px; line-height: 1; }
-    .feature-item strong { display: block; font-size: 0.82rem; line-height: 1.35; margin-bottom: 8px; }
-    .feature-item span { display: block; color: var(--muted-2); font-size: 0.72rem; line-height: 1.55; }
+    .feature-icon { color: var(--green); font-size: 1.3rem; margin-bottom: 10px; }
+    .feature-item strong { display: block; font-size: 0.85rem; line-height: 1.3; margin-bottom: 6px; font-weight: 700; }
+    .feature-item span { display: block; color: var(--muted-2); font-size: 0.75rem; line-height: 1.4; }
 
-    /* 3D WebGL Globe UI Setup */
-    .hero-visual {
-      position: relative;
-      min-height: 508px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #globe-container {
-      width: 100%;
-      height: 550px;
-      cursor: grab;
-    }
-    #globe-container:active { cursor: grabbing; }
-
+    /* Three.js Viewport Component */
+    .hero-visual { position: relative; height: 580px; display: flex; align-items: center; justify-content: center; }
+    #globe-container { width: 100%; height: 100%; }
+    
     #globe-tooltip {
-      position: fixed;
-      background: var(--card);
-      border: 1px solid var(--green);
-      color: white;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: bold;
-      pointer-events: none;
-      display: none;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      position: fixed; background: var(--card); border: 1px solid var(--green); color: white;
+      padding: 8px 12px; border-radius: 6px; font-size: 12px; font-weight: bold;
+      pointer-events: none; display: none; z-index: 1000; backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
 
     .reset-btn {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(9, 24, 25, 0.7);
-      border: 1px solid var(--green);
-      color: var(--green);
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-      transition: all 0.3s ease;
-      z-index: 101;
-      opacity: 0;
-      pointer-events: none;
+      position: absolute; bottom: 20px; right: 20px; background: rgba(9, 24, 25, 0.84);
+      border: 1px solid var(--green); color: var(--green); padding: 8px 14px; border-radius: 6px;
+      font-size: 0.75rem; font-weight: 800; cursor: pointer; backdrop-filter: blur(8px);
+      transition: all 0.2s ease; z-index: 101; opacity: 0; pointer-events: none; letter-spacing: 0.05em;
     }
     .reset-btn.visible { opacity: 1; pointer-events: auto; }
+    .reset-btn:hover { background: var(--green); color: #020909; }
 
-    /* Stats Section */
-    .stats-wrap { padding: 22px 0 8px; }
+    /* Performance Matrices Horizontal Strip */
+    .stats-wrap { padding: 32px 0; }
     .stats {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      border: 1px solid var(--line);
-      border-radius: 9px;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
-      box-shadow: 0 22px 70px rgba(0,0,0,0.25);
+      display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line); border-radius: 12px;
+      overflow: hidden; background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.005));
     }
-
-    .stat {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      min-height: 78px;
-      padding: 18px 28px;
-      border-left: 1px solid rgba(255,255,255,0.08);
-    }
+    .stat { display: flex; align-items: center; gap: 16px; padding: 24px 28px; border-left: 1px solid rgba(255,255,255,0.08); }
     .stat:first-child { border-left: 0; }
-    .stat-icon { color: var(--green); font-size: 2rem; line-height: 1; }
-    .stat strong { display: block; color: var(--green); font-size: 1.62rem; line-height: 1; letter-spacing: -0.055em; }
-    .stat span { color: rgba(255,255,255,0.78); font-size: 0.78rem; }
+    .stat-icon { color: var(--green); font-size: 1.8rem; display: flex; align-items: center; }
+    .stat strong { display: block; color: var(--text); font-size: 1.75rem; line-height: 1.1; letter-spacing: -0.03em; font-weight: 800; }
+    .stat span { color: var(--muted-2); font-size: 0.8rem; white-space: nowrap; }
 
-    /* Services Section */
-    .section { padding: 42px 0; scroll-margin-top: 100px; }
-    #services { padding-top: 34px; }
+    /* Core Architectural Solutions Grid */
+    .section { padding: 80px 0; scroll-margin-top: 80px; }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 40px; }
+    h2 { font-size: clamp(2rem, 3vw, 2.8rem); line-height: 1.15; letter-spacing: -0.04em; font-weight: 800; }
+    .view-link { color: var(--green); font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; }
+    .view-link:hover { color: #fff; }
 
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 30px;
-      margin-bottom: 18px;
-    }
-
-    h2 {
-      font-size: clamp(1.9rem, 2.7vw, 3rem);
-      line-height: 1.08;
-      letter-spacing: -0.06em;
-    }
-
-    .view-link { color: var(--green); font-weight: 850; font-size: 0.9rem; }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 14px;
-    }
-
+    .services-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
     .service-card {
-      min-height: 208px;
-      padding: 24px 20px;
-      border-radius: 9px;
-      border: 1px solid rgba(255,255,255,0.09);
-      background:
-        radial-gradient(circle at 80% 0%, rgba(53,229,142,0.09), transparent 34%),
-        linear-gradient(180deg, rgba(12, 29, 29, 0.78), rgba(5, 15, 16, 0.93));
-      box-shadow: 0 18px 55px rgba(0,0,0,0.22);
+      padding: 32px 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(180deg, rgba(9, 26, 26, 0.7), rgba(4, 13, 14, 0.9));
+      transition: all 0.3s ease;
     }
-    .service-icon { color: var(--green); font-size: 2.15rem; margin-bottom: 26px; line-height: 1; }
-    .service-card h3 { font-size: 0.88rem; margin-bottom: 10px; letter-spacing: -0.025em; }
-    .service-card p { color: var(--muted); font-size: 0.78rem; line-height: 1.65; }
+    .service-card:hover { border-color: rgba(53, 229, 142, 0.3); transform: translateY(-3px); }
+    .service-icon { color: var(--green); font-size: 1.8rem; margin-bottom: 24px; }
+    .service-card h3 { font-size: 1rem; margin-bottom: 12px; font-weight: 700; }
+    .service-card p { color: var(--muted-2); font-size: 0.84rem; line-height: 1.5; }
 
-    /* Infrastructure Section */
-    .infra-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 0.58fr 1.07fr;
-      gap: 34px;
-      align-items: center;
-    }
-
+    /* Dynamic Asymmetric Infrastructure Specs Combo Layout */
+    .infra-grid { display: grid; grid-template-columns: 1fr 1fr 1.15fr; gap: 48px; align-items: start; }
     .infra-image {
-      min-height: 230px;
-      margin-top: 18px;
-      border-radius: 9px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background:
-        linear-gradient(rgba(3,8,8,0.10), rgba(3,8,8,0.38)),
-        url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80") center/cover;
-      box-shadow: inset 0 0 60px rgba(53,229,142,0.08), 0 18px 70px rgba(0,0,0,0.34);
+      height: 250px; margin-top: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(rgba(2, 9, 9, 0.2), rgba(2, 9, 9, 0.5)),
+                  url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80") center/cover;
     }
+    .check-list { display: flex; flex-direction: column; gap: 28px; padding-top: 12px; }
+    .check-item { display: flex; gap: 16px; align-items: start; }
+    .check {
+      width: 22px; height: 22px; border: 1px solid rgba(53,229,142,0.4); color: var(--green);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; margin-top: 2px;
+    }
+    .check-item strong { display: block; font-size: 0.95rem; margin-bottom: 4px; font-weight: 700; }
+    .check-item span { display: block; color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
 
-    .check-list { display: grid; gap: 22px; }
-    .check-item { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
-    .check { width: 22px; height: 22px; border: 1px solid rgba(53,229,142,0.42); color: var(--green); border-radius: 50%; display: grid; place-items: center; font-size: 0.78rem; }
-    .check-item strong { display: block; font-size: 0.9rem; margin-bottom: 3px; }
-    .check-item span { display: block; color: var(--muted); font-size: 0.8rem; line-height: 1.55; }
-
-    .about-panel { padding-left: 26px; border-left: 1px solid rgba(255,255,255,0.09); }
-    .about-panel p { color: var(--muted); font-size: 0.9rem; line-height: 1.75; margin: 16px 0 22px; }
-
+    .about-panel { padding-left: 40px; border-left: 1px solid rgba(255,255,255,0.08); }
+    .about-panel p { color: var(--muted); font-size: 0.95rem; line-height: 1.65; margin: 20px 0 32px; }
+    
+    /* Technical Ecosystem Matrix Integration Row */
     .partner-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 8px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.04);
-      margin-bottom: 18px;
+      display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px; overflow: hidden; background: rgba(255,255,255,0.02); margin-bottom: 32px;
     }
-    .partner-strip span { min-height: 58px; display: grid; place-items: center; padding: 12px; border-left: 1px solid rgba(255,255,255,0.07); text-align: center; font-size: 0.86rem; font-weight: 950; line-height: 1.05; opacity: 0.88; }
+    .partner-strip span {
+      height: 64px; display: grid; place-items: center; padding: 8px; font-size: 0.75rem;
+      font-weight: 800; border-left: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--muted);
+    }
     .partner-strip span:first-child { border-left: 0; }
 
-    /* CTA Banner Section */
+    /* Action Banner Conversion System */
+    .cta-wrap { padding: 40px 0; }
     .cta {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 26px;
-      padding: 28px 32px;
-      border-radius: 9px;
-      border: 1px solid rgba(255,255,255,0.09);
-      background:
-        radial-gradient(circle at 65% 50%, rgba(53,229,142,0.15), transparent 29%),
-        linear-gradient(180deg, rgba(12, 27, 28, 0.86), rgba(5, 13, 14, 0.94));
-      box-shadow: 0 20px 80px rgba(0,0,0,0.28);
+      display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 40px;
+      padding: 48px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08);
+      background: radial-gradient(circle at 80% 50%, rgba(53,229,142,0.12), transparent 40%),
+                  linear-gradient(180deg, rgba(9, 26, 26, 0.85), rgba(4, 13, 14, 0.95));
+      box-shadow: 0 20px 80px rgba(0,0,0,0.4);
     }
-    .cta-icon { width: 72px; height: 72px; border: 1px solid rgba(53,229,142,0.42); border-radius: 50%; display: grid; place-items: center; color: var(--green); font-size: 1.9rem; }
-    .cta p { color: var(--muted); }
+    .cta-icon {
+      width: 64px; height: 64px; border: 1px solid rgba(53,229,142,0.3); border-radius: 50%;
+      display: grid; place-items: center; color: var(--green); font-size: 1.5rem; background: rgba(53,229,142,0.03);
+    }
+    .cta h2 { font-size: 2rem; margin-bottom: 8px; letter-spacing: -0.03em; }
+    .cta p { color: var(--muted); font-size: 0.95rem; }
 
-    /* Footer Layout */
-    footer { padding: 38px 0 32px; border-top: 1px solid rgba(255,255,255,0.07); }
-    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 70px; align-items: start; }
-    .footer-brand { display: flex; gap: 13px; align-items: center; margin-bottom: 20px; }
-    .footer-copy { color: var(--muted-2); font-size: 0.84rem; }
-    .footer-title { color: var(--green); font-weight: 850; margin-bottom: 14px; }
-    .footer-links { display: grid; grid-template-columns: repeat(2, max-content); gap: 9px 58px; color: rgba(255,255,255,0.72); font-size: 0.86rem; }
-    .socials { display: flex; gap: 14px; }
-    .socials a { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.22); display: grid; place-items: center; font-weight: 850; }
+    /* Footer Navigation Architecture */
+    footer { padding: 60px 0 40px; border-top: 1px solid rgba(255,255,255,0.06); background: #010606; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 0.7fr; gap: 80px; }
+    .footer-brand { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
+    .footer-copy { color: var(--muted-2); font-size: 0.85rem; margin-top: 16px; }
+    .footer-title { color: var(--green); font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+    .footer-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 40px; color: var(--muted); font-size: 0.9rem; }
+    .footer-links a:hover { color: #fff; }
+    .socials { display: flex; gap: 12px; }
+    .socials a {
+      width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12);
+      display: grid; place-items: center; font-size: 0.9rem; color: var(--muted); transition: all 0.2s;
+    }
+    .socials a:hover { border-color: var(--green); color: var(--green); background: rgba(53,229,142,0.02); }
 
-    /* Responsive Breakdown System */
-    @media (max-width: 1100px) {
-      .container { width: min(100% - 34px, var(--max)); }
+    /* Responsive Breakdown System rules matching layout breakpoints */
+    @media (max-width: 1200px) {
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .infra-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .about-panel { grid-column: span 2; padding-left: 0; border-left: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 40px; }
+    }
+
+    @media (max-width: 1024px) {
+      .container { width: min(100% - 40px, var(--max)); }
       .nav-links, .nav-cta { display: none; }
-      .mobile-toggle { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,0.04); color: #fff; font-size: 1.1rem; }
-      .mobile-menu.open { display: block; padding: 14px 0 20px; border-top: 1px solid var(--line-soft); }
-      .mobile-menu a { display: block; padding: 10px 0; color: var(--muted); }
-      .hero-grid, .infra-grid, .cta, .footer-grid { grid-template-columns: 1fr; }
-      .hero { padding-top: 44px; }
-      .hero-visual { min-height: 420px; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .stat:nth-child(odd) { border-left: 0; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-panel { border-left: 0; padding-left: 0; }
+      .mobile-toggle { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,0.03); color: #fff; font-size: 1.2rem; cursor: pointer; }
+      .mobile-menu.open { display: flex; flex-direction: column; gap: 16px; padding: 24px 0; border-top: 1px solid var(--line-soft); }
+      .mobile-menu a { color: var(--muted); font-weight: 700; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 16px; }
+      .hero-content { max-width: 100%; margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .feature-row { max-width: 640px; margin-inline: auto; text-align: left; }
+      .hero-visual { height: 480px; }
+      .stats { grid-template-columns: repeat(3, 1fr); }
+      .stat:nth-child(4) { border-left: 0; }
+      .cta { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 24px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 48px; }
     }
 
-    @media (max-width: 640px) {
-      .brand-text span { display: none; }
-      h1 { font-size: clamp(2.7rem, 14vw, 4.1rem); }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .feature-row { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-      .feature-item, .feature-item:first-child { border-left: 0; padding-left: 0; }
-      .stats, .services-grid, .partner-strip { grid-template-columns: 1fr; }
+    @media (max-width: 768px) {
+      .stats { grid-template-columns: 1fr; }
       .stat { border-left: 0; border-top: 1px solid rgba(255,255,255,0.08); }
       .stat:first-child { border-top: 0; }
-      .section-head { flex-direction: column; align-items: flex-start; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .infra-grid { grid-template-columns: 1fr; }
+      .about-panel { grid-column: span 1; }
+      .section-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+
+    @media (max-width: 560px) {
+      h1 { font-size: 2.5rem; }
+      .feature-row { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+      .feature-item:nth-child(odd) { border-left: 0; padding-left: 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .partner-strip { grid-template-columns: repeat(2, 1fr); }
+      .partner-strip span { border-top: 1px solid rgba(255,255,255,0.05); }
+      .partner-strip span:nth-child(1), .partner-strip span:nth-child(2) { border-top: 0; }
+      .partner-strip span:nth-child(odd) { border-left: 0; }
     }
   </style>
 </head>
@@ -435,12 +296,12 @@
 <body>
   <header>
     <div class="container nav">
-      <a href="#" class="brand" aria-label="OneNexsys home">
+      <a href="#" class="brand" aria-label="OneNexsys Home">
         <span class="brand-mark" aria-hidden="true">N</span>
         <span class="brand-text"><strong>OneNexsys</strong><span>Building Secure. Delivering Trust.</span></span>
       </a>
 
-      <nav class="nav-links" aria-label="Main navigation">
+      <nav class="nav-links" aria-label="Desktop navigation">
         <a href="#" class="active">Home</a>
         <a href="#about">About Us</a>
         <a href="#services">Services</a>
@@ -450,7 +311,7 @@
       </nav>
 
       <a class="nav-cta" href="mailto:contact@onenexsys.com">Get in Touch <span>→</span></a>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation navigation window">☰</button>
     </div>
 
     <div class="container mobile-menu" id="mobileMenu">
@@ -469,16 +330,33 @@
           <div class="label">One Nexsys</div>
           <h1>Infrastructure that Powers Digital <span class="accent">Performance</span></h1>
           <p class="hero-copy">OneNexsys delivers secure, scalable and high-performance IT infrastructure solutions that help businesses connect, compute and grow without limits.</p>
+          
           <div class="hero-actions">
             <a class="btn btn-primary" href="#services">Explore Our Services <span>→</span></a>
             <a class="btn btn-secondary" href="mailto:contact@onenexsys.com">Contact Sales <span>→</span></a>
           </div>
 
           <div class="feature-row">
-            <div class="feature-item"><div class="feature-icon">♢</div><strong>Secure by Design</strong><span>Enterprise-grade security at every layer.</span></div>
-            <div class="feature-item"><div class="feature-icon">↗</div><strong>High Performance</strong><span>Built for speed, uptime and reliability.</span></div>
-            <div class="feature-item"><div class="feature-icon">☁</div><strong>Scalable Solutions</strong><span>Infrastructure that grows as you grow.</span></div>
-            <div class="feature-item"><div class="feature-icon">↯</div><strong>24/7 Expert Support</strong><span>Always-on support from real experts.</span></div>
+            <div class="feature-item">
+              <div class="feature-icon">🛡️</div>
+              <strong>Secure by Design</strong>
+              <span>Enterprise-grade security at every layer.</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🚀</div>
+              <strong>High Performance</strong>
+              <span>Built for speed, uptime and reliability.</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">☁️</div>
+              <strong>Scalable Solutions</strong>
+              <span>Infrastructure that grows as you grow.</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">⚡</div>
+              <strong>24/7 Expert Support</strong>
+              <span>Always-on support from real infrastructure experts.</span>
+            </div>
           </div>
         </div>
 
@@ -493,11 +371,11 @@
     <section class="stats-wrap">
       <div class="container">
         <div class="stats">
-          <div class="stat"><div class="stat-icon">♧</div><div><strong>500+</strong><span>Happy Clients</span></div></div>
-          <div class="stat"><div class="stat-icon">▯</div><div><strong>15+</strong><span>Years Experience</span></div></div>
-          <div class="stat"><div class="stat-icon">◎</div><div><strong>10+</strong><span>Global Locations</span></div></div>
-          <div class="stat"><div class="stat-icon">▤</div><div><strong>99.99%</strong><span>Uptime Guarantee</span></div></div>
-          <div class="stat"><div class="stat-icon">☆</div><div><strong>100%</strong><span>Commitment</span></div></div>
+          <div class="stat"><div class="stat-icon">👥</div><div><strong>500+</strong><span>Happy Clients</span></div></div>
+          <div class="stat"><div class="stat-icon">📅</div><div><strong>15+</strong><span>Years Experience</span></div></div>
+          <div class="stat"><div class="stat-icon">🌐</div><div><strong>10+</strong><span>Global Locations</span></div></div>
+          <div class="stat"><div class="stat-icon">💾</div><div><strong>99.99%</strong><span>Uptime Guarantee</span></div></div>
+          <div class="stat"><div class="stat-icon">🏅</div><div><strong>100%</strong><span>Commitment</span></div></div>
         </div>
       </div>
     </section>
@@ -509,16 +387,16 @@
             <div class="label">Our Services</div>
             <h2>End-to-End Infrastructure Solutions</h2>
           </div>
-          <a href="#services" class="view-link">View All Services →</a>
+          <a href="#services" class="view-link">View All Services <span>→</span></a>
         </div>
 
         <div class="services-grid">
-          <article class="service-card"><div class="service-icon">☁</div><h3>Cloud Solutions</h3><p>Scalable cloud infrastructure and migration for modern businesses.</p></article>
-          <article class="service-card"><div class="service-icon">▤</div><h3>Data Center Services</h3><p>Reliable colocation, hosting and data center management.</p></article>
-          <article class="service-card"><div class="service-icon">⌬</div><h3>Network Solutions</h3><p>High-performance networks that keep your business always connected.</p></article>
-          <article class="service-card"><div class="service-icon">♢</div><h3>Cybersecurity</h3><p>Protect your infrastructure with advanced security and compliance.</p></article>
-          <article class="service-card"><div class="service-icon">↗</div><h3>IT Consulting</h3><p>Strategic IT guidance to optimize, transform and drive growth.</p></article>
-          <article class="service-card"><div class="service-icon">⚙</div><h3>Managed Services</h3><p>Proactive monitoring and management for complete peace of mind.</p></article>
+          <article class="service-card"><div class="service-icon">☁️</div><h3>Cloud Solutions</h3><p>Scalable cloud infrastructure and migration for modern businesses.</p></article>
+          <article class="service-card"><div class="service-icon">🖥️</div><h3>Data Center Services</h3><p>Reliable colocation, hosting and data center management.</p></article>
+          <article class="service-card"><div class="service-icon">🖧</div><h3>Network Solutions</h3><p>High-performance networks that keep your business always connected.</p></article>
+          <article class="service-card"><div class="service-icon">🔒</div><h3>Cybersecurity</h3><p>Protect your infrastructure with advanced security and compliance.</p></article>
+          <article class="service-card"><div class="service-icon">📈</div><h3>IT Consulting</h3><p>Strategic IT guidance to optimize, transform and drive growth.</p></article>
+          <article class="service-card"><div class="service-icon">⚙️</div><h3>Managed Services</h3><p>Proactive monitoring and management for complete peace of mind.</p></article>
         </div>
       </div>
     </section>
@@ -532,7 +410,7 @@
         </div>
 
         <div class="check-list">
-          <div class="check-item"><span class="check">✓</span><div>export <strong>Tier III+ Data Centers</strong><span>Enterprise-grade facilities with maximum reliability.</span></div></div>
+          <div class="check-item"><span class="check">✓</span><div><strong>Tier III+ Data Centers</strong><span>Enterprise-grade facilities with maximum reliability.</span></div></div>
           <div class="check-item"><span class="check">✓</span><div><strong>Redundant Network</strong><span>Multiple carriers and failover architecture.</span></div></div>
           <div class="check-item"><span class="check">✓</span><div><strong>Advanced Security</strong><span>Biometric access, CCTV, fire suppression and more.</span></div></div>
           <div class="check-item"><span class="check">✓</span><div><strong>Sustainable Operations</strong><span>Energy-efficient infrastructure for a greener tomorrow.</span></div></div>
@@ -542,55 +420,87 @@
           <div class="label">About OneNexsys</div>
           <h2>Your Trusted Infrastructure Partner</h2>
           <p>OneNexsys is a leading IT infrastructure solutions provider delivering secure, scalable and innovative technology services to businesses worldwide. We combine deep expertise with cutting-edge infrastructure to help organizations build, connect and grow in the digital era.</p>
-          <div class="partner-strip"><span>DELL<br>Technologies</span><span>vmware</span><span>CISCO</span><span>HPE</span></div>
+          
+          <div class="partner-strip">
+            <span>Dell Technologies</span>
+            <span>vmware</span>
+            <span>Cisco Systems</span>
+            <span>HPE Enterprise</span>
+          </div>
+          
           <a class="btn btn-secondary" href="#about">Learn More About Us <span>→</span></a>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="cta-wrap">
       <div class="container">
         <div class="cta">
-          <div class="cta-icon">✉</div>
-          <div><div class="label">Let’s Build The Future Together</div><h2>Ready to Power Your Business?</h2><p>Connect with our experts today and discover the right infrastructure solution for you.</p></div>
+          <div class="cta-icon">✉️</div>
+          <div>
+            <div class="label">Let's Build The Future Together</div>
+            <h2>Ready to Power Your Business?</h2>
+            <p>Connect with our experts today and discover the right infrastructure solution for you.</p>
+          </div>
           <a class="btn btn-primary" href="mailto:contact@onenexsys.com">Get in Touch <span>→</span></a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="career">
+  <footer>
     <div class="container footer-grid">
       <div>
-        <div class="footer-brand"><span class="brand-mark">N</span><span class="brand-text"><strong>OneNexsys</strong><span>Building Secure. Delivering Trust.</span></span></div>
+        <div class="footer-brand">
+          <span class="brand-mark">N</span>
+          <span class="brand-text"><strong>OneNexsys</strong><span>Building Secure. Delivering Trust.</span></span>
+        </div>
         <div class="footer-copy">© <span id="year"></span> OneNexsys. All Rights Reserved.</div>
       </div>
-      <div><div class="footer-title">Quick Links</div><div class="footer-links"><a href="#">Home</a><a href="#infrastructure">Infrastructure</a><a href="#about">About Us</a><a href="#career">Career</a><a href="#services">Services</a><a href="mailto:contact@onenexsys.com">Contact Us</a></div></div>
-      <div><div class="footer-title">Follow Us</div><div class="socials"><a href="#">in</a><a href="#">f</a><a href="#">𝕏</a><a href="#">▶</a></div></div>
+      <div>
+        <div class="footer-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="#">Home</a>
+          <a href="#infrastructure">Infrastructure</a>
+          <a href="#about">About Us</a>
+          <a href="#career">Career</a>
+          <a href="#services">Services</a>
+          <a href="mailto:contact@onenexsys.com">Contact Us</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Follow Us</div>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="X">𝕏</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script>
-    // 1. Mobile Menu View Toggles
+    // Navigation Toggles
     const toggle = document.getElementById("mobileToggle");
     const menu = document.getElementById("mobileMenu");
     toggle.addEventListener("click", () => menu.classList.toggle("open"));
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // 2. Global Node Matrix Array
+    // Node Matrix Set Array Coordinates Matching Original Design Blueprint Points
     const locations = [
-      { name: "New York Hub", lat: 40.7128, lon: -74.0060 },
-      { name: "London Data Center", lat: 51.5074, lon: -0.1278 },
-      { name: "Singapore Gateway", lat: 1.3521, lon: 103.8198 },
-      { name: "Sydney Edge", lat: -33.8688, lon: 151.2093 },
-      { name: "Tokyo Node", lat: 35.6762, lon: 139.6503 }
+      { name: "North American Gateway Hub", lat: 40.7128, lon: -74.0060 },
+      { name: "London Core Exchange Node", lat: 51.5074, lon: -0.1278 },
+      { name: "Singapore APAC Gateway Core", lat: 1.3521, lon: 103.8198 },
+      { name: "Sydney Oceania Edge Point", lat: -33.8688, lon: 151.2093 },
+      { name: "Tokyo High-Speed Transit Center", lat: 35.6762, lon: 139.6503 }
     ];
 
     const container = document.getElementById('globe-container');
     const tooltip = document.getElementById('globe-tooltip');
     const resetBtn = document.getElementById('reset-view');
 
-    // 3. Three.js Environment Context Configurations
+    // Context Environment Build Configurations
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -602,7 +512,7 @@
     const globeGroup = new THREE.Group();
     scene.add(globeGroup);
 
-    // 4. Structural Grid Base Shell (Point Cloud Primitive)
+    // Structural Base Geometric Particle Matrix Shell
     const globeGeo = new THREE.SphereGeometry(globeRadius, 48, 48);
     const globeMat = new THREE.PointsMaterial({
       color: 0x35e58e,
@@ -613,14 +523,14 @@
     const globePoints = new THREE.Points(globeGeo, globeMat);
     globeGroup.add(globePoints);
 
-    // 5. Linear Topology Network Wire Ring Layer
+    // Secondary Thin Wireframe Topology Structural Grid Ring
     const wireSphere = new THREE.Mesh(
       new THREE.SphereGeometry(globeRadius + 0.005, 22, 22),
       new THREE.MeshBasicMaterial({ color: 0x35e58e, wireframe: true, transparent: true, opacity: 0.04 })
     );
     globeGroup.add(wireSphere);
 
-    // 6. Coordinates Spatial Conversion Formula Function
+    // Geolocation Vector Conversion Projection Equation Function
     function latLongToVector3(lat, lon, radius) {
       const phi = (90 - lat) * (Math.PI / 180);
       const theta = (lon + 180) * (Math.PI / 180);
@@ -631,7 +541,7 @@
       );
     }
 
-    // 7. Inject Infrastructure Node Objects & Network Arcs
+    // Node & Infrastructure Arc Object Registration Array Iterations
     const markers = [];
     const markerGeo = new THREE.SphereGeometry(0.06, 16, 16);
     const markerMat = new THREE.MeshBasicMaterial({ color: 0x35e58e });
@@ -642,7 +552,7 @@
       marker.position.copy(pos);
       marker.userData = { name: loc.name };
       
-      // Ring Pulse Core Effect
+      // Secondary Node Halo Pulse Loop Component Element
       const ring = new THREE.Mesh(
         new THREE.RingGeometry(0.09, 0.13, 32),
         new THREE.MeshBasicMaterial({ color: 0x35e58e, side: THREE.DoubleSide, transparent: true, opacity: 0.6 })
@@ -650,7 +560,7 @@
       ring.lookAt(new THREE.Vector3(0,0,0));
       marker.add(ring);
 
-      // Raycaster Invisible Proxy Target
+      // Raycaster Mesh Interface Proxy Component Box Shield
       const hitArea = new THREE.Mesh(
         new THREE.SphereGeometry(0.24, 8, 8),
         new THREE.MeshBasicMaterial({ visible: false })
@@ -660,7 +570,7 @@
       globeGroup.add(marker);
       markers.push(marker);
 
-      // Render Bezier Transit Intersections
+      // Generate Connection Intersections Topology Frameworks
       if (i < locations.length - 1) {
         const nextPos = latLongToVector3(locations[i+1].lat, locations[i+1].lon, globeRadius);
         const mid = new THREE.Vector3().addVectors(pos, nextPos).multiplyScalar(0.5).normalize().multiplyScalar(globeRadius + 0.4);
@@ -675,7 +585,7 @@
     camera.position.z = 8;
     const controlsTarget = new THREE.Vector3(0, 0, 0);
 
-    // 8. Projection Tracking Realtime Mathematical Logic Parameters
+    // Vector Raycasting Selection Pipeline Operations Configurations
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
     let isFlying = false;
@@ -689,7 +599,7 @@
       tooltip.style.top = (e.clientY + 15) + 'px';
     });
 
-    // 9. Interactive Clicking and Zoom-In Transition Controls
+    // Node Interaction Vector Click Event Listener Processing Handles
     container.addEventListener('click', () => {
       raycaster.setFromCamera(mouse, camera);
       const intersects = raycaster.intersectObjects(markers, true);
@@ -700,7 +610,6 @@
           baseObject = baseObject.parent;
         }
         
-        // Convert local point system target metrics up towards world metrics
         const worldPos = new THREE.Vector3();
         baseObject.getWorldPosition(worldPos);
         const zoomCamPos = worldPos.clone().normalize().multiplyScalar(7.2);
@@ -708,7 +617,7 @@
         isFlying = true;
         resetBtn.classList.add('visible');
         tooltip.style.display = 'block';
-        tooltip.innerHTML = `<span style="color:var(--green);font-size:10px;text-transform:uppercase;">Network Node</span><br>${baseObject.userData.name || "System Core"}`;
+        tooltip.innerHTML = `<span style="color:var(--green);font-size:10px;text-transform:uppercase;letter-spacing:0.1em;">Active Hub Infrastructure</span><br>${baseObject.userData.name}`;
 
         gsap.to(camera.position, { x: zoomCamPos.x, y: zoomCamPos.y, z: zoomCamPos.z, duration: 1.6, ease: "power2.inOut" });
         gsap.to(controlsTarget, { 
@@ -718,7 +627,7 @@
       }
     });
 
-    // 10. Camera Matrix Calibration Global Reset Command Execution
+    // Reset Camera Matrix Position Target View Execution Sequence handles
     resetBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       isFlying = true;
@@ -732,7 +641,7 @@
       });
     });
 
-    // 11. Core Constant Frame Render Update Mechanics Pipeline
+    // Rendering Core Frame Execution Animation Cycle Loop Tracker Pipelines
     function animate() {
       requestAnimationFrame(animate);
       
@@ -753,7 +662,7 @@
       renderer.render(scene, camera);
     }
 
-    // 12. Viewport Dimension Calculations Update Fix Listener
+    // Viewport Scaled Geometric Re-Calculation Matrix Sync Update Listeners
     window.addEventListener('resize', () => {
       camera.aspect = container.offsetWidth / container.offsetHeight;
       camera.updateProjectionMatrix();
