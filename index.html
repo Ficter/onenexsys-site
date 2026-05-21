@@ -1,11 +1,1064 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneNexSys</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>OneNexsys | Managed IT & Infrastructure Services Singapore</title>
+
+  <meta name="description" content="OneNexsys provides managed IT support, infrastructure deployment, structured cabling, network engineering, rack and stack services, and technical support for businesses in Singapore." />
+
+  <style>
+    :root {
+      --black: #0B0D10;
+      --graphite: #14181D;
+      --dark-panel: #1F242B;
+      --steel: #37414A;
+      --silver: #A7B1BD;
+      --emerald: #10B981;
+      --emerald-soft: #34D399;
+      --white: #F8FAFC;
+      --muted: #9CA3AF;
+      --line: rgba(167, 177, 189, 0.16);
+      --green-line: rgba(16, 185, 129, 0.38);
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
+      --max: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Space Grotesk", Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 78% 12%, rgba(16, 185, 129, 0.14), transparent 28%),
+        radial-gradient(circle at 12% 20%, rgba(16, 185, 129, 0.07), transparent 24%),
+        linear-gradient(180deg, #0B0D10 0%, #0A0C0F 52%, #07080A 100%);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 13, 16, 0.86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(52, 211, 153, 0.82)),
+        #14181D;
+      position: relative;
+      box-shadow: 0 0 32px rgba(16, 185, 129, 0.22);
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      width: 19px;
+      height: 22px;
+      border: 4px solid #07100c;
+      border-left: 0;
+      border-bottom: 0;
+      top: 8px;
+      left: 10px;
+      transform: skew(-12deg);
+      border-radius: 3px;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 20px;
+      border: 4px solid rgba(7, 16, 12, 0.65);
+      border-top: 0;
+      border-right: 0;
+      bottom: 8px;
+      right: 9px;
+      transform: skew(-12deg);
+      border-radius: 3px;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.18rem;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .brand-text span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 0.92rem;
+      color: var(--silver);
+    }
+
+    .nav-links a:hover {
+      color: var(--emerald-soft);
+    }
+
+    .nav-cta {
+      padding: 11px 18px;
+      border: 1px solid var(--green-line);
+      border-radius: 10px;
+      color: var(--emerald-soft) !important;
+      background: rgba(16, 185, 129, 0.06);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--white);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--line);
+      padding: 14px 0 20px;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      color: var(--silver);
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .hero {
+      padding: 84px 0 56px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--emerald-soft);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(3.25rem, 6.2vw, 6.4rem);
+      line-height: 0.92;
+      letter-spacing: -0.075em;
+      margin-bottom: 26px;
+      max-width: 720px;
+    }
+
+    .accent {
+      color: var(--emerald-soft);
+      text-shadow: 0 0 34px rgba(16, 185, 129, 0.26);
+    }
+
+    .hero p {
+      max-width: 600px;
+      color: var(--silver);
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 42px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border-radius: 10px;
+      font-size: 0.94rem;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--emerald), var(--emerald-soft));
+      color: #04120d;
+      box-shadow: 0 16px 46px rgba(16, 185, 129, 0.22);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--green-line);
+      background: rgba(255,255,255,0.025);
+      color: var(--white);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      max-width: 760px;
+    }
+
+    .feature {
+      border-left: 1px solid var(--line);
+      padding-left: 18px;
+    }
+
+    .feature:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    .feature-icon {
+      color: var(--emerald-soft);
+      font-size: 1.45rem;
+      margin-bottom: 8px;
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .feature span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .globe-wrap {
+      position: relative;
+      min-height: 560px;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 44%, rgba(16, 185, 129, 0.22), transparent 30%),
+        linear-gradient(180deg, rgba(20, 24, 29, 0.18), rgba(11, 13, 16, 0.88));
+    }
+
+    .globe-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 26px, rgba(16, 185, 129, 0.055) 27px),
+        linear-gradient(to bottom, transparent, rgba(16, 185, 129, 0.06), transparent);
+      opacity: 0.8;
+    }
+
+    .globe {
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      top: 38px;
+      left: 50%;
+      transform: translateX(-50%);
+      background:
+        radial-gradient(circle at 35% 30%, rgba(52, 211, 153, 0.28), transparent 10%),
+        radial-gradient(circle at center, rgba(16, 185, 129, 0.07), transparent 58%);
+      border: 1px solid rgba(16, 185, 129, 0.38);
+      box-shadow:
+        inset 0 0 80px rgba(16, 185, 129, 0.18),
+        0 0 90px rgba(16, 185, 129, 0.16);
+    }
+
+    .globe::before,
+    .globe::after {
+      content: "";
+      position: absolute;
+      inset: 32px;
+      border-radius: 50%;
+      border: 1px dashed rgba(52, 211, 153, 0.34);
+    }
+
+    .globe::after {
+      inset: 82px;
+      transform: rotate(72deg);
+      border-color: rgba(52, 211, 153, 0.24);
+    }
+
+    .globe-grid {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        linear-gradient(90deg, transparent 48%, rgba(52,211,153,0.18) 49%, transparent 50%),
+        linear-gradient(0deg, transparent 48%, rgba(52,211,153,0.18) 49%, transparent 50%);
+      mask-image: radial-gradient(circle, black 60%, transparent 71%);
+      opacity: 0.7;
+    }
+
+    .globe-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(52,211,153,0.85), transparent);
+      transform-origin: left center;
+    }
+
+    .gl1 { width: 330px; top: 128px; left: 88px; transform: rotate(16deg); }
+    .gl2 { width: 280px; top: 215px; left: 112px; transform: rotate(-28deg); }
+    .gl3 { width: 300px; top: 300px; left: 92px; transform: rotate(30deg); }
+    .gl4 { width: 240px; top: 170px; left: 190px; transform: rotate(78deg); }
+    .gl5 { width: 260px; top: 265px; left: 48px; transform: rotate(-62deg); }
+
+    .node {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--emerald-soft);
+      box-shadow: 0 0 18px rgba(52,211,153,0.95);
+    }
+
+    .n1 { top: 116px; left: 118px; }
+    .n2 { top: 156px; right: 104px; }
+    .n3 { top: 248px; left: 168px; }
+    .n4 { top: 324px; right: 150px; }
+    .n5 { bottom: 120px; left: 238px; }
+    .n6 { top: 260px; right: 82px; }
+    .n7 { top: 360px; left: 105px; }
+
+    .platform-rings {
+      position: absolute;
+      width: 460px;
+      height: 160px;
+      left: 50%;
+      bottom: 52px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      border: 1px solid rgba(16,185,129,0.3);
+      box-shadow: 0 0 50px rgba(16,185,129,0.12);
+    }
+
+    .platform-rings::before,
+    .platform-rings::after {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(16,185,129,0.22);
+    }
+
+    .platform-rings::after {
+      inset: 46px;
+    }
+
+    .metrics {
+      margin-top: 34px;
+      border: 1px solid var(--line);
+      background: rgba(20, 24, 29, 0.72);
+      border-radius: 16px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      overflow: hidden;
+    }
+
+    .metric {
+      padding: 20px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .metric:last-child {
+      border-right: 0;
+    }
+
+    .metric-icon {
+      color: var(--emerald-soft);
+      font-size: 1.7rem;
+    }
+
+    .metric strong {
+      color: var(--emerald-soft);
+      font-size: 1.45rem;
+      line-height: 1;
+      display: block;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    section {
+      padding: 70px 0;
+    }
+
+    .section-label {
+      color: var(--emerald-soft);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      margin-bottom: 18px;
+    }
+
+    .section-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-row p {
+      color: var(--silver);
+      max-width: 620px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 80% 10%, rgba(16,185,129,0.12), transparent 34%),
+        rgba(20,24,29,0.78);
+      border-radius: 16px;
+      padding: 22px;
+      min-height: 220px;
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(16,185,129,0.42);
+    }
+
+    .card-icon {
+      color: var(--emerald-soft);
+      font-size: 2rem;
+      margin-bottom: 38px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--silver);
+      font-size: 0.88rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: stretch;
+    }
+
+    .server-room {
+      min-height: 280px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(16,185,129,0.22), transparent 25%, transparent 75%, rgba(16,185,129,0.18)),
+        linear-gradient(180deg, #11161a, #0b0d10);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .server-room::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 42px),
+        repeating-linear-gradient(0deg, rgba(16,185,129,0.08) 0 2px, transparent 2px 38px);
+      opacity: 0.6;
+    }
+
+    .server-room::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 14%;
+      height: 100%;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(16,185,129,0.24), transparent);
+      filter: blur(8px);
+    }
+
+    .checks {
+      display: grid;
+      gap: 16px;
+    }
+
+    .check {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .check-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--green-line);
+      color: var(--emerald-soft);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .check h3 {
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+
+    .check p {
+      color: var(--silver);
+      font-size: 0.9rem;
+    }
+
+    .about-box {
+      border: 1px solid var(--line);
+      background: rgba(20,24,29,0.72);
+      border-radius: 18px;
+      padding: 28px;
+    }
+
+    .about-box p {
+      color: var(--silver);
+      margin-bottom: 22px;
+    }
+
+    .partners {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .partner {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 0.82rem;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .cta {
+      border: 1px solid var(--green-line);
+      border-radius: 18px;
+      padding: 34px;
+      background:
+        radial-gradient(circle at 20% 40%, rgba(16,185,129,0.16), transparent 28%),
+        rgba(20,24,29,0.82);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta-icon {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      border: 1px solid var(--green-line);
+      display: grid;
+      place-items: center;
+      color: var(--emerald-soft);
+      font-size: 2rem;
+      box-shadow: 0 0 36px rgba(16,185,129,0.14);
+    }
+
+    .cta p {
+      color: var(--silver);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 36px 0;
+      color: var(--muted);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 8px 36px;
+    }
+
+    .footer-links a:hover {
+      color: var(--emerald-soft);
+    }
+
+    @media (max-width: 1050px) {
+      .hero-grid,
+      .split,
+      .cta,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .metric {
+        border-bottom: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 30px, var(--max));
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: grid;
+        place-items: center;
+      }
+
+      .hero {
+        padding: 52px 0 42px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 15vw, 4.6rem);
+      }
+
+      .actions,
+      .btn {
+        width: 100%;
+      }
+
+      .hero-features {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .feature:nth-child(3) {
+        border-left: 0;
+        padding-left: 0;
+      }
+
+      .globe-wrap {
+        min-height: 420px;
+      }
+
+      .globe {
+        width: 310px;
+        height: 310px;
+      }
+
+      .platform-rings {
+        width: 320px;
+      }
+
+      .services,
+      .metrics,
+      .partners {
+        grid-template-columns: 1fr;
+      }
+
+      .metric,
+      .feature {
+        border-left: 0;
+        border-right: 0;
+        padding-left: 0;
+      }
+
+      .section-row {
+        display: block;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Welcome to OneNexSys</h1>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="brand-mark"></span>
+        <span class="brand-text">
+          <strong>OneNexsys</strong>
+          <span>Building Secure. Delivering Trust.</span>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#infrastructure">Infrastructure</a>
+        <a href="mailto:contact@onenexsys.com">Contact Us</a>
+        <a class="nav-cta" href="mailto:contact@onenexsys.com">Get in Touch →</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="#">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#infrastructure">Infrastructure</a>
+      <a href="mailto:contact@onenexsys.com">Contact Us</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">One Nexsys</div>
+          <h1>Infrastructure that Powers Digital <span class="accent">Performance</span></h1>
+          <p>
+            OneNexsys delivers secure, scalable and high-performance IT infrastructure solutions that help businesses connect, compute and grow without limits.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="#services">Explore Our Services →</a>
+            <a class="btn btn-secondary" href="mailto:contact@onenexsys.com">Contact Sales →</a>
+          </div>
+
+          <div class="hero-features">
+            <div class="feature">
+              <div class="feature-icon">◇</div>
+              <strong>Secure by Design</strong>
+              <span>Enterprise-grade security at every layer.</span>
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">↗</div>
+              <strong>High Performance</strong>
+              <span>Built for speed, uptime and reliability.</span>
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">☁</div>
+              <strong>Scalable Solutions</strong>
+              <span>Infrastructure that grows as you grow.</span>
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">◎</div>
+              <strong>Expert Support</strong>
+              <span>Hands-on support from real infrastructure experts.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="globe-wrap">
+          <div class="globe">
+            <div class="globe-grid"></div>
+            <span class="globe-line gl1"></span>
+            <span class="globe-line gl2"></span>
+            <span class="globe-line gl3"></span>
+            <span class="globe-line gl4"></span>
+            <span class="globe-line gl5"></span>
+            <span class="node n1"></span>
+            <span class="node n2"></span>
+            <span class="node n3"></span>
+            <span class="node n4"></span>
+            <span class="node n5"></span>
+            <span class="node n6"></span>
+            <span class="node n7"></span>
+          </div>
+          <div class="platform-rings"></div>
+        </div>
+      </div>
+
+      <div class="container metrics">
+        <div class="metric"><div class="metric-icon">♙</div><div><strong>MSP</strong><span>Managed IT Support</span></div></div>
+        <div class="metric"><div class="metric-icon">▦</div><div><strong>R&S</strong><span>Rack & Stack</span></div></div>
+        <div class="metric"><div class="metric-icon">◎</div><div><strong>SG</strong><span>Singapore-Based</span></div></div>
+        <div class="metric"><div class="metric-icon">▤</div><div><strong>99.9%</strong><span>Operational Focus</span></div></div>
+        <div class="metric"><div class="metric-icon">◉</div><div><strong>100%</strong><span>Commitment</span></div></div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-row">
+          <div>
+            <div class="section-label">Our Services</div>
+            <h2>End-to-End Infrastructure Solutions</h2>
+          </div>
+          <p>Practical IT services for companies that need reliable systems, clean deployment and responsive technical support.</p>
+        </div>
+
+        <div class="services">
+          <article class="card">
+            <div class="card-icon">☁</div>
+            <h3>Managed IT Support</h3>
+            <p>Proactive support, troubleshooting, user setup, device management and day-to-day IT operations.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">▤</div>
+            <h3>Rack & Stack</h3>
+            <p>Server, switch, firewall and network equipment installation for business and data centre environments.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⌘</div>
+            <h3>Network Solutions</h3>
+            <p>LAN setup, routing, switching, access points and structured connectivity foundations.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⌁</div>
+            <h3>Structured Cabling</h3>
+            <p>Professional cabling, patching, labelling, cable management and connectivity planning.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">↗</div>
+            <h3>IT Consulting</h3>
+            <p>Technical guidance to improve infrastructure, systems, workflow and support readiness.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⚙</div>
+            <h3>Systems Support</h3>
+            <p>Email, domains, workspaces, backups, cloud tools and access management support.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="infrastructure">
+      <div class="container split">
+        <div>
+          <div class="section-label">Our Infrastructure</div>
+          <h2>Built on Strength. Backed by Technology.</h2>
+          <div class="server-room"></div>
+        </div>
+
+        <div class="checks">
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <div>
+              <h3>Reliable Deployment</h3>
+              <p>Clean implementation standards for office, network and infrastructure environments.</p>
+            </div>
+          </div>
+
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <div>
+              <h3>Redundant Network Thinking</h3>
+              <p>Planning focused on stability, uptime, cable discipline and scalable connectivity.</p>
+            </div>
+          </div>
+
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <div>
+              <h3>Security-Aware Support</h3>
+              <p>Access, account, device and system support handled with professional care.</p>
+            </div>
+          </div>
+
+          <div class="check">
+            <div class="check-dot">✓</div>
+            <div>
+              <h3>Sustainable Operations</h3>
+              <p>Reliable support processes designed for long-term business continuity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container split">
+        <div class="about-box">
+          <div class="section-label">About OneNexsys</div>
+          <h2>Your Trusted Infrastructure Partner</h2>
+          <p>
+            OneNexsys is a Singapore-based IT infrastructure and managed services company focused on dependable business technology support, clean deployment and practical technical execution.
+          </p>
+
+          <div class="partners">
+            <div class="partner">Managed IT</div>
+            <div class="partner">Network</div>
+            <div class="partner">Cabling</div>
+            <div class="partner">Support</div>
+          </div>
+        </div>
+
+        <div class="about-box">
+          <div class="section-label">Why Businesses Choose Us</div>
+          <h2>Secure. Reliable. Scalable.</h2>
+          <p>
+            We help businesses build the foundations they need to operate confidently: stable networks, organized infrastructure, responsive support and clear technical ownership.
+          </p>
+          <a class="btn btn-secondary" href="mailto:contact@onenexsys.com">Learn More About Us →</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container cta">
+        <div class="cta-icon">✉</div>
+        <div>
+          <div class="section-label">Let’s Build the Future Together</div>
+          <h2>Ready to Power Your Business?</h2>
+          <p>Connect with OneNexsys and discover the right infrastructure and managed IT solution for your business.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:contact@onenexsys.com">Get in Touch →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="#">
+          <span class="brand-mark"></span>
+          <span class="brand-text">
+            <strong>OneNexsys</strong>
+            <span>Building Secure. Delivering Trust.</span>
+          </span>
+        </a>
+        <p style="margin-top:14px;">© <span id="year"></span> OneNexsys. All rights reserved.</p>
+      </div>
+
+      <div>
+        <strong style="color:var(--emerald-soft);">Quick Links</strong>
+        <div class="footer-links" style="margin-top:12px;">
+          <a href="#">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#services">Services</a>
+          <a href="#infrastructure">Infrastructure</a>
+          <a href="mailto:contact@onenexsys.com">Contact Us</a>
+        </div>
+      </div>
+
+      <div>
+        <strong style="color:var(--emerald-soft);">Contact</strong>
+        <p style="margin-top:12px;">contact@onenexsys.com</p>
+        <p>Singapore</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
