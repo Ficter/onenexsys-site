@@ -1,214 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OneNexsys Option C Globe — V2</title>
+<!--
+DROP-IN GLOBE REPLACEMENT
+
+1. Save the generated globe image as:
+   onenexsys-globe.png
+
+2. Upload it to the same GitHub folder as index.html.
+
+3. Replace your current <div class="globe-card">...</div> with the HTML below.
+
+4. Add the CSS below inside your existing <style> tag, near the other .globe-card styles.
+-->
+
 <style>
-  :root{
-    --bg:#0B0D10;
-    --panel:#14181D;
-    --panel2:#1F242B;
-    --steel:#37414A;
-    --silver:#A7B1BD;
-    --emerald:#10B981;
-    --emerald2:#34D399;
-  }
-
-  *{box-sizing:border-box;margin:0;padding:0}
-
-  body{
-    min-height:100vh;
-    display:grid;
-    place-items:center;
-    background:#0B0D10;
-    overflow:hidden;
-  }
-
-  .stage{
-    width:min(94vw,760px);
-    aspect-ratio:1.48/1;
-    border:1px solid rgba(167,177,189,.18);
-    border-radius:14px;
-    position:relative;
-    overflow:hidden;
+  .globe-card {
+    position: relative;
+    min-height: 470px;
+    border-radius: 18px;
+    border: 1px solid rgba(167, 177, 189, 0.16);
     background:
-      radial-gradient(circle at 78% 45%,rgba(16,185,129,.14),transparent 34%),
-      radial-gradient(circle at 68% 52%,rgba(16,185,129,.08),transparent 28%),
-      linear-gradient(180deg,#101418,#0B0D10 72%);
+      radial-gradient(circle at 68% 50%, rgba(16, 185, 129, 0.14), transparent 38%),
+      linear-gradient(180deg, rgba(20, 24, 29, 0.72), rgba(11, 13, 16, 0.92));
+    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
   }
 
-  .stage::before{
-    content:"";
-    position:absolute;
-    inset:0;
+  .globe-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background-image:
-      linear-gradient(rgba(167,177,189,.025) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(167,177,189,.025) 1px,transparent 1px);
-    background-size:34px 34px;
-    opacity:.65;
-    mask-image:radial-gradient(circle at 77% 47%,black,transparent 72%);
+      linear-gradient(rgba(167, 177, 189, 0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(167, 177, 189, 0.022) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: radial-gradient(circle at 68% 48%, black, transparent 74%);
+    pointer-events: none;
   }
 
-  svg{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    filter:drop-shadow(0 0 28px rgba(16,185,129,.14));
+  .globe-image-wrap {
+    position: absolute;
+    inset: -4% -3% -7% -3%;
+    display: grid;
+    place-items: center;
   }
 
-  .halo{
-    animation:haloBreath 5s ease-in-out infinite;
-    transform-origin:500px 245px;
+  .globe-image {
+    width: min(112%, 760px);
+    height: auto;
+    display: block;
+    filter:
+      drop-shadow(0 0 22px rgba(16, 185, 129, 0.24))
+      drop-shadow(0 24px 60px rgba(0, 0, 0, 0.45));
+    animation: globeFloat 7s ease-in-out infinite;
   }
 
-  .mesh-back{
-    transform-origin:500px 245px;
-    animation:rotateBack 95s linear infinite;
+  .globe-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 68% 45%, transparent 0 42%, rgba(11, 13, 16, 0.26) 78%),
+      linear-gradient(90deg, rgba(11, 13, 16, 0.22), transparent 22%, transparent 78%, rgba(11, 13, 16, 0.22));
+    pointer-events: none;
   }
 
-  .mesh-front{
-    transform-origin:500px 245px;
-    animation:rotateFront 120s linear infinite reverse;
+  @keyframes globeFloat {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-8px) scale(1.015);
+    }
   }
 
-  .arc-a{
-    stroke-dasharray:760;
-    stroke-dashoffset:760;
-    animation:drawArc 2.4s ease forwards;
+  @media (max-width: 740px) {
+    .globe-card {
+      min-height: 380px;
+    }
+
+    .globe-image {
+      width: 125%;
+    }
   }
-
-  .arc-b{
-    stroke-dasharray:760;
-    stroke-dashoffset:760;
-    animation:drawArc 2.8s ease .25s forwards;
-  }
-
-  .arc-c{
-    stroke-dasharray:760;
-    stroke-dashoffset:760;
-    animation:drawArc 3.1s ease .45s forwards;
-  }
-
-  .signal{
-    stroke-dasharray:9 355;
-    animation:signalMove 6.5s linear infinite;
-  }
-
-  .signal.two{animation-delay:1.4s}
-  .signal.three{animation-delay:2.6s}
-
-  .node{
-    transform-origin:center;
-    animation:pulse 3.2s ease-in-out infinite;
-  }
-
-  .node:nth-child(2n){animation-delay:.45s}
-  .node:nth-child(3n){animation-delay:1s}
-
-  @keyframes drawArc{to{stroke-dashoffset:0}}
-  @keyframes signalMove{to{stroke-dashoffset:-364}}
-  @keyframes rotateBack{to{transform:rotate(360deg)}}
-  @keyframes rotateFront{to{transform:rotate(360deg)}}
-  @keyframes pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.28)}}
-  @keyframes haloBreath{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.025)}}
 </style>
-</head>
-<body>
-<div class="stage">
-<svg viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Option C premium animated globe">
-  <defs>
-    <radialGradient id="sphere" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#10B981" stop-opacity=".20"/>
-      <stop offset="45%" stop-color="#10B981" stop-opacity=".07"/>
-      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
-    </radialGradient>
 
-    <radialGradient id="nodeFill" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#D1FAE5"/>
-      <stop offset="35%" stop-color="#34D399"/>
-      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
-    </radialGradient>
-
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-
-    <clipPath id="clip">
-      <circle cx="500" cy="245" r="162"/>
-    </clipPath>
-  </defs>
-
-  <!-- base rings like Option C -->
-  <ellipse cx="500" cy="405" rx="215" ry="52" stroke="#10B981" stroke-opacity=".32"/>
-  <ellipse cx="500" cy="405" rx="166" ry="38" stroke="#10B981" stroke-opacity=".20"/>
-  <ellipse cx="500" cy="405" rx="112" ry="24" stroke="#10B981" stroke-opacity=".13"/>
-
-  <!-- main sphere -->
-  <g class="halo">
-    <circle cx="500" cy="245" r="162" fill="url(#sphere)" stroke="#10B981" stroke-opacity=".30"/>
-  </g>
-
-  <!-- dotted world / data texture, clipped to sphere -->
-  <g clip-path="url(#clip)" opacity=".55">
-    <g fill="#A7B1BD" opacity=".34">
-      <circle cx="425" cy="150" r="1.5"/><circle cx="439" cy="154" r="1.3"/><circle cx="454" cy="160" r="1.2"/><circle cx="468" cy="166" r="1.1"/>
-      <circle cx="518" cy="143" r="1.5"/><circle cx="535" cy="150" r="1.3"/><circle cx="552" cy="160" r="1.2"/><circle cx="568" cy="173" r="1.1"/>
-      <circle cx="390" cy="227" r="1.5"/><circle cx="406" cy="236" r="1.3"/><circle cx="421" cy="245" r="1.2"/><circle cx="436" cy="254" r="1.1"/>
-      <circle cx="518" cy="304" r="1.5"/><circle cx="536" cy="311" r="1.3"/><circle cx="554" cy="320" r="1.2"/><circle cx="570" cy="331" r="1.1"/>
-      <circle cx="455" cy="350" r="1.5"/><circle cx="472" cy="354" r="1.3"/><circle cx="489" cy="357" r="1.2"/><circle cx="506" cy="360" r="1.1"/>
-      <circle cx="610" cy="236" r="1.4"/><circle cx="620" cy="252" r="1.2"/><circle cx="625" cy="270" r="1.1"/>
-    </g>
-  </g>
-
-  <!-- subtle mesh -->
-  <g clip-path="url(#clip)">
-    <g class="mesh-back" stroke="#34D399" stroke-opacity=".11" stroke-width="1">
-      <ellipse cx="500" cy="245" rx="162" ry="42"/>
-      <ellipse cx="500" cy="245" rx="162" ry="82"/>
-      <ellipse cx="500" cy="245" rx="162" ry="122"/>
-      <ellipse cx="500" cy="245" rx="52" ry="162"/>
-      <ellipse cx="500" cy="245" rx="94" ry="162"/>
-    </g>
-    <g class="mesh-front" stroke="#34D399" stroke-opacity=".075" stroke-width="1">
-      <ellipse cx="500" cy="245" rx="132" ry="162" transform="rotate(35 500 245)"/>
-      <ellipse cx="500" cy="245" rx="84" ry="162" transform="rotate(-38 500 245)"/>
-    </g>
-  </g>
-
-  <!-- clean connected Option C arcs -->
-  <g stroke-linecap="round">
-    <path class="arc-a" d="M355 210 C430 112, 575 112, 642 240" stroke="#10B981" stroke-opacity=".58" stroke-width="1.35"/>
-    <path class="arc-b" d="M372 332 C452 405, 600 350, 640 185" stroke="#10B981" stroke-opacity=".54" stroke-width="1.35"/>
-    <path class="arc-c" d="M398 120 C495 218, 505 332, 468 405" stroke="#10B981" stroke-opacity=".50" stroke-width="1.25"/>
-    <path d="M344 285 C450 188, 555 178, 655 250" stroke="#34D399" stroke-opacity=".36" stroke-width="1.15"/>
-    <path d="M388 155 C495 210, 573 278, 640 350" stroke="#34D399" stroke-opacity=".30" stroke-width="1.05"/>
-  </g>
-
-  <!-- animated data signals -->
-  <g stroke="#34D399" stroke-opacity=".88" stroke-width="1.7" stroke-linecap="round" filter="url(#glow)">
-    <path class="signal" d="M355 210 C430 112, 575 112, 642 240"/>
-    <path class="signal two" d="M372 332 C452 405, 600 350, 640 185"/>
-    <path class="signal three" d="M344 285 C450 188, 555 178, 655 250"/>
-  </g>
-
-  <!-- nodes placed like a deliberate network, not random dots -->
-  <g filter="url(#glow)">
-    <circle class="node" cx="386" cy="178" r="4.3" fill="url(#nodeFill)"/>
-    <circle class="node" cx="548" cy="148" r="4.3" fill="url(#nodeFill)"/>
-    <circle class="node" cx="630" cy="238" r="4.3" fill="url(#nodeFill)"/>
-    <circle class="node" cx="590" cy="335" r="4.3" fill="url(#nodeFill)"/>
-    <circle class="node" cx="485" cy="392" r="4.3" fill="url(#nodeFill)"/>
-    <circle class="node" cx="380" cy="315" r="4.3" fill="url(#nodeFill)"/>
-    <circle class="node" cx="360" cy="252" r="4.3" fill="url(#nodeFill)"/>
-    <circle class="node" cx="500" cy="106" r="4.3" fill="url(#nodeFill)"/>
-  </g>
-</svg>
+<div class="globe-card">
+  <div class="globe-image-wrap">
+    <img
+      class="globe-image"
+      src="onenexsys-globe.png"
+      alt="Glowing emerald digital network globe representing OneNexsys infrastructure connectivity"
+    />
+  </div>
 </div>
-</body>
-</html>
