@@ -5,24 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>OneNexsys | Managed IT & Infrastructure Services Singapore</title>
-
-  <meta name="description" content="OneNexsys provides managed IT support, infrastructure deployment, structured cabling, network engineering, rack and stack services, and technical support for businesses in Singapore." />
+  <meta name="description" content="OneNexsys provides managed IT support, infrastructure deployment, structured cabling, rack and stack services, network support, and technical services for businesses in Singapore." />
 
   <style>
     :root {
-      --black: #0B0D10;
-      --graphite: #14181D;
-      --dark-panel: #1F242B;
-      --steel: #37414A;
-      --silver: #A7B1BD;
-      --emerald: #10B981;
-      --emerald-soft: #34D399;
-      --white: #F8FAFC;
-      --muted: #9CA3AF;
-      --line: rgba(167, 177, 189, 0.16);
+      --black: #0b0d10;
+      --panel: #14181d;
+      --panel-2: #1f242b;
+      --steel: #37414a;
+      --silver: #a7b1bd;
+      --emerald: #10b981;
+      --emerald-2: #34d399;
+      --white: #f8fafc;
+      --muted: #9ca3af;
+      --line: rgba(167, 177, 189, 0.15);
       --green-line: rgba(16, 185, 129, 0.38);
       --shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
       --max: 1180px;
+      --nav-height: 78px;
     }
 
     * {
@@ -38,9 +38,9 @@
     body {
       font-family: "Space Grotesk", Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 78% 12%, rgba(16, 185, 129, 0.14), transparent 28%),
-        radial-gradient(circle at 12% 20%, rgba(16, 185, 129, 0.07), transparent 24%),
-        linear-gradient(180deg, #0B0D10 0%, #0A0C0F 52%, #07080A 100%);
+        radial-gradient(circle at 78% 12%, rgba(16, 185, 129, 0.12), transparent 28%),
+        radial-gradient(circle at 12% 20%, rgba(16, 185, 129, 0.06), transparent 24%),
+        linear-gradient(180deg, #0b0d10 0%, #0a0c0f 52%, #07080a 100%);
       color: var(--white);
       line-height: 1.6;
       overflow-x: hidden;
@@ -52,11 +52,20 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.024) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.024) 1px, transparent 1px);
       background-size: 48px 48px;
-      mask-image: linear-gradient(to bottom, black, transparent 75%);
+      mask-image: linear-gradient(to bottom, black, transparent 76%);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.32) 75%);
       z-index: -1;
+      pointer-events: none;
     }
 
     a {
@@ -69,17 +78,21 @@
       margin: 0 auto;
     }
 
+    section {
+      scroll-margin-top: 110px;
+    }
+
     header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(11, 13, 16, 0.86);
+      background: rgba(11, 13, 16, 0.88);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--line);
     }
 
     .nav {
-      min-height: 76px;
+      min-height: var(--nav-height);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -97,45 +110,44 @@
     .brand-mark {
       width: 42px;
       height: 42px;
-      border-radius: 12px;
-      background:
-        linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(52, 211, 153, 0.82)),
-        #14181D;
+      border-radius: 13px;
       position: relative;
-      box-shadow: 0 0 32px rgba(16, 185, 129, 0.22);
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(16,185,129,0.98), rgba(52,211,153,0.74));
+      box-shadow: 0 0 34px rgba(16,185,129,0.24);
+      flex: 0 0 auto;
     }
 
-    .brand-mark::before {
-      content: "";
-      position: absolute;
-      width: 19px;
-      height: 22px;
-      border: 4px solid #07100c;
-      border-left: 0;
-      border-bottom: 0;
-      top: 8px;
-      left: 10px;
-      transform: skew(-12deg);
-      border-radius: 3px;
-    }
-
+    .brand-mark::before,
     .brand-mark::after {
       content: "";
       position: absolute;
-      width: 16px;
-      height: 20px;
-      border: 4px solid rgba(7, 16, 12, 0.65);
-      border-top: 0;
-      border-right: 0;
-      bottom: 8px;
-      right: 9px;
-      transform: skew(-12deg);
-      border-radius: 3px;
+      top: 10px;
+      width: 10px;
+      height: 22px;
+      border-radius: 8px;
+      background: #07100c;
+      transform: skew(-16deg);
+    }
+
+    .brand-mark::before { left: 10px; }
+    .brand-mark::after { right: 10px; opacity: 0.82; }
+
+    .brand-mark i {
+      position: absolute;
+      width: 11px;
+      height: 24px;
+      left: 16px;
+      top: 9px;
+      border-radius: 8px;
+      background: rgba(7,16,12,0.72);
+      transform: skew(-16deg) rotate(-32deg);
+      transform-origin: center;
     }
 
     .brand-text strong {
       display: block;
-      font-size: 1.18rem;
+      font-size: 1.17rem;
       color: var(--white);
       line-height: 1;
     }
@@ -144,7 +156,7 @@
       display: block;
       color: var(--muted);
       font-size: 0.72rem;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       margin-top: 3px;
     }
 
@@ -156,16 +168,50 @@
       color: var(--silver);
     }
 
+    .nav-links a:not(.nav-cta) {
+      position: relative;
+      padding: 28px 0;
+      transition: color 0.18s ease;
+    }
+
+    .nav-links a:not(.nav-cta)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 21px;
+      height: 2px;
+      background: var(--emerald);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.18s ease;
+    }
+
     .nav-links a:hover {
-      color: var(--emerald-soft);
+      color: var(--emerald-2);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+    }
+
+    .nav-links a.active {
+      color: var(--white);
     }
 
     .nav-cta {
       padding: 11px 18px;
       border: 1px solid var(--green-line);
-      border-radius: 10px;
-      color: var(--emerald-soft) !important;
-      background: rgba(16, 185, 129, 0.06);
+      border-radius: 12px;
+      color: var(--emerald-2) !important;
+      background: rgba(16,185,129,0.055);
+      transition: 0.18s ease;
+    }
+
+    .nav-cta:hover {
+      background: rgba(16,185,129,0.12);
+      transform: translateY(-1px);
     }
 
     .menu-btn {
@@ -197,51 +243,51 @@
     }
 
     .hero {
-      padding: 84px 0 56px;
+      padding: 74px 0 42px;
       position: relative;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
+      grid-template-columns: 0.94fr 1.06fr;
       gap: 56px;
       align-items: center;
     }
 
     .eyebrow {
-      color: var(--emerald-soft);
-      font-size: 0.84rem;
-      font-weight: 800;
+      color: var(--emerald-2);
+      font-size: 0.82rem;
+      font-weight: 900;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       margin-bottom: 18px;
     }
 
     h1 {
-      font-size: clamp(3.25rem, 6.2vw, 6.4rem);
-      line-height: 0.92;
+      font-size: clamp(3rem, 5.7vw, 5.8rem);
+      line-height: 0.94;
       letter-spacing: -0.075em;
-      margin-bottom: 26px;
-      max-width: 720px;
+      margin-bottom: 24px;
+      max-width: 700px;
     }
 
     .accent {
-      color: var(--emerald-soft);
-      text-shadow: 0 0 34px rgba(16, 185, 129, 0.26);
+      color: var(--emerald-2);
+      text-shadow: 0 0 34px rgba(16,185,129,0.26);
     }
 
     .hero p {
       max-width: 600px;
       color: var(--silver);
-      font-size: 1.05rem;
-      margin-bottom: 32px;
+      font-size: 1.04rem;
+      margin-bottom: 30px;
     }
 
     .actions {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 42px;
+      margin-bottom: 40px;
     }
 
     .btn {
@@ -250,16 +296,17 @@
       align-items: center;
       justify-content: center;
       padding: 0 20px;
-      border-radius: 10px;
+      border-radius: 11px;
       font-size: 0.94rem;
-      font-weight: 800;
+      font-weight: 850;
       transition: 0.2s ease;
+      border: 0;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--emerald), var(--emerald-soft));
+      background: linear-gradient(135deg, var(--emerald), var(--emerald-2));
       color: #04120d;
-      box-shadow: 0 16px 46px rgba(16, 185, 129, 0.22);
+      box-shadow: 0 16px 46px rgba(16,185,129,0.22);
     }
 
     .btn-secondary {
@@ -290,31 +337,33 @@
     }
 
     .feature-icon {
-      color: var(--emerald-soft);
+      color: var(--emerald-2);
       font-size: 1.45rem;
       margin-bottom: 8px;
     }
 
     .feature strong {
       display: block;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       margin-bottom: 4px;
     }
 
     .feature span {
       display: block;
       color: var(--muted);
-      font-size: 0.82rem;
+      font-size: 0.81rem;
     }
 
     .globe-wrap {
       position: relative;
-      min-height: 560px;
+      min-height: 520px;
       border-radius: 28px;
       overflow: hidden;
       background:
-        radial-gradient(circle at 50% 44%, rgba(16, 185, 129, 0.22), transparent 30%),
-        linear-gradient(180deg, rgba(20, 24, 29, 0.18), rgba(11, 13, 16, 0.88));
+        radial-gradient(circle at 52% 43%, rgba(16,185,129,0.24), transparent 28%),
+        linear-gradient(180deg, rgba(20,24,29,0.18), rgba(11,13,16,0.88));
+      border: 1px solid rgba(16,185,129,0.09);
+      box-shadow: var(--shadow);
     }
 
     .globe-wrap::before {
@@ -322,41 +371,48 @@
       position: absolute;
       inset: 0;
       background:
-        repeating-linear-gradient(90deg, transparent 0 26px, rgba(16, 185, 129, 0.055) 27px),
-        linear-gradient(to bottom, transparent, rgba(16, 185, 129, 0.06), transparent);
-      opacity: 0.8;
+        repeating-linear-gradient(90deg, transparent 0 26px, rgba(16,185,129,0.055) 27px),
+        repeating-linear-gradient(0deg, transparent 0 32px, rgba(16,185,129,0.032) 33px),
+        linear-gradient(to bottom, transparent, rgba(16,185,129,0.06), transparent);
+      opacity: 0.75;
     }
 
     .globe {
       position: absolute;
-      width: 460px;
-      height: 460px;
+      width: 430px;
+      height: 430px;
       border-radius: 50%;
-      top: 38px;
+      top: 42px;
       left: 50%;
       transform: translateX(-50%);
       background:
-        radial-gradient(circle at 35% 30%, rgba(52, 211, 153, 0.28), transparent 10%),
-        radial-gradient(circle at center, rgba(16, 185, 129, 0.07), transparent 58%);
-      border: 1px solid rgba(16, 185, 129, 0.38);
+        radial-gradient(circle at 35% 30%, rgba(52,211,153,0.32), transparent 10%),
+        radial-gradient(circle at center, rgba(16,185,129,0.075), transparent 58%);
+      border: 1px solid rgba(16,185,129,0.4);
       box-shadow:
-        inset 0 0 80px rgba(16, 185, 129, 0.18),
-        0 0 90px rgba(16, 185, 129, 0.16);
+        inset 0 0 80px rgba(16,185,129,0.18),
+        0 0 90px rgba(16,185,129,0.16);
+      animation: floatGlobe 7s ease-in-out infinite;
+    }
+
+    @keyframes floatGlobe {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-8px); }
     }
 
     .globe::before,
     .globe::after {
       content: "";
       position: absolute;
-      inset: 32px;
+      inset: 28px;
       border-radius: 50%;
-      border: 1px dashed rgba(52, 211, 153, 0.34);
+      border: 1px dashed rgba(52,211,153,0.32);
     }
 
     .globe::after {
-      inset: 82px;
+      inset: 76px;
       transform: rotate(72deg);
-      border-color: rgba(52, 211, 153, 0.24);
+      border-color: rgba(52,211,153,0.24);
     }
 
     .globe-grid {
@@ -364,51 +420,69 @@
       inset: 0;
       border-radius: 50%;
       background:
-        linear-gradient(90deg, transparent 48%, rgba(52,211,153,0.18) 49%, transparent 50%),
-        linear-gradient(0deg, transparent 48%, rgba(52,211,153,0.18) 49%, transparent 50%);
-      mask-image: radial-gradient(circle, black 60%, transparent 71%);
+        linear-gradient(90deg, transparent 48%, rgba(52,211,153,0.17) 49%, transparent 50%),
+        linear-gradient(0deg, transparent 48%, rgba(52,211,153,0.17) 49%, transparent 50%),
+        repeating-radial-gradient(circle at center, transparent 0 34px, rgba(52,211,153,0.12) 35px, transparent 37px);
+      mask-image: radial-gradient(circle, black 62%, transparent 72%);
       opacity: 0.7;
     }
+
+    .continent {
+      position: absolute;
+      border-radius: 48% 52% 44% 56%;
+      background: radial-gradient(circle, rgba(167,177,189,0.42), rgba(167,177,189,0.14) 55%, transparent 72%);
+      filter: blur(0.2px);
+      opacity: 0.58;
+      transform: rotate(-14deg);
+    }
+
+    .c1 { width: 120px; height: 82px; top: 92px; left: 116px; }
+    .c2 { width: 150px; height: 92px; top: 132px; right: 94px; transform: rotate(15deg); }
+    .c3 { width: 96px; height: 132px; bottom: 86px; left: 154px; transform: rotate(22deg); }
+    .c4 { width: 86px; height: 72px; bottom: 126px; right: 124px; transform: rotate(-28deg); }
 
     .globe-line {
       position: absolute;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(52,211,153,0.85), transparent);
+      background: linear-gradient(90deg, transparent, rgba(52,211,153,0.9), transparent);
       transform-origin: left center;
     }
 
-    .gl1 { width: 330px; top: 128px; left: 88px; transform: rotate(16deg); }
-    .gl2 { width: 280px; top: 215px; left: 112px; transform: rotate(-28deg); }
-    .gl3 { width: 300px; top: 300px; left: 92px; transform: rotate(30deg); }
-    .gl4 { width: 240px; top: 170px; left: 190px; transform: rotate(78deg); }
-    .gl5 { width: 260px; top: 265px; left: 48px; transform: rotate(-62deg); }
+    .gl1 { width: 310px; top: 118px; left: 82px; transform: rotate(16deg); }
+    .gl2 { width: 260px; top: 205px; left: 108px; transform: rotate(-28deg); }
+    .gl3 { width: 285px; top: 288px; left: 88px; transform: rotate(30deg); }
+    .gl4 { width: 230px; top: 158px; left: 178px; transform: rotate(78deg); }
+    .gl5 { width: 250px; top: 250px; left: 44px; transform: rotate(-62deg); }
+    .gl6 { width: 220px; top: 332px; left: 142px; transform: rotate(-12deg); opacity: 0.7; }
 
     .node {
       position: absolute;
       width: 9px;
       height: 9px;
       border-radius: 50%;
-      background: var(--emerald-soft);
+      background: var(--emerald-2);
       box-shadow: 0 0 18px rgba(52,211,153,0.95);
     }
 
-    .n1 { top: 116px; left: 118px; }
-    .n2 { top: 156px; right: 104px; }
-    .n3 { top: 248px; left: 168px; }
-    .n4 { top: 324px; right: 150px; }
-    .n5 { bottom: 120px; left: 238px; }
-    .n6 { top: 260px; right: 82px; }
-    .n7 { top: 360px; left: 105px; }
+    .n1 { top: 108px; left: 116px; }
+    .n2 { top: 146px; right: 104px; }
+    .n3 { top: 236px; left: 166px; }
+    .n4 { top: 310px; right: 150px; }
+    .n5 { bottom: 118px; left: 232px; }
+    .n6 { top: 250px; right: 82px; }
+    .n7 { top: 348px; left: 104px; }
+    .n8 { top: 82px; left: 236px; width: 7px; height: 7px; }
+    .n9 { bottom: 84px; right: 210px; width: 7px; height: 7px; }
 
     .platform-rings {
       position: absolute;
-      width: 460px;
-      height: 160px;
+      width: 440px;
+      height: 150px;
       left: 50%;
-      bottom: 52px;
+      bottom: 46px;
       transform: translateX(-50%);
       border-radius: 50%;
-      border: 1px solid rgba(16,185,129,0.3);
+      border: 1px solid rgba(16,185,129,0.32);
       box-shadow: 0 0 50px rgba(16,185,129,0.12);
     }
 
@@ -426,9 +500,9 @@
     }
 
     .metrics {
-      margin-top: 34px;
+      margin-top: 28px;
       border: 1px solid var(--line);
-      background: rgba(20, 24, 29, 0.72);
+      background: rgba(20,24,29,0.74);
       border-radius: 16px;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -436,7 +510,7 @@
     }
 
     .metric {
-      padding: 20px;
+      padding: 18px 20px;
       border-right: 1px solid var(--line);
       display: flex;
       align-items: center;
@@ -448,29 +522,29 @@
     }
 
     .metric-icon {
-      color: var(--emerald-soft);
-      font-size: 1.7rem;
+      color: var(--emerald-2);
+      font-size: 1.55rem;
     }
 
     .metric strong {
-      color: var(--emerald-soft);
-      font-size: 1.45rem;
+      color: var(--emerald-2);
+      font-size: 1.35rem;
       line-height: 1;
       display: block;
     }
 
     .metric span {
       color: var(--muted);
-      font-size: 0.82rem;
+      font-size: 0.81rem;
     }
 
-    section {
-      padding: 70px 0;
+    .section-block {
+      padding: 58px 0;
     }
 
     .section-label {
-      color: var(--emerald-soft);
-      font-size: 0.78rem;
+      color: var(--emerald-2);
+      font-size: 0.76rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       font-weight: 900;
@@ -478,8 +552,8 @@
     }
 
     h2 {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1.05;
+      font-size: clamp(2rem, 3.7vw, 3.25rem);
+      line-height: 1.06;
       letter-spacing: -0.055em;
       margin-bottom: 18px;
     }
@@ -489,7 +563,7 @@
       justify-content: space-between;
       align-items: end;
       gap: 24px;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
     .section-row p {
@@ -510,7 +584,7 @@
         rgba(20,24,29,0.78);
       border-radius: 16px;
       padding: 22px;
-      min-height: 220px;
+      min-height: 215px;
       transition: 0.2s ease;
     }
 
@@ -520,9 +594,9 @@
     }
 
     .card-icon {
-      color: var(--emerald-soft);
+      color: var(--emerald-2);
       font-size: 2rem;
-      margin-bottom: 38px;
+      margin-bottom: 34px;
     }
 
     .card h3 {
@@ -538,12 +612,12 @@
     .split {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 36px;
+      gap: 32px;
       align-items: stretch;
     }
 
     .server-room {
-      min-height: 280px;
+      min-height: 260px;
       border-radius: 18px;
       border: 1px solid var(--line);
       background:
@@ -551,6 +625,7 @@
         linear-gradient(180deg, #11161a, #0b0d10);
       position: relative;
       overflow: hidden;
+      box-shadow: inset 0 -50px 80px rgba(0,0,0,0.36);
     }
 
     .server-room::before {
@@ -560,7 +635,7 @@
       background:
         repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 42px),
         repeating-linear-gradient(0deg, rgba(16,185,129,0.08) 0 2px, transparent 2px 38px);
-      opacity: 0.6;
+      opacity: 0.62;
     }
 
     .server-room::after {
@@ -571,13 +646,14 @@
       width: 14%;
       height: 100%;
       transform: translateX(-50%);
-      background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(16,185,129,0.24), transparent);
+      background: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(16,185,129,0.24), transparent);
       filter: blur(8px);
     }
 
     .checks {
       display: grid;
-      gap: 16px;
+      gap: 15px;
+      align-content: center;
     }
 
     .check {
@@ -592,7 +668,7 @@
       height: 28px;
       border-radius: 50%;
       border: 1px solid var(--green-line);
-      color: var(--emerald-soft);
+      color: var(--emerald-2);
       display: grid;
       place-items: center;
       font-weight: 900;
@@ -658,7 +734,7 @@
       border: 1px solid var(--green-line);
       display: grid;
       place-items: center;
-      color: var(--emerald-soft);
+      color: var(--emerald-2);
       font-size: 2rem;
       box-shadow: 0 0 36px rgba(16,185,129,0.14);
     }
@@ -687,7 +763,7 @@
     }
 
     .footer-links a:hover {
-      color: var(--emerald-soft);
+      color: var(--emerald-2);
     }
 
     @media (max-width: 1050px) {
@@ -709,9 +785,17 @@
       .metric {
         border-bottom: 1px solid var(--line);
       }
+
+      .globe-wrap {
+        min-height: 490px;
+      }
     }
 
     @media (max-width: 720px) {
+      :root {
+        --nav-height: 74px;
+      }
+
       .container {
         width: min(100% - 30px, var(--max));
       }
@@ -726,11 +810,12 @@
       }
 
       .hero {
-        padding: 52px 0 42px;
+        padding: 48px 0 36px;
       }
 
       h1 {
-        font-size: clamp(3rem, 15vw, 4.6rem);
+        font-size: clamp(2.75rem, 14vw, 4.2rem);
+        line-height: 0.95;
       }
 
       .actions,
@@ -742,23 +827,23 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      .feature:nth-child(3) {
+      .feature {
         border-left: 0;
         padding-left: 0;
       }
 
       .globe-wrap {
-        min-height: 420px;
+        min-height: 400px;
       }
 
       .globe {
-        width: 310px;
-        height: 310px;
+        width: 300px;
+        height: 300px;
+        top: 48px;
       }
 
-      .platform-rings {
-        width: 320px;
-      }
+      .continent { opacity: 0.48; }
+      .platform-rings { width: 310px; bottom: 34px; }
 
       .services,
       .metrics,
@@ -766,15 +851,16 @@
         grid-template-columns: 1fr;
       }
 
-      .metric,
-      .feature {
-        border-left: 0;
+      .metric {
         border-right: 0;
-        padding-left: 0;
       }
 
       .section-row {
         display: block;
+      }
+
+      .section-block {
+        padding: 44px 0;
       }
     }
   </style>
@@ -784,15 +870,15 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#">
-        <span class="brand-mark"></span>
+        <span class="brand-mark"><i></i></span>
         <span class="brand-text">
           <strong>OneNexsys</strong>
           <span>Building Secure. Delivering Trust.</span>
         </span>
       </a>
 
-      <nav class="nav-links">
-        <a href="#">Home</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="active" href="#">Home</a>
         <a href="#about">About Us</a>
         <a href="#services">Services</a>
         <a href="#infrastructure">Infrastructure</a>
@@ -800,7 +886,7 @@
         <a class="nav-cta" href="mailto:contact@onenexsys.com">Get in Touch →</a>
       </nav>
 
-      <button class="menu-btn" id="menuBtn">☰</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
     </div>
 
     <div class="container mobile-menu" id="mobileMenu">
@@ -828,40 +914,26 @@
           </div>
 
           <div class="hero-features">
-            <div class="feature">
-              <div class="feature-icon">◇</div>
-              <strong>Secure by Design</strong>
-              <span>Enterprise-grade security at every layer.</span>
-            </div>
-
-            <div class="feature">
-              <div class="feature-icon">↗</div>
-              <strong>High Performance</strong>
-              <span>Built for speed, uptime and reliability.</span>
-            </div>
-
-            <div class="feature">
-              <div class="feature-icon">☁</div>
-              <strong>Scalable Solutions</strong>
-              <span>Infrastructure that grows as you grow.</span>
-            </div>
-
-            <div class="feature">
-              <div class="feature-icon">◎</div>
-              <strong>Expert Support</strong>
-              <span>Hands-on support from real infrastructure experts.</span>
-            </div>
+            <div class="feature"><div class="feature-icon">◇</div><strong>Secure by Design</strong><span>Enterprise-grade security at every layer.</span></div>
+            <div class="feature"><div class="feature-icon">↗</div><strong>High Performance</strong><span>Built for speed, uptime and reliability.</span></div>
+            <div class="feature"><div class="feature-icon">☁</div><strong>Scalable Solutions</strong><span>Infrastructure that grows as you grow.</span></div>
+            <div class="feature"><div class="feature-icon">◎</div><strong>Expert Support</strong><span>Hands-on support from real experts.</span></div>
           </div>
         </div>
 
-        <div class="globe-wrap">
+        <div class="globe-wrap" aria-label="Digital network globe visual">
           <div class="globe">
             <div class="globe-grid"></div>
+            <span class="continent c1"></span>
+            <span class="continent c2"></span>
+            <span class="continent c3"></span>
+            <span class="continent c4"></span>
             <span class="globe-line gl1"></span>
             <span class="globe-line gl2"></span>
             <span class="globe-line gl3"></span>
             <span class="globe-line gl4"></span>
             <span class="globe-line gl5"></span>
+            <span class="globe-line gl6"></span>
             <span class="node n1"></span>
             <span class="node n2"></span>
             <span class="node n3"></span>
@@ -869,6 +941,8 @@
             <span class="node n5"></span>
             <span class="node n6"></span>
             <span class="node n7"></span>
+            <span class="node n8"></span>
+            <span class="node n9"></span>
           </div>
           <div class="platform-rings"></div>
         </div>
@@ -883,7 +957,7 @@
       </div>
     </section>
 
-    <section id="services">
+    <section class="section-block" id="services">
       <div class="container">
         <div class="section-row">
           <div>
@@ -894,46 +968,17 @@
         </div>
 
         <div class="services">
-          <article class="card">
-            <div class="card-icon">☁</div>
-            <h3>Managed IT Support</h3>
-            <p>Proactive support, troubleshooting, user setup, device management and day-to-day IT operations.</p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">▤</div>
-            <h3>Rack & Stack</h3>
-            <p>Server, switch, firewall and network equipment installation for business and data centre environments.</p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">⌘</div>
-            <h3>Network Solutions</h3>
-            <p>LAN setup, routing, switching, access points and structured connectivity foundations.</p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">⌁</div>
-            <h3>Structured Cabling</h3>
-            <p>Professional cabling, patching, labelling, cable management and connectivity planning.</p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">↗</div>
-            <h3>IT Consulting</h3>
-            <p>Technical guidance to improve infrastructure, systems, workflow and support readiness.</p>
-          </article>
-
-          <article class="card">
-            <div class="card-icon">⚙</div>
-            <h3>Systems Support</h3>
-            <p>Email, domains, workspaces, backups, cloud tools and access management support.</p>
-          </article>
+          <article class="card"><div class="card-icon">☁</div><h3>Managed IT Support</h3><p>Proactive support, troubleshooting, user setup, device management and day-to-day IT operations.</p></article>
+          <article class="card"><div class="card-icon">▤</div><h3>Rack & Stack</h3><p>Server, switch, firewall and network equipment installation for business and data centre environments.</p></article>
+          <article class="card"><div class="card-icon">⌘</div><h3>Network Solutions</h3><p>LAN setup, routing, switching, access points and structured connectivity foundations.</p></article>
+          <article class="card"><div class="card-icon">⌁</div><h3>Structured Cabling</h3><p>Professional cabling, patching, labelling, cable management and connectivity planning.</p></article>
+          <article class="card"><div class="card-icon">↗</div><h3>IT Consulting</h3><p>Technical guidance to improve infrastructure, systems, workflow and support readiness.</p></article>
+          <article class="card"><div class="card-icon">⚙</div><h3>Systems Support</h3><p>Email, domains, workspaces, backups, cloud tools and access management support.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="infrastructure">
+    <section class="section-block" id="infrastructure">
       <div class="container split">
         <div>
           <div class="section-label">Our Infrastructure</div>
@@ -942,50 +987,20 @@
         </div>
 
         <div class="checks">
-          <div class="check">
-            <div class="check-dot">✓</div>
-            <div>
-              <h3>Reliable Deployment</h3>
-              <p>Clean implementation standards for office, network and infrastructure environments.</p>
-            </div>
-          </div>
-
-          <div class="check">
-            <div class="check-dot">✓</div>
-            <div>
-              <h3>Redundant Network Thinking</h3>
-              <p>Planning focused on stability, uptime, cable discipline and scalable connectivity.</p>
-            </div>
-          </div>
-
-          <div class="check">
-            <div class="check-dot">✓</div>
-            <div>
-              <h3>Security-Aware Support</h3>
-              <p>Access, account, device and system support handled with professional care.</p>
-            </div>
-          </div>
-
-          <div class="check">
-            <div class="check-dot">✓</div>
-            <div>
-              <h3>Sustainable Operations</h3>
-              <p>Reliable support processes designed for long-term business continuity.</p>
-            </div>
-          </div>
+          <div class="check"><div class="check-dot">✓</div><div><h3>Reliable Deployment</h3><p>Clean implementation standards for office, network and infrastructure environments.</p></div></div>
+          <div class="check"><div class="check-dot">✓</div><div><h3>Redundant Network Thinking</h3><p>Planning focused on stability, uptime, cable discipline and scalable connectivity.</p></div></div>
+          <div class="check"><div class="check-dot">✓</div><div><h3>Security-Aware Support</h3><p>Access, account, device and system support handled with professional care.</p></div></div>
+          <div class="check"><div class="check-dot">✓</div><div><h3>Sustainable Operations</h3><p>Reliable support processes designed for long-term business continuity.</p></div></div>
         </div>
       </div>
     </section>
 
-    <section id="about">
+    <section class="section-block" id="about">
       <div class="container split">
         <div class="about-box">
           <div class="section-label">About OneNexsys</div>
           <h2>Your Trusted Infrastructure Partner</h2>
-          <p>
-            OneNexsys is a Singapore-based IT infrastructure and managed services company focused on dependable business technology support, clean deployment and practical technical execution.
-          </p>
-
+          <p>OneNexsys is a Singapore-based IT infrastructure and managed services company focused on dependable business technology support, clean deployment and practical technical execution.</p>
           <div class="partners">
             <div class="partner">Managed IT</div>
             <div class="partner">Network</div>
@@ -997,15 +1012,13 @@
         <div class="about-box">
           <div class="section-label">Why Businesses Choose Us</div>
           <h2>Secure. Reliable. Scalable.</h2>
-          <p>
-            We help businesses build the foundations they need to operate confidently: stable networks, organized infrastructure, responsive support and clear technical ownership.
-          </p>
+          <p>We help businesses build the foundations they need to operate confidently: stable networks, organized infrastructure, responsive support and clear technical ownership.</p>
           <a class="btn btn-secondary" href="mailto:contact@onenexsys.com">Learn More About Us →</a>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="section-block">
       <div class="container cta">
         <div class="cta-icon">✉</div>
         <div>
@@ -1022,17 +1035,14 @@
     <div class="container footer-grid">
       <div>
         <a class="brand" href="#">
-          <span class="brand-mark"></span>
-          <span class="brand-text">
-            <strong>OneNexsys</strong>
-            <span>Building Secure. Delivering Trust.</span>
-          </span>
+          <span class="brand-mark"><i></i></span>
+          <span class="brand-text"><strong>OneNexsys</strong><span>Building Secure. Delivering Trust.</span></span>
         </a>
         <p style="margin-top:14px;">© <span id="year"></span> OneNexsys. All rights reserved.</p>
       </div>
 
       <div>
-        <strong style="color:var(--emerald-soft);">Quick Links</strong>
+        <strong style="color:var(--emerald-2);">Quick Links</strong>
         <div class="footer-links" style="margin-top:12px;">
           <a href="#">Home</a>
           <a href="#about">About Us</a>
@@ -1043,7 +1053,7 @@
       </div>
 
       <div>
-        <strong style="color:var(--emerald-soft);">Contact</strong>
+        <strong style="color:var(--emerald-2);">Contact</strong>
         <p style="margin-top:12px;">contact@onenexsys.com</p>
         <p>Singapore</p>
       </div>
