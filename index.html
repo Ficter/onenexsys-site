@@ -52,6 +52,7 @@ header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);back
 .metrics{margin-top:30px;border:1px solid var(--line);border-radius:17px;background:rgba(20,24,29,.70);display:grid;grid-template-columns:repeat(5,1fr);overflow:hidden;box-shadow:0 16px 45px rgba(0,0,0,.22)}.metric{padding:18px 21px;border-right:1px solid var(--line);display:flex;gap:14px;align-items:center}.metric:last-child{border-right:0}.metric svg{width:27px;height:27px;color:var(--green2);stroke-width:1.75;flex:0 0 auto}.metric strong{display:block;color:var(--green2);font-size:1.3rem;line-height:1;letter-spacing:-.045em}.metric span{display:block;color:var(--muted);font-size:.81rem;margin-top:3px}
 .section-block{padding:64px 0}.section-label{color:var(--green2);font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;font-weight:900;margin-bottom:8px}h2{font-family:"Space Grotesk";font-size:clamp(2.05rem,3.7vw,3.25rem);line-height:1.06;letter-spacing:-.055em;font-weight:700}.section-row{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:28px}.section-row p{color:var(--silver);max-width:560px}.services-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.service-card{min-height:216px;padding:22px;border-radius:17px;border:1px solid var(--line);background:radial-gradient(circle at 72% 12%,rgba(16,185,129,.085),transparent 34%),linear-gradient(180deg,rgba(31,36,43,.64),rgba(20,24,29,.74));transition:.2s}.service-card:hover{transform:translateY(-4px);border-color:rgba(16,185,129,.36)}.service-card svg{width:32px;height:32px;color:var(--green2);margin-bottom:36px;stroke-width:1.65}.service-card h3{font-size:1.01rem;margin-bottom:8px;letter-spacing:-.02em}.service-card p{color:var(--silver);font-size:.88rem}.split{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:stretch}.server-visual{margin-top:24px;min-height:280px;border-radius:18px;border:1px solid var(--line);position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(16,185,129,.16),transparent 22%,transparent 78%,rgba(16,185,129,.12)),linear-gradient(180deg,#151A20,#080A0C)}.server-visual:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(167,177,189,.09) 0 1px,transparent 1px 44px),repeating-linear-gradient(0deg,rgba(16,185,129,.06) 0 2px,transparent 2px 38px);opacity:.56}.server-visual:after{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:14%;height:100%;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(16,185,129,.18),transparent);filter:blur(8px)}.checks{display:grid;gap:16px;align-content:center}.check{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}.check-badge{width:30px;height:30px;border-radius:50%;border:1px solid var(--greenLine);display:grid;place-items:center;color:var(--green2);font-weight:900}.check h3{font-size:1rem;margin-bottom:3px}.check p{color:var(--silver);font-size:.91rem}.panel{border:1px solid var(--line);border-radius:18px;padding:28px;background:radial-gradient(circle at 86% 8%,rgba(16,185,129,.07),transparent 34%),rgba(20,24,29,.74)}.panel p{color:var(--silver);margin-top:18px;margin-bottom:22px}.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}.chip{border:1px solid var(--line);border-radius:12px;padding:13px;text-align:center;color:var(--silver);font-weight:800;font-size:.82rem;background:rgba(255,255,255,.022)}.cta{display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;padding:34px;border-radius:19px;border:1px solid var(--greenLine);background:radial-gradient(circle at 16% 38%,rgba(16,185,129,.12),transparent 28%),linear-gradient(180deg,rgba(31,36,43,.72),rgba(20,24,29,.78))}.cta-icon{width:72px;height:72px;border-radius:50%;border:1px solid var(--greenLine);display:grid;place-items:center;color:var(--green2);box-shadow:0 0 28px rgba(16,185,129,.10)}.cta-icon svg{width:31px;height:31px;stroke-width:1.55}.cta p{color:var(--silver);margin-top:6px}footer{border-top:1px solid var(--line);padding:38px 0;color:var(--muted)}.footer-grid{display:grid;grid-template-columns:1fr auto auto;gap:64px;align-items:start}.footer-links{display:grid;grid-template-columns:repeat(2,auto);gap:8px 34px;margin-top:12px}.footer-links a:hover{color:var(--green2)}
 @media(max-width:1080px){.hero-grid,.split,.cta,.footer-grid{grid-template-columns:1fr}.services-grid{grid-template-columns:repeat(3,1fr)}.metrics{grid-template-columns:repeat(2,1fr)}.metric{border-bottom:1px solid var(--line)}.globe-card{min-height:520px}}@media(max-width:740px){.container{width:min(100% - 30px,var(--max))}.nav-links{display:none}.menu-btn{display:grid;place-items:center}.hero{padding:52px 0 36px}.hero h1{font-size:clamp(2.65rem,13vw,4.05rem)}.hero-text{font-size:.98rem}.actions,.btn{width:100%}.hero-features{grid-template-columns:1fr 1fr;gap:22px 0}.feature,.feature:first-child{border-left:0;padding-left:0;padding-right:16px}.globe-card{min-height:390px}.globe-svg{width:390px}.metrics,.services-grid,.chips{grid-template-columns:1fr}.metric{border-right:0}.section-row{display:block}.section-block{padding:48px 0}}
+.globe-card{position:relative;min-height:555px;border-radius:28px;border:1px solid rgba(16,185,129,.13);background:radial-gradient(circle at 58% 48%,rgba(16,185,129,.13),transparent 33%),linear-gradient(180deg,rgba(20,24,29,.24),rgba(11,13,16,.72));box-shadow:0 30px 80px rgba(0,0,0,.48);overflow:hidden}.globe-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 58% 48%,rgba(16,185,129,.11),transparent 38%),repeating-linear-gradient(90deg,transparent 0 36px,rgba(16,185,129,.018) 37px),repeating-linear-gradient(0deg,transparent 0 36px,rgba(16,185,129,.016) 37px);mask-image:radial-gradient(circle at center,black,transparent 80%)}.globe-stage{position:absolute;inset:0;display:grid;place-items:center}.globe-svg{width:min(100%,690px);max-height:535px;filter:drop-shadow(0 0 30px rgba(16,185,129,.16))}.globe-core{transform-origin:430px 235px;animation:globeDrift 80s linear infinite}.globe-arcs-a{transform-origin:430px 235px;animation:spinSlow 46s linear infinite}.globe-arcs-b{transform-origin:430px 235px;animation:spinReverse 62s linear infinite}.signal-dot{animation:signalPulse 3.4s ease-in-out infinite;transform-origin:center}.signal-dot:nth-child(2n){animation-delay:.5s}.signal-dot:nth-child(3n){animation-delay:1s}.signal-runner{stroke-dasharray:7 280;stroke-dashoffset:0;animation:signalMove 5.8s linear infinite}.signal-runner:nth-child(2){animation-delay:1.2s}.signal-runner:nth-child(3){animation-delay:2.1s}@keyframes globeDrift{to{transform:rotate(360deg)}}@keyframes signalPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.32)}}@keyframes signalMove{to{stroke-dashoffset:-287}}
 </style>
 </head>
 <body>
@@ -77,34 +78,67 @@ header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);back
   </div>
   <div class="globe-card">
     <div class="globe-stage">
-      <svg class="globe-svg" viewBox="0 0 700 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="globe-svg" viewBox="0 0 700 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Premium network globe illustration">
         <defs>
-          <radialGradient id="g1" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#10B981" stop-opacity="0.14"/>
+          <radialGradient id="emeraldSphere" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#10B981" stop-opacity="0.16"/>
+            <stop offset="48%" stop-color="#10B981" stop-opacity="0.055"/>
             <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
           </radialGradient>
+          <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#34D399"/>
+            <stop offset="55%" stop-color="#10B981" stop-opacity=".9"/>
+            <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="softGlow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
-        <circle cx="430" cy="250" r="170" stroke="#10B981" stroke-opacity="0.25"/>
-        <circle cx="430" cy="250" r="130" stroke="#10B981" stroke-opacity="0.12" stroke-dasharray="3 7"/>
-        <circle cx="430" cy="250" r="170" fill="url(#g1)"/>
-        <g class="orbit-slow" stroke="#10B981" stroke-opacity="0.65">
-          <path d="M260 220C340 120 520 120 590 280"/>
-          <path d="M290 355C380 430 535 350 575 190"/>
-          <path d="M330 110C420 220 425 360 395 430"/>
-          <path d="M250 300C390 180 500 170 620 250"/>
+        <ellipse cx="430" cy="418" rx="228" ry="55" stroke="#10B981" stroke-opacity=".30"/>
+        <ellipse cx="430" cy="418" rx="176" ry="40" stroke="#10B981" stroke-opacity=".20"/>
+        <ellipse cx="430" cy="418" rx="122" ry="27" stroke="#10B981" stroke-opacity=".13"/>
+        <g class="globe-core">
+          <circle cx="430" cy="235" r="176" fill="url(#emeraldSphere)" stroke="#10B981" stroke-opacity=".34"/>
+          <circle cx="430" cy="235" r="138" stroke="#34D399" stroke-opacity=".13" stroke-dasharray="3 7"/>
+          <circle cx="430" cy="235" r="94" stroke="#34D399" stroke-opacity=".09" stroke-dasharray="2 8"/>
+          <g stroke="#34D399" stroke-opacity=".14">
+            <ellipse cx="430" cy="235" rx="176" ry="48"/>
+            <ellipse cx="430" cy="235" rx="176" ry="92"/>
+            <ellipse cx="430" cy="235" rx="176" ry="132"/>
+            <ellipse cx="430" cy="235" rx="55" ry="176"/>
+            <ellipse cx="430" cy="235" rx="108" ry="176"/>
+            <line x1="254" y1="235" x2="606" y2="235"/>
+            <line x1="430" y1="59" x2="430" y2="411"/>
+          </g>
         </g>
-        <g class="orbit-reverse" stroke="#34D399" stroke-opacity="0.35">
-          <ellipse cx="430" cy="250" rx="65" ry="170"/>
-          <ellipse cx="430" cy="250" rx="150" ry="55"/>
-          <ellipse cx="430" cy="250" rx="120" ry="165" transform="rotate(35 430 250)"/>
+        <g class="globe-arcs-a" stroke="#10B981" stroke-opacity=".56" stroke-width="1.35">
+          <path d="M263 203C342 84 516 96 596 255"/>
+          <path d="M282 332C364 414 541 362 594 183"/>
+          <path d="M320 88C412 202 424 330 397 407"/>
+          <path d="M250 286C378 171 515 163 625 240"/>
         </g>
-        <g fill="#34D399">
-          <circle class="pulse-node" cx="318" cy="170" r="4"/>
-          <circle class="pulse-node" cx="540" cy="150" r="4"/>
-          <circle class="pulse-node" cx="580" cy="290" r="4"/>
-          <circle class="pulse-node" cx="470" cy="385" r="4"/>
-          <circle class="pulse-node" cx="340" cy="340" r="4"/>
-          <circle class="pulse-node" cx="300" cy="250" r="4"/>
+        <g class="globe-arcs-b" stroke="#34D399" stroke-opacity=".33" stroke-width="1.15">
+          <path d="M268 160C410 224 477 278 592 346"/>
+          <path d="M285 382C347 184 500 115 610 165"/>
+          <path d="M300 110C530 148 590 278 505 390"/>
+        </g>
+        <g stroke="#A7B1BD" stroke-opacity=".11" stroke-width="1">
+          <path d="M304 178C360 143 444 141 516 174"/>
+          <path d="M291 287C370 251 500 256 574 304"/>
+          <path d="M330 353C404 321 481 322 545 360"/>
+        </g>
+        <g stroke="#34D399" stroke-opacity=".82" stroke-width="1.7" filter="url(#softGlow)">
+          <path class="signal-runner" d="M263 203C342 84 516 96 596 255"/>
+          <path class="signal-runner" d="M282 332C364 414 541 362 594 183"/>
+          <path class="signal-runner" d="M250 286C378 171 515 163 625 240"/>
+        </g>
+        <g filter="url(#softGlow)">
+          <circle class="signal-dot" cx="312" cy="160" r="4.2" fill="url(#nodeGlow)"/>
+          <circle class="signal-dot" cx="517" cy="147" r="4.2" fill="url(#nodeGlow)"/>
+          <circle class="signal-dot" cx="590" cy="248" r="4.2" fill="url(#nodeGlow)"/>
+          <circle class="signal-dot" cx="548" cy="344" r="4.2" fill="url(#nodeGlow)"/>
+          <circle class="signal-dot" cx="417" cy="397" r="4.2" fill="url(#nodeGlow)"/>
+          <circle class="signal-dot" cx="305" cy="318" r="4.2" fill="url(#nodeGlow)"/>
+          <circle class="signal-dot" cx="278" cy="234" r="4.2" fill="url(#nodeGlow)"/>
+          <circle class="signal-dot" cx="430" cy="94" r="4.2" fill="url(#nodeGlow)"/>
         </g>
       </svg>
     </div>
