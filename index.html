@@ -1,141 +1,510 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OneNexsys | Secure IT Infrastructure Solutions</title>
-<meta name="description" content="OneNexsys provides secure IT infrastructure, managed services, cloud solutions, data center services, network solutions, cybersecurity, and enterprise support." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#050A0D;
-  --bg2:#071013;
-  --panel:#0B1418;
-  --panel2:#101A20;
-  --line:rgba(144,255,211,.16);
-  --line2:rgba(255,255,255,.08);
-  --text:#F4F7FA;
-  --muted:#A7B1BD;
-  --soft:#D7DEE6;
-  --green:#10B981;
-  --green2:#34D399;
-  --green3:#59E8A8;
-  --max:1180px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(circle at 75% 16%,rgba(16,185,129,.14),transparent 32%),
-    radial-gradient(circle at 12% 30%,rgba(16,185,129,.08),transparent 30%),
-    linear-gradient(180deg,#071013 0%,#050A0D 58%,#030608 100%);
-  overflow-x:hidden;
-  line-height:1.6;
-}
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
-  pointer-events:none;
-  background-image:
-    linear-gradient(rgba(100,255,205,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(100,255,205,.025) 1px,transparent 1px);
-  background-size:38px 38px;
-  mask-image:linear-gradient(to bottom,black,transparent 78%);
-}
-a{color:inherit;text-decoration:none}
-.container{width:min(100% - 56px,var(--max));margin:auto}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  background:rgba(5,10,13,.86);
-  backdrop-filter:blur(18px);
-}
-.nav{height:86px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-.brand{display:flex;align-items:center;gap:12px}
-.logo-mark{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#34D399,#10B981);position:relative;box-shadow:0 0 28px rgba(16,185,129,.22);overflow:hidden;flex:0 0 auto}
-.logo-mark:before,.logo-mark:after{content:"";position:absolute;background:#06100D;border-radius:8px;transform:skew(-28deg)}
-.logo-mark:before{width:13px;height:31px;left:11px;top:8px}.logo-mark:after{width:13px;height:31px;right:11px;top:8px;opacity:.78}
-.brand strong{display:block;font-size:1.28rem;font-weight:900;letter-spacing:-.04em;line-height:1}.brand small{display:block;color:#B7C0CA;font-size:.72rem;font-weight:700;margin-top:2px}
-.nav-links{display:flex;align-items:center;gap:30px;color:#C2CAD3;font-size:.94rem;font-weight:600}.nav-links a{position:relative}.nav-links a:not(.nav-cta):after{content:"";position:absolute;left:0;right:0;bottom:-12px;height:2px;background:var(--green2);transform:scaleX(0);transform-origin:left;transition:.2s}.nav-links a:hover,.nav-links a.active{color:#fff}.nav-links a:hover:after,.nav-links a.active:after{transform:scaleX(1)}.nav-cta{padding:13px 24px;border:1px solid rgba(52,211,153,.55);border-radius:8px;color:#fff;background:rgba(16,185,129,.04)}.nav-cta span{color:var(--green2);margin-left:12px}.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;border-radius:10px;font-size:1.25rem}.mobile-menu{display:none;border-top:1px solid var(--line2);padding:14px 0}.mobile-menu a{display:block;padding:12px 0;color:#C2CAD3}.mobile-menu.open{display:block}
+  <title>OneNexsys | Managed IT & Infrastructure Services Singapore</title>
+  <meta name="description" content="OneNexsys provides secure, scalable and high-performance IT infrastructure solutions, managed services, data center services, network solutions and cybersecurity support." />
 
-.hero{position:relative;min-height:650px;padding:58px 0 32px;overflow:hidden}.hero-bg{position:absolute;inset:0;z-index:-1}.hero-bg:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#061013 0%,rgba(6,16,19,.93) 26%,rgba(6,16,19,.42) 52%,rgba(6,16,19,.16) 78%,rgba(6,16,19,.50) 100%)}.hero-bg:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 72% 45%,rgba(16,185,129,.16),transparent 34%),linear-gradient(180deg,transparent 0%,rgba(5,10,13,.38) 78%,#050A0D 100%)}
-.globe-hero-img{position:absolute;right:-6%;top:-10px;height:690px;width:auto;max-width:none;opacity:.92;filter:drop-shadow(0 0 36px rgba(16,185,129,.22));animation:floatGlobe 9s ease-in-out infinite}@keyframes floatGlobe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.012)}}
-.hero-content{position:relative;z-index:1;max-width:530px;padding-top:34px}.eyebrow{color:var(--green2);font-weight:900;letter-spacing:.22em;text-transform:uppercase;font-size:.84rem;margin-bottom:14px}.hero h1{font-size:clamp(2.65rem,4.5vw,4.7rem);line-height:1.04;letter-spacing:-.06em;font-weight:900;margin-bottom:22px}.hero h1 span{color:var(--green2)}.hero-text{color:#C8D0D8;font-size:1.02rem;max-width:490px;margin-bottom:28px}.actions{display:flex;gap:16px;flex-wrap:wrap}.btn{min-height:48px;padding:0 24px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;gap:12px;font-weight:800;font-size:.92rem;transition:.2s}.btn-primary{background:linear-gradient(135deg,#59E8A8,#10B981);color:#04110D;box-shadow:0 18px 42px rgba(16,185,129,.22)}.btn-secondary{border:1px solid rgba(52,211,153,.55);background:rgba(5,10,13,.25);color:#fff}.btn:hover{transform:translateY(-2px)}
-.hero-features{margin-top:38px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:620px}.hero-feature{padding-right:22px;margin-right:22px;border-right:1px solid rgba(255,255,255,.12)}.hero-feature:last-child{border-right:0;margin-right:0}.hero-feature svg{width:34px;height:34px;color:var(--green2);stroke-width:1.5;margin-bottom:10px}.hero-feature h3{font-size:.94rem;margin-bottom:6px}.hero-feature p{color:#AEB8C2;font-size:.82rem;line-height:1.55}
+  <style>
+    :root {
+      --bg: #03090a;
+      --bg-2: #071010;
+      --panel: rgba(10, 24, 24, 0.72);
+      --panel-2: rgba(8, 18, 20, 0.92);
+      --line: rgba(255, 255, 255, 0.11);
+      --line-green: rgba(52, 211, 153, 0.34);
+      --text: #f6f8f7;
+      --muted: #aeb8b7;
+      --muted-2: #778281;
+      --green: #36e08f;
+      --green-2: #18c777;
+      --max: 1180px;
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
+    }
 
-.stats{position:relative;z-index:5;margin-top:20px}.stats-grid{border:1px solid rgba(255,255,255,.10);border-radius:8px;background:rgba(11,20,24,.72);backdrop-filter:blur(10px);display:grid;grid-template-columns:repeat(5,1fr);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.28)}.stat{display:flex;align-items:center;gap:18px;padding:23px 28px;border-right:1px solid rgba(255,255,255,.09)}.stat:last-child{border-right:0}.stat svg{width:42px;height:42px;color:var(--green2);stroke-width:1.45}.stat strong{display:block;color:var(--green2);font-size:1.65rem;line-height:1;font-weight:900;letter-spacing:-.04em}.stat span{display:block;color:#C5CED6;font-size:.86rem;margin-top:2px}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-.section{padding:38px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:18px}.section-label{color:var(--green2);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:900;margin-bottom:6px}h2{font-size:clamp(1.9rem,3vw,2.65rem);line-height:1.12;letter-spacing:-.045em;font-weight:900}.view-link{color:var(--green2);font-weight:700}.services-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.service-card{min-height:210px;padding:22px;border:1px solid rgba(255,255,255,.10);border-radius:8px;background:linear-gradient(180deg,rgba(16,30,36,.82),rgba(8,15,18,.88));transition:.2s}.service-card:hover{transform:translateY(-4px);border-color:rgba(52,211,153,.45);box-shadow:0 18px 42px rgba(0,0,0,.25)}.service-card svg{width:42px;height:42px;color:var(--green2);stroke-width:1.35;margin-bottom:24px}.service-card h3{font-size:.98rem;margin-bottom:9px}.service-card p{font-size:.88rem;color:#BAC3CC;line-height:1.65}
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 74% 8%, rgba(17, 163, 106, 0.22), transparent 34%),
+        radial-gradient(circle at 15% 28%, rgba(17, 163, 106, 0.12), transparent 34%),
+        linear-gradient(180deg, #020707 0%, #041010 42%, #020706 100%);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
 
-.infra-about{padding:32px 0 44px}.split-main{display:grid;grid-template-columns:1.08fr .92fr;gap:46px;align-items:start}.infra-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}.server-image{height:265px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:radial-gradient(circle at 50% 40%,rgba(16,185,129,.18),transparent 34%),linear-gradient(90deg,#071013,#111B20,#071013);position:relative;overflow:hidden}.server-image:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(52,211,153,.22) 0 2px,transparent 2px 38px),repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 32px);opacity:.45}.server-image:after{content:"";position:absolute;left:45%;top:0;width:18%;height:100%;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(16,185,129,.24),rgba(255,255,255,.06));filter:blur(8px)}.checks{display:grid;gap:18px}.check{display:grid;grid-template-columns:auto 1fr;gap:14px}.check-badge{width:24px;height:24px;border-radius:50%;border:1px solid var(--green2);display:grid;place-items:center;color:var(--green2);font-size:.78rem}.check h3{font-size:.95rem;margin-bottom:3px}.check p{color:#B9C2CB;font-size:.86rem;line-height:1.55}.about-card{padding-top:0}.about-card p{color:#B9C2CB;margin:16px 0 18px}.logos{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}.logo-tile{border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.04);padding:15px;text-align:center;color:#fff;font-weight:800;font-size:.88rem}.logo-tile small{display:block;color:#C7D0D8;font-size:.7rem;font-weight:600}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent 80%);
+    }
 
-.cta{margin:22px 0 52px}.cta-box{border:1px solid rgba(52,211,153,.18);border-radius:8px;background:radial-gradient(circle at 70% 50%,rgba(16,185,129,.18),transparent 30%),linear-gradient(180deg,rgba(16,30,36,.82),rgba(8,15,18,.92));padding:32px;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;overflow:hidden}.cta-icon{width:80px;height:80px;border-radius:50%;border:1px solid rgba(52,211,153,.52);display:grid;place-items:center;color:var(--green2)}.cta-icon svg{width:38px;height:38px;stroke-width:1.4}.cta p{color:#B9C2CB;margin-top:5px}
-footer{border-top:1px solid rgba(255,255,255,.08);padding:34px 0;color:#B8C1CA}.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:54px;align-items:start}.footer-links{display:grid;grid-template-columns:repeat(2,auto);gap:8px 42px;margin-top:12px}.footer-links a:hover{color:var(--green2)}.socials{display:flex;gap:13px;margin-top:16px}.social{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;color:white;font-weight:800}
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(100% - 72px, var(--max)); margin: 0 auto; }
 
-@media(max-width:1080px){.globe-hero-img{right:-22%;height:620px;opacity:.55}.hero-gridless{}.services-grid{grid-template-columns:repeat(3,1fr)}.stats-grid{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid rgba(255,255,255,.09)}.split-main,.infra-grid,.cta-box,.footer-grid{grid-template-columns:1fr}.hero-features{grid-template-columns:repeat(2,1fr);gap:18px}.hero-feature{border-right:0}}
-@media(max-width:760px){.container{width:min(100% - 30px,var(--max))}.nav-links{display:none}.menu-btn{display:block}.hero{min-height:auto;padding:48px 0 30px}.globe-hero-img{position:relative;right:auto;top:auto;width:125%;height:auto;margin-left:-10%;margin-top:24px;opacity:.95}.hero-bg:before{background:linear-gradient(180deg,#061013 0%,rgba(6,16,19,.72) 100%)}.hero-content{padding-top:12px}.hero h1{font-size:clamp(2.55rem,12vw,4rem)}.actions,.btn{width:100%}.hero-features{grid-template-columns:1fr}.stats-grid,.services-grid,.logos{grid-template-columns:1fr}.stat{border-right:0}.section-head{display:block}.cta-box{padding:24px}.footer-links{grid-template-columns:1fr}}
-</style>
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(2, 8, 9, 0.82);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 34px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-mark {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #04110d;
+      font-weight: 950;
+      font-size: 34px;
+      letter-spacing: -0.16em;
+      background: linear-gradient(135deg, #48e88f, #11b772);
+      box-shadow: 0 0 36px rgba(54,224,143,0.22);
+    }
+    .brand-copy strong { display: block; font-size: 1.35rem; line-height: 1; letter-spacing: -0.055em; }
+    .brand-copy span { display: block; margin-top: 5px; font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.76); }
+
+    .nav-links { display: flex; align-items: center; gap: 34px; font-size: 0.92rem; font-weight: 700; }
+    .nav-links a { color: rgba(255,255,255,0.86); position: relative; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -19px;
+      height: 2px;
+      background: var(--green);
+      box-shadow: 0 0 16px rgba(54,224,143,0.75);
+    }
+
+    .nav-cta, .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-radius: 9px;
+      font-weight: 800;
+      transition: 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-cta { min-height: 48px; padding: 0 24px; border: 1px solid var(--line-green); }
+    .nav-cta:hover, .btn-secondary:hover { background: rgba(54,224,143,0.08); transform: translateY(-1px); }
+
+    .mobile-toggle { display: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,0.04); color: #fff; font-size: 1.25rem; }
+    .mobile-menu { display: none; padding: 14px 0 20px; border-top: 1px solid var(--line); }
+    .mobile-menu a { display: block; padding: 12px 0; color: var(--muted); }
+
+    .hero {
+      position: relative;
+      padding: 54px 0 42px;
+      min-height: 640px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(2,7,7,0.96) 0%, rgba(2,7,7,0.86) 36%, rgba(2,7,7,0.2) 68%, rgba(2,7,7,0.04) 100%),
+        radial-gradient(circle at 73% 50%, rgba(54,224,143,0.16), transparent 36%);
+      z-index: 0;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-content { padding-top: 24px; max-width: 590px; }
+    .section-label, .eyebrow {
+      color: var(--green);
+      font-size: 0.82rem;
+      font-weight: 950;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .eyebrow { margin-bottom: 16px; display: block; }
+
+    h1 {
+      font-size: clamp(3rem, 4.85vw, 5.35rem);
+      line-height: 1.03;
+      letter-spacing: -0.068em;
+      margin-bottom: 24px;
+      max-width: 650px;
+    }
+    .accent-text { color: var(--green); }
+    .hero-copy {
+      max-width: 535px;
+      color: rgba(235,247,244,0.78);
+      font-size: 1.03rem;
+      line-height: 1.75;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; margin-bottom: 38px; }
+    .btn { min-height: 50px; padding: 0 25px; font-size: 0.9rem; }
+    .btn-primary { background: linear-gradient(135deg, #43e695, #22c977); color: #03120d; box-shadow: 0 16px 45px rgba(54,224,143,0.25); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 58px rgba(54,224,143,0.34); }
+    .btn-secondary { border: 1px solid var(--line-green); background: rgba(3, 14, 14, 0.36); color: #fff; }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      max-width: 620px;
+    }
+    .feature-item { padding-right: 24px; padding-left: 22px; border-left: 1px solid rgba(255,255,255,0.10); }
+    .feature-item:first-child { padding-left: 0; border-left: 0; }
+    .feature-icon { color: var(--green); font-size: 1.7rem; line-height: 1; margin-bottom: 14px; }
+    .feature-item strong { display: block; font-size: 0.9rem; line-height: 1.35; margin-bottom: 8px; }
+    .feature-item span { display: block; color: rgba(230,242,240,0.68); font-size: 0.78rem; line-height: 1.55; }
+
+    .hero-visual {
+      position: relative;
+      min-height: 560px;
+    }
+    .hero-globe {
+      position: absolute;
+      width: min(760px, 62vw);
+      max-width: none;
+      top: -10px;
+      right: -168px;
+      filter: drop-shadow(0 0 85px rgba(54,224,143,0.22));
+      opacity: 0.96;
+    }
+
+    .stats-wrap { padding: 26px 0 12px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 9px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+      box-shadow: 0 20px 70px rgba(0,0,0,0.25);
+    }
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 24px 30px;
+      border-left: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat:first-child { border-left: 0; }
+    .stat-icon { color: var(--green); font-size: 2.2rem; line-height: 1; }
+    .stat strong { display: block; color: var(--green); font-size: 1.85rem; line-height: 1; letter-spacing: -0.06em; }
+    .stat span { color: rgba(255,255,255,0.78); font-size: 0.86rem; }
+
+    .section { padding: 58px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 18px; }
+    h2 { font-size: clamp(1.9rem, 3vw, 3rem); line-height: 1.1; letter-spacing: -0.06em; }
+    .view-link { color: var(--green); font-weight: 800; font-size: 0.92rem; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+    .service-card {
+      min-height: 210px;
+      padding: 24px 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at 80% 0%, rgba(54,224,143,0.09), transparent 34%),
+        linear-gradient(180deg, rgba(12, 28, 29, 0.78), rgba(5, 15, 16, 0.92));
+      box-shadow: 0 18px 55px rgba(0,0,0,0.22);
+      transition: 0.2s ease;
+    }
+    .service-card:hover { transform: translateY(-4px); border-color: rgba(54,224,143,0.34); }
+    .service-icon { color: var(--green); font-size: 2.2rem; margin-bottom: 24px; line-height: 1; }
+    .service-card h3 { font-size: 0.96rem; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .service-card p { color: rgba(230,242,240,0.70); font-size: 0.82rem; line-height: 1.7; }
+
+    .infra-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.58fr 1.08fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .infra-image {
+      min-height: 230px;
+      border-radius: 9px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        linear-gradient(rgba(3,8,8,0.06), rgba(3,8,8,0.36)),
+        url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80") center/cover;
+      box-shadow: inset 0 0 50px rgba(54,224,143,0.08), 0 18px 70px rgba(0,0,0,0.34);
+    }
+    .check-list { display: grid; gap: 22px; }
+    .check-item { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
+    .check { width: 23px; height: 23px; border-radius: 50%; display: grid; place-items: center; color: var(--green); border: 1px solid var(--line-green); font-size: 0.8rem; }
+    .check-item strong { display: block; font-size: 0.9rem; margin-bottom: 3px; }
+    .check-item span { display: block; color: rgba(230,242,240,0.68); font-size: 0.8rem; line-height: 1.55; }
+
+    .about-panel { padding-left: 26px; border-left: 1px solid rgba(255,255,255,0.09); }
+    .about-panel p { color: rgba(230,242,240,0.74); font-size: 0.95rem; line-height: 1.8; margin: 16px 0 22px; }
+    .partner-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.04);
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+    .partner-strip span { padding: 18px 12px; display: grid; place-items: center; color: #fff; font-weight: 900; font-size: 0.92rem; border-left: 1px solid rgba(255,255,255,0.06); opacity: 0.86; text-align: center; line-height: 1.05; }
+    .partner-strip span:first-child { border-left: 0; }
+
+    .cta {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 26px;
+      padding: 24px 30px;
+      border-radius: 9px;
+      border: 1px solid rgba(255,255,255,0.09);
+      background:
+        radial-gradient(circle at 65% 50%, rgba(54,224,143,0.16), transparent 28%),
+        linear-gradient(180deg, rgba(12, 27, 28, 0.86), rgba(5, 13, 14, 0.94));
+      overflow: hidden;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.28);
+    }
+    .cta-icon { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-green); color: var(--green); font-size: 2rem; }
+    .cta p { color: rgba(230,242,240,0.78); }
+
+    footer { padding: 42px 0 34px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 70px; align-items: start; }
+    .footer-brand { display: flex; gap: 14px; align-items: center; margin-bottom: 22px; }
+    .footer-brand strong { display: block; font-size: 1.25rem; letter-spacing: -0.055em; }
+    .footer-brand span { display: block; color: rgba(255,255,255,0.72); font-size: 0.72rem; font-weight: 700; }
+    .footer-copy { color: var(--muted-2); font-size: 0.86rem; }
+    .footer-title { color: var(--green); font-weight: 850; margin-bottom: 14px; }
+    .footer-links { display: grid; grid-template-columns: repeat(2, max-content); gap: 9px 58px; color: rgba(255,255,255,0.72); font-size: 0.88rem; }
+    .socials { display: flex; gap: 14px; }
+    .socials a { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.22); display: grid; place-items: center; color: #fff; font-weight: 800; }
+
+    @media (max-width: 1080px) {
+      .container { width: min(100% - 38px, var(--max)); }
+      .nav-links { display: none; }
+      .mobile-toggle { display: grid; place-items: center; }
+      .mobile-menu.open { display: block; }
+      .hero-grid, .infra-grid, .cta, .footer-grid { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 420px; }
+      .hero-globe { position: relative; top: auto; right: auto; width: min(760px, 100%); }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(odd) { border-left: 0; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-panel { padding-left: 0; border-left: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .nav { height: 76px; }
+      .brand-mark { width: 42px; height: 42px; font-size: 28px; }
+      .brand-copy strong { font-size: 1.1rem; }
+      .brand-copy span { display: none; }
+      .hero { padding: 42px 0 28px; }
+      h1 { font-size: clamp(2.75rem, 13vw, 4.2rem); }
+      .hero-actions, .btn { width: 100%; }
+      .feature-row { grid-template-columns: 1fr 1fr; gap: 18px; }
+      .feature-item, .feature-item:first-child { padding-left: 0; border-left: 0; }
+      .stats, .services-grid, .partner-strip { grid-template-columns: 1fr; }
+      .stat { border-left: 0; border-top: 1px solid rgba(255,255,255,0.08); }
+      .stat:first-child { border-top: 0; }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="container nav">
-    <a class="brand" href="#"><span class="logo-mark"></span><span><strong>OneNexsys</strong><small>Building Secure. Delivering Trust.</small></span></a>
-    <nav class="nav-links"><a class="active" href="#">Home</a><a href="#about">About Us</a><a href="#services">Services</a><a href="#infrastructure">Infrastructure</a><a href="#careers">Career</a><a href="mailto:contact@onenexsys.com">Contact Us</a><a class="nav-cta" href="mailto:contact@onenexsys.com">Get in Touch <span>→</span></a></nav>
-    <button class="menu-btn" id="menuBtn">☰</button>
-  </div>
-  <div class="container mobile-menu" id="mobileMenu"><a href="#">Home</a><a href="#about">About Us</a><a href="#services">Services</a><a href="#infrastructure">Infrastructure</a><a href="mailto:contact@onenexsys.com">Contact Us</a></div>
-</header>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="OneNexsys home">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span class="brand-copy"><strong>OneNexsys</strong><span>Building Secure. Delivering Trust.</span></span>
+      </a>
 
-<main>
-<section class="hero">
-  <div class="hero-bg"><img class="globe-hero-img" src="onenexsys-globe.png" alt="Digital infrastructure globe"></div>
-  <div class="container">
-    <div class="hero-content">
-      <div class="eyebrow">One Nexsys</div>
-      <h1>Infrastructure that Powers Digital <span>Performance</span></h1>
-      <p class="hero-text">OneNexsys delivers secure, scalable and high-performance IT infrastructure solutions that help businesses connect, compute and grow without limits.</p>
-      <div class="actions"><a class="btn btn-primary" href="#services">Explore Our Services <span>→</span></a><a class="btn btn-secondary" href="mailto:contact@onenexsys.com">Contact Sales <span>→</span></a></div>
-      <div class="hero-features">
-        <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg><h3>Secure by Design</h3><p>Enterprise-grade security at every layer.</p></div>
-        <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 19 19 5"/><path d="M9 5h10v10"/></svg><h3>High Performance</h3><p>Built for speed, uptime and reliability.</p></div>
-        <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17.5 19H9a7 7 0 1 1 6.7-9H18a4.5 4.5 0 1 1-.5 9Z"/></svg><h3>Scalable Solutions</h3><p>Infrastructure that grows as you grow.</p></div>
-        <div class="hero-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M4 12v3a2 2 0 0 0 2 2h1v-7H6a2 2 0 0 0-2 2Z"/><path d="M20 12v3a2 2 0 0 1-2 2h-1v-7h1a2 2 0 0 1 2 2Z"/></svg><h3>24/7 Expert Support</h3><p>Always-on support from real infrastructure experts.</p></div>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#" class="active">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services⌄</a>
+        <a href="#infrastructure">Infrastructure</a>
+        <a href="#career">Career</a>
+        <a href="mailto:contact@onenexsys.com">Contact Us</a>
+      </nav>
+
+      <a class="nav-cta" href="mailto:contact@onenexsys.com">Get in Touch <span>→</span></a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+    </div>
+
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="#">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#infrastructure">Infrastructure</a>
+      <a href="mailto:contact@onenexsys.com">Contact Us</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="eyebrow">One Nexsys</span>
+          <h1>Infrastructure that Powers Digital <span class="accent-text">Performance</span></h1>
+          <p class="hero-copy">OneNexsys delivers secure, scalable and high-performance IT infrastructure solutions that help businesses connect, compute and grow without limits.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#services">Explore Our Services <span>→</span></a>
+            <a class="btn btn-secondary" href="mailto:contact@onenexsys.com">Contact Sales <span>→</span></a>
+          </div>
+
+          <div class="feature-row">
+            <div class="feature-item"><div class="feature-icon">♢</div><strong>Secure by Design</strong><span>Enterprise-grade security at every layer.</span></div>
+            <div class="feature-item"><div class="feature-icon">↗</div><strong>High Performance</strong><span>Built for speed, uptime and reliability.</span></div>
+            <div class="feature-item"><div class="feature-icon">☁</div><strong>Scalable Solutions</strong><span>Infrastructure that grows as you grow.</span></div>
+            <div class="feature-item"><div class="feature-icon">↯</div><strong>24/7 Expert Support</strong><span>Always-on support from real experts.</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <img src="onenexsys-globe.png" alt="" class="hero-globe" />
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-wrap">
+      <div class="container">
+        <div class="stats">
+          <div class="stat"><div class="stat-icon">♧</div><div><strong>500+</strong><span>Happy Clients</span></div></div>
+          <div class="stat"><div class="stat-icon">▯</div><div><strong>15+</strong><span>Years Experience</span></div></div>
+          <div class="stat"><div class="stat-icon">◎</div><div><strong>10+</strong><span>Global Locations</span></div></div>
+          <div class="stat"><div class="stat-icon">▤</div><div><strong>99.99%</strong><span>Uptime Guarantee</span></div></div>
+          <div class="stat"><div class="stat-icon">☆</div><div><strong>100%</strong><span>Commitment</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Our Services</div>
+            <h2>End-to-End Infrastructure Solutions</h2>
+          </div>
+          <a class="view-link" href="#services">View All Services →</a>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card"><div class="service-icon">☁</div><h3>Cloud Solutions</h3><p>Scalable cloud infrastructure and migration for modern businesses.</p></article>
+          <article class="service-card"><div class="service-icon">▤</div><h3>Data Center Services</h3><p>Reliable colocation, hosting and data center management.</p></article>
+          <article class="service-card"><div class="service-icon">⌬</div><h3>Network Solutions</h3><p>High-performance networks that keep your business always connected.</p></article>
+          <article class="service-card"><div class="service-icon">♢</div><h3>Cybersecurity</h3><p>Protect your infrastructure with advanced security and compliance.</p></article>
+          <article class="service-card"><div class="service-icon">↗</div><h3>IT Consulting</h3><p>Strategic IT guidance to optimize, transform and drive growth.</p></article>
+          <article class="service-card"><div class="service-icon">⚙</div><h3>Managed Services</h3><p>Proactive monitoring and management for complete peace of mind.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="infrastructure">
+      <div class="container infra-grid">
+        <div>
+          <div class="section-label">Our Infrastructure</div>
+          <h2>Built on Strength.<br>Backed by Technology.</h2>
+          <div class="infra-image" role="img" aria-label="Modern data center corridor"></div>
+        </div>
+
+        <div class="check-list">
+          <div class="check-item"><span class="check">✓</span><div><strong>Tier III+ Data Centers</strong><span>Enterprise-grade facilities with maximum reliability.</span></div></div>
+          <div class="check-item"><span class="check">✓</span><div><strong>Redundant Network</strong><span>Multiple carriers and failover architecture.</span></div></div>
+          <div class="check-item"><span class="check">✓</span><div><strong>Advanced Security</strong><span>Biometric access, CCTV, fire suppression and more.</span></div></div>
+          <div class="check-item"><span class="check">✓</span><div><strong>Sustainable Operations</strong><span>Energy-efficient infrastructure for a greener tomorrow.</span></div></div>
+        </div>
+
+        <div class="about-panel" id="about">
+          <div class="section-label">About OneNexsys</div>
+          <h2>Your Trusted Infrastructure Partner</h2>
+          <p>OneNexsys is a leading IT infrastructure solutions provider delivering secure, scalable and innovative technology services to businesses worldwide. We combine deep expertise with cutting-edge infrastructure to help organizations build, connect and grow in the digital era.</p>
+          <div class="partner-strip" aria-label="Technology partners">
+            <span>DELL<br>Technologies</span><span>vmware</span><span>CISCO</span><span>HPE</span>
+          </div>
+          <a class="btn btn-secondary" href="#about">Learn More About Us <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <div class="cta-icon">✉</div>
+          <div>
+            <div class="section-label">Let’s Build The Future Together</div>
+            <h2>Ready to Power Your Business?</h2>
+            <p>Connect with our experts today and discover the right infrastructure solution for you.</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:contact@onenexsys.com">Get in Touch <span>→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="career">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand"><span class="brand-mark" aria-hidden="true">N</span><span><strong>OneNexsys</strong><span>Building Secure. Delivering Trust.</span></span></div>
+        <div class="footer-copy">© <span id="year"></span> OneNexsys. All Rights Reserved.</div>
+      </div>
+
+      <div>
+        <div class="footer-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="#">Home</a><a href="#infrastructure">Infrastructure</a>
+          <a href="#about">About Us</a><a href="#career">Career</a>
+          <a href="#services">Services</a><a href="mailto:contact@onenexsys.com">Contact Us</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Follow Us</div>
+        <div class="socials"><a href="#">in</a><a href="#">f</a><a href="#">𝕏</a><a href="#">▶</a></div>
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<section class="stats"><div class="container stats-grid">
-  <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><div><strong>500+</strong><span>Happy Clients</span></div></div>
-  <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 7h.01M9 11h.01M9 15h.01M15 7h.01M15 11h.01M15 15h.01"/></svg><div><strong>15+</strong><span>Years Experience</span></div></div>
-  <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg><div><strong>10+</strong><span>Global Locations</span></div></div>
-  <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg><div><strong>99.99%</strong><span>Uptime Guarantee</span></div></div>
-  <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2 15 8l6 .5-4.5 4 1.5 6-6-3.5-6 3.5 1.5-6-4.5-4L9 8l3-6Z"/><path d="m9 12 2 2 4-5"/></svg><div><strong>100%</strong><span>Commitment</span></div></div>
-</div></section>
-
-<section class="section" id="services"><div class="container"><div class="section-head"><div><div class="section-label">Our Services</div><h2>End-to-End Infrastructure Solutions</h2></div><a class="view-link" href="#">View All Services →</a></div><div class="services-grid">
-  <article class="service-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17.5 19H9a7 7 0 1 1 6.7-9H18a4.5 4.5 0 1 1-.5 9Z"/></svg><h3>Cloud Solutions</h3><p>Scalable cloud infrastructure and migration for modern businesses.</p></article>
-  <article class="service-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg><h3>Data Center Services</h3><p>Reliable colocation, hosting and data center management.</p></article>
-  <article class="service-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M12 7v5L6.5 17.5M13.5 12 18 7M13.5 12 18 17"/></svg><h3>Network Solutions</h3><p>High-performance networks that keep your business always connected.</p></article>
-  <article class="service-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg><h3>Cybersecurity</h3><p>Protect your infrastructure with advanced security and compliance.</p></article>
-  <article class="service-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-7"/><path d="M14 7h5v5"/></svg><h3>IT Consulting</h3><p>Strategic IT guidance to optimize, transform and drive growth.</p></article>
-  <article class="service-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6l-.09.1a2 2 0 0 1-3.82 0L10 20a1.7 1.7 0 0 0-1-.6 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1l-.1-.09a2 2 0 0 1 0-3.82L4 10a1.7 1.7 0 0 0 .6-1 1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6l.09-.1a2 2 0 0 1 3.82 0L14 4a1.7 1.7 0 0 0 1 .6 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c0 .37.12.72.34 1l.1.09a2 2 0 0 1 0 3.82l-.1.09a1.7 1.7 0 0 0-.34 1Z"/></svg><h3>Managed Services</h3><p>Proactive monitoring and management for complete peace of mind.</p></article>
-</div></div></section>
-
-<section class="infra-about" id="infrastructure"><div class="container split-main"><div><div class="section-label">Our Infrastructure</div><h2>Built on Strength.<br>Backed by Technology.</h2><div class="infra-grid"><div class="server-image"></div><div class="checks"><div class="check"><div class="check-badge">✓</div><div><h3>Tier III+ Data Centers</h3><p>Enterprise-grade facilities with maximum reliability.</p></div></div><div class="check"><div class="check-badge">✓</div><div><h3>Redundant Network</h3><p>Multiple carriers and failover architecture.</p></div></div><div class="check"><div class="check-badge">✓</div><div><h3>Advanced Security</h3><p>Biometric access, CCTV, fire suppression and more.</p></div></div><div class="check"><div class="check-badge">✓</div><div><h3>Sustainable Operations</h3><p>Energy-efficient infrastructure for a greener tomorrow.</p></div></div></div></div></div><div class="about-card" id="about"><div class="section-label">About OneNexsys</div><h2>Your Trusted Infrastructure Partner</h2><p>OneNexsys is a leading IT infrastructure solutions provider delivering secure, scalable and innovative technology services to businesses worldwide. We combine deep expertise with cutting-edge infrastructure to help organizations build, connect and grow in the digital era.</p><div class="logos"><div class="logo-tile">DELL<small>Technologies</small></div><div class="logo-tile">vmware</div><div class="logo-tile">CISCO</div><div class="logo-tile">HPE</div></div><a class="btn btn-secondary" href="#about">Learn More About Us →</a></div></div></section>
-
-<section class="cta"><div class="container cta-box"><div class="cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg></div><div><div class="section-label">Let’s Build the Future Together</div><h2>Ready to Power Your Business?</h2><p>Connect with our experts today and discover the right infrastructure solution for you.</p></div><a class="btn btn-primary" href="mailto:contact@onenexsys.com">Get in Touch →</a></div></section>
-</main>
-<footer><div class="container footer-grid"><div><a class="brand" href="#"><span class="logo-mark"></span><span><strong>OneNexsys</strong><small>Building Secure. Delivering Trust.</small></span></a><p style="margin-top:18px;">© <span id="year"></span> OneNexsys. All Rights Reserved.</p></div><div><strong style="color:var(--green2);">Quick Links</strong><div class="footer-links"><a href="#">Home</a><a href="#infrastructure">Infrastructure</a><a href="#about">About Us</a><a href="#careers">Career</a><a href="#services">Services</a><a href="mailto:contact@onenexsys.com">Contact Us</a></div></div><div><strong style="color:var(--green2);">Follow Us</strong><div class="socials"><span class="social">in</span><span class="social">f</span><span class="social">x</span><span class="social">▶</span></div></div></div></footer>
-<script>const menuBtn=document.getElementById('menuBtn'),mobileMenu=document.getElementById('mobileMenu');menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('open'));document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <script>
+    const toggle = document.getElementById("mobileToggle");
+    const menu = document.getElementById("mobileMenu");
+    toggle.addEventListener("click", () => menu.classList.toggle("open"));
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
