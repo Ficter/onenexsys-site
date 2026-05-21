@@ -12,16 +12,16 @@
   <style>
     :root {
       --bg: #020909;
-      --bg-soft: #061413;
-      --card: rgba(9, 24, 25, 0.82);
-      --card-2: rgba(11, 28, 29, 0.74);
-      --line: rgba(255, 255, 255, 0.11);
-      --line-soft: rgba(255, 255, 255, 0.07);
+      --bg-soft: #051211;
+      --card: rgba(6, 18, 19, 0.85);
+      --card-hover: rgba(9, 27, 28, 0.9);
+      --line: rgba(53, 229, 142, 0.15);
+      --line-soft: rgba(255, 255, 255, 0.05);
       --green: #35e58e;
-      --green-2: #19c978;
+      --green-dim: #1ea866;
       --text: #f7fbfa;
-      --muted: rgba(236, 248, 245, 0.72);
-      --muted-2: rgba(236, 248, 245, 0.52);
+      --muted: rgba(236, 248, 245, 0.75);
+      --muted-2: rgba(236, 248, 245, 0.45);
       --max: 1160px;
     }
 
@@ -29,266 +29,219 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at 78% 7%, rgba(53, 229, 142, 0.13), transparent 30%),
-        radial-gradient(circle at 17% 38%, rgba(53, 229, 142, 0.08), transparent 32%),
-        linear-gradient(180deg, #020808 0%, #03100f 48%, #020707 100%);
+      background: 
+        radial-gradient(circle at 80% 15%, rgba(53, 229, 142, 0.08), transparent 45%),
+        radial-gradient(circle at 20% 50%, rgba(30, 168, 102, 0.04), transparent 40%),
+        #020808;
       line-height: 1.6;
       overflow-x: hidden;
     }
 
+    /* Subtle Technical Grid Overlay */
     body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.88), transparent 82%);
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.3));
     }
 
     a { color: inherit; text-decoration: none; }
-    .container { width: min(100% - 76px, var(--max)); margin-inline: auto; }
+    .container { width: min(100% - 64px, var(--max)); margin-inline: auto; }
 
-    /* Header & Navigation Elements */
+    /* Navigation Layout */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(2, 8, 9, 0.86);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(2, 8, 8, 0.85);
       border-bottom: 1px solid var(--line-soft);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(20px);
     }
-
-    .nav {
-      height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-    }
-
-    .brand { display: flex; align-items: center; gap: 13px; }
+    .nav { height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
     .brand-mark {
-      width: 46px;
-      height: 46px;
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #45eb95, #17b96f);
-      color: #04110d;
-      font-weight: 950;
-      font-size: 30px;
-      line-height: 1;
-      box-shadow: 0 0 34px rgba(53,229,142,0.22);
+      width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--green), var(--green-dim));
+      color: #020808; font-weight: 900; font-size: 24px;
+      box-shadow: 0 0 24px rgba(53,229,142,0.25);
     }
-
-    .brand-text strong { display: block; font-size: 1.24rem; line-height: 1; letter-spacing: -0.055em; }
-    .brand-text span { display: block; margin-top: 5px; font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.72); }
-
-    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 0.9rem; font-weight: 800; }
-    .nav-links a { color: rgba(255,255,255,0.86); position: relative; }
-    .nav-links a:hover, .nav-links a.active { color: #fff; }
-    .nav-links a.active::after {
-      content: ""; position: absolute; left: 0; right: 0; bottom: -20px; height: 2px;
-      background: var(--green); box-shadow: 0 0 18px rgba(53,229,142,0.7);
-    }
-
-    .nav-cta, .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      min-height: 46px; padding: 0 23px; border-radius: 8px; font-size: 0.86rem;
-      font-weight: 850; transition: 0.2s ease; white-space: nowrap; cursor: pointer;
-    }
-
-    .nav-cta, .btn-secondary { border: 1px solid rgba(53,229,142,0.35); background: rgba(3, 13, 13, 0.35); color: #fff; }
-    .nav-cta:hover, .btn-secondary:hover { background: rgba(53,229,142,0.08); border-color: var(--green); }
+    .brand-text strong { display: block; font-size: 1.2rem; letter-spacing: -0.04em; line-height: 1; }
+    .brand-text span { display: block; margin-top: 4px; font-size: 0.65rem; font-weight: 600; color: var(--muted-2); text-transform: uppercase; letter-spacing: 0.05em; }
     
-    .btn-primary {
-      background: linear-gradient(135deg, #46e998, #22cd7a); color: #03120d; border: none;
-      box-shadow: 0 16px 48px rgba(53,229,142,0.23);
+    .nav-links { display: flex; gap: 32px; font-size: 0.9rem; font-weight: 500; }
+    .nav-links a { color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-links a.active { font-weight: 600; position: relative; }
+    .nav-links a.active::after {
+      content: ""; position: absolute; bottom: -28px; left: 0; right: 0; height: 2px; background: var(--green);
     }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 48px rgba(53,229,142,0.35); }
 
-    .mobile-toggle, .mobile-menu { display: none; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+      border-radius: 6px; font-size: 0.85rem; font-weight: 600; transition: all 0.2s ease; cursor: pointer;
+    }
+    .btn-primary { background: var(--green); color: #020808; border: none; font-weight: 700; }
+    .btn-primary:hover { background: #fff; transform: translateY(-1px); }
+    .btn-secondary { border: 1px solid rgba(255, 255, 255, 0.15); background: transparent; color: #fff; }
+    .btn-secondary:hover { border-color: var(--green); background: rgba(53, 229, 142, 0.05); }
 
-    /* Hero Layout Section */
-    .hero { position: relative; min-height: 592px; padding: 52px 0 40px; border-bottom: 1px solid rgba(255,255,255,0.045); }
-    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 0.52fr 0.48fr; gap: 40px; align-items: center; }
-    .hero-content { max-width: 540px; }
+    /* Hero Section Component */
+    .hero { padding: 60px 0; border-bottom: 1px solid var(--line-soft); }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; }
+    .label { color: var(--green); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; }
+    h1 { font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 20px; font-weight: 800; }
+    .hero-copy { color: var(--muted); font-size: 1rem; max-width: 520px; margin-bottom: 32px; }
+    .hero-actions { display: flex; gap: 16px; margin-bottom: 48px; }
 
-    .label { color: var(--green); text-transform: uppercase; letter-spacing: 0.22em; font-weight: 950; font-size: 0.78rem; margin-bottom: 14px; }
-    h1 { font-size: clamp(2.8rem, 4.3vw, 4.8rem); line-height: 1.05; letter-spacing: -0.05em; margin-bottom: 24px; }
-    .accent { color: var(--green); }
-    .hero-copy { color: var(--muted); font-size: 1rem; line-height: 1.65; margin-bottom: 32px; }
-    .hero-actions { display: flex; gap: 16px; align-items: center; margin-bottom: 48px; }
-
-    /* Four-Column Hero Feature Layout */
+    /* Fine Feature Set Row */
     .feature-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .feature-item { padding: 0 4px; border-left: 1px solid rgba(255,255,255,0.08); }
+    .feature-item { border-left: 1px solid rgba(255,255,255,0.08); padding-left: 12px; }
     .feature-item:first-child { border-left: 0; padding-left: 0; }
-    .feature-icon { color: var(--green); font-size: 1.3rem; margin-bottom: 10px; }
-    .feature-item strong { display: block; font-size: 0.85rem; line-height: 1.3; margin-bottom: 6px; font-weight: 700; }
+    .feature-item svg { width: 20px; height: 20px; color: var(--green); margin-bottom: 8px; display: block; }
+    .feature-item strong { display: block; font-size: 0.85rem; margin-bottom: 4px; font-weight: 700; }
     .feature-item span { display: block; color: var(--muted-2); font-size: 0.75rem; line-height: 1.4; }
 
-    /* Three.js Viewport Component */
-    .hero-visual { position: relative; height: 580px; display: flex; align-items: center; justify-content: center; }
-    #globe-container { width: 100%; height: 100%; }
+    /* 3D Global Visualization Canvas Shield */
+    .hero-visual { position: relative; height: 560px; width: 100%; display: flex; align-items: center; justify-content: center; }
+    #globe-container { width: 100%; height: 100%; cursor: grab; }
+    #globe-container:active { cursor: grabbing; }
     
-    #globe-tooltip {
-      position: fixed; background: var(--card); border: 1px solid var(--green); color: white;
-      padding: 8px 12px; border-radius: 6px; font-size: 12px; font-weight: bold;
-      pointer-events: none; display: none; z-index: 1000; backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    .globe-overlay-glow {
+      position: absolute; width: 85%; height: 85%; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, transparent 50%, rgba(2,8,8,0.9) 70%),
+                  radial-gradient(circle, rgba(53,229,142,0.12) 0%, transparent 60%);
+      z-index: 5;
     }
 
+    #globe-tooltip {
+      position: fixed; background: rgba(2, 9, 9, 0.9); border: 1px solid var(--line); color: #fff;
+      padding: 8px 12px; border-radius: 6px; font-size: 12px; pointer-events: none; display: none; z-index: 1000;
+      backdrop-filter: blur(8px); box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
     .reset-btn {
-      position: absolute; bottom: 20px; right: 20px; background: rgba(9, 24, 25, 0.84);
-      border: 1px solid var(--green); color: var(--green); padding: 8px 14px; border-radius: 6px;
-      font-size: 0.75rem; font-weight: 800; cursor: pointer; backdrop-filter: blur(8px);
-      transition: all 0.2s ease; z-index: 101; opacity: 0; pointer-events: none; letter-spacing: 0.05em;
+      position: absolute; bottom: 12px; right: 12px; background: rgba(5,15,15,0.8); border: 1px solid var(--green);
+      color: var(--green); padding: 6px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;
+      cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 10;
     }
     .reset-btn.visible { opacity: 1; pointer-events: auto; }
-    .reset-btn:hover { background: var(--green); color: #020909; }
 
-    /* Performance Matrices Horizontal Strip */
-    .stats-wrap { padding: 32px 0; }
+    /* Enterprise Metric Matrix Block */
+    .stats-wrap { padding: 32px 0 0; }
     .stats {
-      display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line); border-radius: 12px;
-      overflow: hidden; background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.005));
+      display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); overflow: hidden;
     }
-    .stat { display: flex; align-items: center; gap: 16px; padding: 24px 28px; border-left: 1px solid rgba(255,255,255,0.08); }
+    .stat { display: flex; align-items: center; gap: 16px; padding: 24px; border-left: 1px solid rgba(255,255,255,0.06); }
     .stat:first-child { border-left: 0; }
-    .stat-icon { color: var(--green); font-size: 1.8rem; display: flex; align-items: center; }
-    .stat strong { display: block; color: var(--text); font-size: 1.75rem; line-height: 1.1; letter-spacing: -0.03em; font-weight: 800; }
-    .stat span { color: var(--muted-2); font-size: 0.8rem; white-space: nowrap; }
+    .stat svg { width: 32px; height: 32px; color: var(--green); flex-shrink: 0; }
+    .stat strong { display: block; font-size: 1.6rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+    .stat span { color: var(--muted-2); font-size: 0.8rem; }
 
-    /* Core Architectural Solutions Grid */
-    .section { padding: 80px 0; scroll-margin-top: 80px; }
-    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 40px; }
-    h2 { font-size: clamp(2rem, 3vw, 2.8rem); line-height: 1.15; letter-spacing: -0.04em; font-weight: 800; }
-    .view-link { color: var(--green); font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; }
-    .view-link:hover { color: #fff; }
-
+    /* Strategic Solutions Grid Layer */
+    .section { padding: 80px 0; }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
+    .view-link { color: var(--green); font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+    
     .services-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
     .service-card {
-      padding: 32px 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);
-      background: linear-gradient(180deg, rgba(9, 26, 26, 0.7), rgba(4, 13, 14, 0.9));
-      transition: all 0.3s ease;
+      padding: 32px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);
+      background: linear-gradient(180deg, var(--card), rgba(2,8,8,0.95)); transition: all 0.3s ease;
     }
-    .service-card:hover { border-color: rgba(53, 229, 142, 0.3); transform: translateY(-3px); }
-    .service-icon { color: var(--green); font-size: 1.8rem; margin-bottom: 24px; }
-    .service-card h3 { font-size: 1rem; margin-bottom: 12px; font-weight: 700; }
-    .service-card p { color: var(--muted-2); font-size: 0.84rem; line-height: 1.5; }
+    .service-card:hover { border-color: rgba(53, 229, 142, 0.3); transform: translateY(-3px); background: var(--card-hover); }
+    .service-card svg { width: 28px; height: 28px; color: var(--green); margin-bottom: 24px; }
+    .service-card h3 { font-size: 1rem; margin-bottom: 10px; font-weight: 700; letter-spacing: -0.01em; }
+    .service-card p { color: var(--muted-2); font-size: 0.8rem; line-height: 1.5; }
 
-    /* Dynamic Asymmetric Infrastructure Specs Combo Layout */
-    .infra-grid { display: grid; grid-template-columns: 1fr 1fr 1.15fr; gap: 48px; align-items: start; }
+    /* Asymmetric Structural Architecture Section */
+    .infra-grid { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 48px; align-items: start; }
     .infra-image {
-      height: 250px; margin-top: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(rgba(2, 9, 9, 0.2), rgba(2, 9, 9, 0.5)),
-                  url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80") center/cover;
+      height: 240px; margin-top: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(rgba(2,8,8,0.3), rgba(2,8,8,0.6)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80') center/cover;
     }
-    .check-list { display: flex; flex-direction: column; gap: 28px; padding-top: 12px; }
-    .check-item { display: flex; gap: 16px; align-items: start; }
-    .check {
-      width: 22px; height: 22px; border: 1px solid rgba(53,229,142,0.4); color: var(--green);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; margin-top: 2px;
+    .check-list { display: flex; flex-direction: column; gap: 24px; padding-top: 12px; }
+    .check-item { display: flex; gap: 14px; }
+    .check-icon {
+      width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--line);
+      display: grid; place-items: center; color: var(--green); font-size: 0.7rem; flex-shrink: 0; margin-top: 2px;
     }
-    .check-item strong { display: block; font-size: 0.95rem; margin-bottom: 4px; font-weight: 700; }
-    .check-item span { display: block; color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
+    .check-item strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+    .check-item span { color: var(--muted-2); font-size: 0.85rem; line-height: 1.4; }
 
     .about-panel { padding-left: 40px; border-left: 1px solid rgba(255,255,255,0.08); }
     .about-panel p { color: var(--muted); font-size: 0.95rem; line-height: 1.65; margin: 20px 0 32px; }
     
-    /* Technical Ecosystem Matrix Integration Row */
     .partner-strip {
       display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 8px; overflow: hidden; background: rgba(255,255,255,0.02); margin-bottom: 32px;
+      border-radius: 8px; overflow: hidden; background: rgba(255,255,255,0.01); margin-bottom: 32px;
     }
     .partner-strip span {
-      height: 64px; display: grid; place-items: center; padding: 8px; font-size: 0.75rem;
-      font-weight: 800; border-left: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--muted);
+      height: 60px; display: grid; place-items: center; padding: 4px; font-size: 0.75rem;
+      font-weight: 700; border-left: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--muted-2);
     }
     .partner-strip span:first-child { border-left: 0; }
 
-    /* Action Banner Conversion System */
-    .cta-wrap { padding: 40px 0; }
+    /* Global Call To Action Strip */
     .cta {
-      display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 40px;
-      padding: 48px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08);
-      background: radial-gradient(circle at 80% 50%, rgba(53,229,142,0.12), transparent 40%),
-                  linear-gradient(180deg, rgba(9, 26, 26, 0.85), rgba(4, 13, 14, 0.95));
-      box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+      display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center;
+      padding: 40px 48px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08);
+      background: radial-gradient(circle at 85% 50%, rgba(53,229,142,0.1), transparent 40%), linear-gradient(180deg, #061819, #020808);
     }
-    .cta-icon {
-      width: 64px; height: 64px; border: 1px solid rgba(53,229,142,0.3); border-radius: 50%;
-      display: grid; place-items: center; color: var(--green); font-size: 1.5rem; background: rgba(53,229,142,0.03);
+    .cta-icon-frame {
+      width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--line);
+      display: grid; place-items: center; color: var(--green); background: rgba(53,229,142,0.02);
     }
-    .cta h2 { font-size: 2rem; margin-bottom: 8px; letter-spacing: -0.03em; }
-    .cta p { color: var(--muted); font-size: 0.95rem; }
+    .cta-icon-frame svg { width: 24px; height: 24px; }
+    .cta h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.02em; }
+    .cta p { color: var(--muted-2); font-size: 0.95rem; }
 
-    /* Footer Navigation Architecture */
-    footer { padding: 60px 0 40px; border-top: 1px solid rgba(255,255,255,0.06); background: #010606; }
-    .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 0.7fr; gap: 80px; }
-    .footer-brand { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
-    .footer-copy { color: var(--muted-2); font-size: 0.85rem; margin-top: 16px; }
-    .footer-title { color: var(--green); font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
-    .footer-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 40px; color: var(--muted); font-size: 0.9rem; }
+    /* Typography Footer Setup */
+    footer { padding: 60px 0 40px; border-top: 1px solid var(--line-soft); background: #010505; }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 0.8fr; gap: 64px; }
+    .footer-brand { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
+    .footer-copy { color: var(--muted-2); font-size: 0.8rem; }
+    .footer-title { color: var(--green); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+    .footer-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 24px; font-size: 0.85rem; color: var(--muted); }
     .footer-links a:hover { color: #fff; }
     .socials { display: flex; gap: 12px; }
     .socials a {
-      width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12);
-      display: grid; place-items: center; font-size: 0.9rem; color: var(--muted); transition: all 0.2s;
+      width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1);
+      display: grid; place-items: center; font-size: 0.85rem; color: var(--muted-2); transition: all 0.2s;
     }
-    .socials a:hover { border-color: var(--green); color: var(--green); background: rgba(53,229,142,0.02); }
+    .socials a:hover { border-color: var(--green); color: var(--green); }
 
-    /* Responsive Breakdown System rules matching layout breakpoints */
+    /* Responsive Adaptation System */
     @media (max-width: 1200px) {
       .services-grid { grid-template-columns: repeat(3, 1fr); }
-      .infra-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .about-panel { grid-column: span 2; padding-left: 0; border-left: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 40px; }
+      .infra-grid { grid-template-columns: 1fr 1fr; }
+      .about-panel { grid-column: span 2; padding-left: 0; border-left: 0; border-top: 1px solid var(--line-soft); padding-top: 40px; }
     }
-
     @media (max-width: 1024px) {
       .container { width: min(100% - 40px, var(--max)); }
-      .nav-links, .nav-cta { display: none; }
-      .mobile-toggle { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,255,255,0.03); color: #fff; font-size: 1.2rem; cursor: pointer; }
-      .mobile-menu.open { display: flex; flex-direction: column; gap: 16px; padding: 24px 0; border-top: 1px solid var(--line-soft); }
-      .mobile-menu a { color: var(--muted); font-weight: 700; }
-      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 16px; }
-      .hero-content { max-width: 100%; margin-inline: auto; }
+      .nav-links, .btn-nav { display: none; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+      .hero-copy { margin-inline: auto; }
       .hero-actions { justify-content: center; }
       .feature-row { max-width: 640px; margin-inline: auto; text-align: left; }
-      .hero-visual { height: 480px; }
+      .hero-visual { height: 460px; }
       .stats { grid-template-columns: repeat(3, 1fr); }
       .stat:nth-child(4) { border-left: 0; }
-      .cta { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 24px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 48px; }
+      .cta { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 20px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
     }
-
     @media (max-width: 768px) {
       .stats { grid-template-columns: 1fr; }
-      .stat { border-left: 0; border-top: 1px solid rgba(255,255,255,0.08); }
+      .stat { border-left: 0; border-top: 1px solid rgba(255,255,255,0.06); }
       .stat:first-child { border-top: 0; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .infra-grid { grid-template-columns: 1fr; }
       .about-panel { grid-column: span 1; }
-      .section-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .section-head { flex-direction: column; align-items: flex-start; gap: 12px; }
     }
-
     @media (max-width: 560px) {
-      h1 { font-size: 2.5rem; }
-      .feature-row { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
-      .feature-item:nth-child(odd) { border-left: 0; padding-left: 0; }
+      .feature-row { grid-template-columns: repeat(2, 1fr); }
       .services-grid { grid-template-columns: 1fr; }
-      .partner-strip { grid-template-columns: repeat(2, 1fr); }
-      .partner-strip span { border-top: 1px solid rgba(255,255,255,0.05); }
-      .partner-strip span:nth-child(1), .partner-strip span:nth-child(2) { border-top: 0; }
-      .partner-strip span:nth-child(odd) { border-left: 0; }
     }
   </style>
 </head>
@@ -300,8 +253,7 @@
         <span class="brand-mark" aria-hidden="true">N</span>
         <span class="brand-text"><strong>OneNexsys</strong><span>Building Secure. Delivering Trust.</span></span>
       </a>
-
-      <nav class="nav-links" aria-label="Desktop navigation">
+      <nav class="nav-links">
         <a href="#" class="active">Home</a>
         <a href="#about">About Us</a>
         <a href="#services">Services</a>
@@ -309,17 +261,7 @@
         <a href="#career">Career</a>
         <a href="mailto:contact@onenexsys.com">Contact Us</a>
       </nav>
-
-      <a class="nav-cta" href="mailto:contact@onenexsys.com">Get in Touch <span>→</span></a>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation navigation window">☰</button>
-    </div>
-
-    <div class="container mobile-menu" id="mobileMenu">
-      <a href="#">Home</a>
-      <a href="#about">About Us</a>
-      <a href="#services">Services</a>
-      <a href="#infrastructure">Infrastructure</a>
-      <a href="mailto:contact@onenexsys.com">Contact Us</a>
+      <a class="btn btn-primary btn-nav" href="mailto:contact@onenexsys.com">Get in Touch →</a>
     </div>
   </header>
 
@@ -332,35 +274,36 @@
           <p class="hero-copy">OneNexsys delivers secure, scalable and high-performance IT infrastructure solutions that help businesses connect, compute and grow without limits.</p>
           
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#services">Explore Our Services <span>→</span></a>
-            <a class="btn btn-secondary" href="mailto:contact@onenexsys.com">Contact Sales <span>→</span></a>
+            <a class="btn btn-primary" href="#services">Explore Our Services →</a>
+            <a class="btn btn-secondary" href="mailto:contact@onenexsys.com">Contact Sales</a>
           </div>
 
           <div class="feature-row">
             <div class="feature-item">
-              <div class="feature-icon">🛡️</div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               <strong>Secure by Design</strong>
-              <span>Enterprise-grade security at every layer.</span>
+              <span>Enterprise-grade security layers.</span>
             </div>
             <div class="feature-item">
-              <div class="feature-icon">🚀</div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               <strong>High Performance</strong>
-              <span>Built for speed, uptime and reliability.</span>
+              <span>Built for absolute speed and uptime.</span>
             </div>
             <div class="feature-item">
-              <div class="feature-icon">☁️</div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l-7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
               <strong>Scalable Solutions</strong>
-              <span>Infrastructure that grows as you grow.</span>
+              <span>Adapts cleanly as operations expand.</span>
             </div>
             <div class="feature-item">
-              <div class="feature-icon">⚡</div>
-              <strong>24/7 Expert Support</strong>
-              <span>Always-on support from real infrastructure experts.</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <strong>24/7 Support</strong>
+              <span>Direct access to infrastructure engineers.</span>
             </div>
           </div>
         </div>
 
         <div class="hero-visual">
+          <div class="globe-overlay-glow"></div>
           <div id="globe-container"></div>
           <div id="globe-tooltip"></div>
           <button id="reset-view" class="reset-btn">↺ Reset View</button>
@@ -371,11 +314,26 @@
     <section class="stats-wrap">
       <div class="container">
         <div class="stats">
-          <div class="stat"><div class="stat-icon">👥</div><div><strong>500+</strong><span>Happy Clients</span></div></div>
-          <div class="stat"><div class="stat-icon">📅</div><div><strong>15+</strong><span>Years Experience</span></div></div>
-          <div class="stat"><div class="stat-icon">🌐</div><div><strong>10+</strong><span>Global Locations</span></div></div>
-          <div class="stat"><div class="stat-icon">💾</div><div><strong>99.99%</strong><span>Uptime Guarantee</span></div></div>
-          <div class="stat"><div class="stat-icon">🏅</div><div><strong>100%</strong><span>Commitment</span></div></div>
+          <div class="stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div><strong>500+</strong><span>Happy Clients</span></div>
+          </div>
+          <div class="stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <div><strong>15+</strong><span>Years Experience</span></div>
+          </div>
+          <div class="stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <div><strong>10+</strong><span>Global Locations</span></div>
+          </div>
+          <div class="stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            <div><strong>99.99%</strong><span>Uptime Guarantee</span></div>
+          </div>
+          <div class="stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div><strong>100%</strong><span>Commitment</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -387,16 +345,40 @@
             <div class="label">Our Services</div>
             <h2>End-to-End Infrastructure Solutions</h2>
           </div>
-          <a href="#services" class="view-link">View All Services <span>→</span></a>
+          <a href="#services" class="view-link">View All Services →</a>
         </div>
 
         <div class="services-grid">
-          <article class="service-card"><div class="service-icon">☁️</div><h3>Cloud Solutions</h3><p>Scalable cloud infrastructure and migration for modern businesses.</p></article>
-          <article class="service-card"><div class="service-icon">🖥️</div><h3>Data Center Services</h3><p>Reliable colocation, hosting and data center management.</p></article>
-          <article class="service-card"><div class="service-icon">🖧</div><h3>Network Solutions</h3><p>High-performance networks that keep your business always connected.</p></article>
-          <article class="service-card"><div class="service-icon">🔒</div><h3>Cybersecurity</h3><p>Protect your infrastructure with advanced security and compliance.</p></article>
-          <article class="service-card"><div class="service-icon">📈</div><h3>IT Consulting</h3><p>Strategic IT guidance to optimize, transform and drive growth.</p></article>
-          <article class="service-card"><div class="service-icon">⚙️</div><h3>Managed Services</h3><p>Proactive monitoring and management for complete peace of mind.</p></article>
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></article>
+            <h3>Cloud Solutions</h3>
+            <p>Scalable cloud infrastructure hosting and migrations built for workload optimization.</p>
+          </article>
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/></svg>
+            <h3>Data Center Services</h3>
+            <p>High-reliability colocation spaces, bare-metal operations, and systematic engineering management.</p>
+          </article>
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+            <h3>Network Solutions</h3>
+            <p>High-throughput enterprise lines, core packet routing fabrics, and dynamic failover channels.</p>
+          </article>
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <h3>Cybersecurity</h3>
+            <p>Deep physical hardening perimeter shields, packet inspection systems, and compliance barriers.</p>
+          </article>
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+            <h3>IT Consulting</h3>
+            <p>Strategic hardware auditing, workload distribution mapping, and structural performance consulting.</p>
+          </article>
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <h3>Managed Services</h3>
+            <p>Proactive hardware status polling, dynamic hypervisor load mitigation, and patch processing.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -410,39 +392,39 @@
         </div>
 
         <div class="check-list">
-          <div class="check-item"><span class="check">✓</span><div><strong>Tier III+ Data Centers</strong><span>Enterprise-grade facilities with maximum reliability.</span></div></div>
-          <div class="check-item"><span class="check">✓</span><div><strong>Redundant Network</strong><span>Multiple carriers and failover architecture.</span></div></div>
-          <div class="check-item"><span class="check">✓</span><div><strong>Advanced Security</strong><span>Biometric access, CCTV, fire suppression and more.</span></div></div>
-          <div class="check-item"><span class="check">✓</span><div><strong>Sustainable Operations</strong><span>Energy-efficient infrastructure for a greener tomorrow.</span></div></div>
+          <div class="check-item"><span class="check-icon">✓</span><div><strong>Tier III+ Data Centers</strong><span>Redundant facility fabrics offering zero clear failure vectors.</span></div></div>
+          <div class="check-item"><span class="check-icon">✓</span><div><strong>Redundant Network</strong><span>Multi-carrier fiber distribution lines with automated route shifting.</span></div></div>
+          <div class="check-item"><span class="check-icon">✓</span><div><strong>Advanced Security</strong><span>Multi-tier biometric checkpoints and constant internal tracking arrays.</span></div></div>
+          <div class="check-item"><span class="check-icon">✓</span><div><strong>Sustainable Operations</strong><span>Advanced closed-loop airflow optimization matching modern emission rules.</span></div></div>
         </div>
 
         <div class="about-panel" id="about">
           <div class="label">About OneNexsys</div>
           <h2>Your Trusted Infrastructure Partner</h2>
-          <p>OneNexsys is a leading IT infrastructure solutions provider delivering secure, scalable and innovative technology services to businesses worldwide. We combine deep expertise with cutting-edge infrastructure to help organizations build, connect and grow in the digital era.</p>
-          
+          <p>OneNexsys acts as a leading provider of high-throughput hardware infrastructure configurations. We deliver structural security and modern tech platforms to cross-border enterprise deployments worldwide.</p>
           <div class="partner-strip">
-            <span>Dell Technologies</span>
-            <span>vmware</span>
+            <span>DELL Tech</span>
+            <span>VMware</span>
             <span>Cisco Systems</span>
-            <span>HPE Enterprise</span>
+            <span>HPE Core</span>
           </div>
-          
-          <a class="btn btn-secondary" href="#about">Learn More About Us <span>→</span></a>
+          <a class="btn btn-secondary" href="#about">Learn More About Us</a>
         </div>
       </div>
     </section>
 
-    <section class="cta-wrap">
+    <section class="section">
       <div class="container">
         <div class="cta">
-          <div class="cta-icon">✉️</div>
-          <div>
-            <div class="label">Let's Build The Future Together</div>
-            <h2>Ready to Power Your Business?</h2>
-            <p>Connect with our experts today and discover the right infrastructure solution for you.</p>
+          <div class="cta-icon-frame">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
-          <a class="btn btn-primary" href="mailto:contact@onenexsys.com">Get in Touch <span>→</span></a>
+          <div>
+            <div class="label">Let’s Build The Future Together</div>
+            <h2>Ready to Power Your Business?</h2>
+            <p>Connect directly with our infrastructure architects to plan your platform transition mapping.</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:contact@onenexsys.com">Get in Touch →</a>
         </div>
       </div>
     </section>
@@ -451,89 +433,114 @@
   <footer>
     <div class="container footer-grid">
       <div>
-        <div class="footer-brand">
-          <span class="brand-mark">N</span>
-          <span class="brand-text"><strong>OneNexsys</strong><span>Building Secure. Delivering Trust.</span></span>
-        </div>
+        <div class="footer-brand"><span class="brand-mark">N</span><span class="brand-text"><strong>OneNexsys</strong></span></div>
         <div class="footer-copy">© <span id="year"></span> OneNexsys. All Rights Reserved.</div>
       </div>
       <div>
         <div class="footer-title">Quick Links</div>
         <div class="footer-links">
-          <a href="#">Home</a>
-          <a href="#infrastructure">Infrastructure</a>
-          <a href="#about">About Us</a>
-          <a href="#career">Career</a>
-          <a href="#services">Services</a>
-          <a href="mailto:contact@onenexsys.com">Contact Us</a>
+          <a href="#">Home</a><a href="#infrastructure">Infrastructure</a>
+          <a href="#about">About Us</a><a href="#career">Career</a>
+          <a href="#services">Services</a><a href="mailto:contact@onenexsys.com">Contact Us</a>
         </div>
       </div>
       <div>
         <div class="footer-title">Follow Us</div>
         <div class="socials">
-          <a href="#" aria-label="LinkedIn">in</a>
-          <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="X">𝕏</a>
-          <a href="#" aria-label="YouTube">▶</a>
+          <a href="#">LN</a><a href="#">FB</a><a href="#">X</a><a href="#">YT</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
-    // Navigation Toggles
-    const toggle = document.getElementById("mobileToggle");
-    const menu = document.getElementById("mobileMenu");
-    toggle.addEventListener("click", () => menu.classList.toggle("open"));
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Node Matrix Set Array Coordinates Matching Original Design Blueprint Points
+    // Infrastructure Target Datapoints Matrix Configuration
     const locations = [
-      { name: "North American Gateway Hub", lat: 40.7128, lon: -74.0060 },
-      { name: "London Core Exchange Node", lat: 51.5074, lon: -0.1278 },
-      { name: "Singapore APAC Gateway Core", lat: 1.3521, lon: 103.8198 },
-      { name: "Sydney Oceania Edge Point", lat: -33.8688, lon: 151.2093 },
-      { name: "Tokyo High-Speed Transit Center", lat: 35.6762, lon: 139.6503 }
+      { name: "North American Primary Hub", lat: 40.7128, lon: -74.0060 },
+      { name: "London Data Interchange Core", lat: 51.5074, lon: -0.1278 },
+      { name: "Singapore APAC Gateway Center", lat: 1.3521, lon: 103.8198 },
+      { name: "Sydney Edge Transport Facility", lat: -33.8688, lon: 151.2093 },
+      { name: "Tokyo Multi-Route Core Point", lat: 35.6762, lon: 139.6503 }
     ];
 
     const container = document.getElementById('globe-container');
     const tooltip = document.getElementById('globe-tooltip');
     const resetBtn = document.getElementById('reset-view');
 
-    // Context Environment Build Configurations
+    // Scene Context Inception Pipeline
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(40, container.offsetWidth / container.offsetHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.offsetWidth, container.offsetHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    const globeRadius = 2.8;
+    const globeRadius = 2.6;
     const globeGroup = new THREE.Group();
     scene.add(globeGroup);
 
-    // Structural Base Geometric Particle Matrix Shell
-    const globeGeo = new THREE.SphereGeometry(globeRadius, 48, 48);
-    const globeMat = new THREE.PointsMaterial({
-      color: 0x35e58e,
-      size: 0.018,
-      transparent: true,
-      opacity: 0.55
-    });
-    const globePoints = new THREE.Points(globeGeo, globeMat);
-    globeGroup.add(globePoints);
+    // --- GENERATE GRAPHIC CONTINENT SILHOUETTE TEXTURE MAP VIA CANVAS ENGINE ---
+    // This allows us to render high-contrast realistic landmass fills underneath the glowing paths
+    const textureCanvas = document.createElement('canvas');
+    textureCanvas.width = 2048; textureCanvas.height = 1024;
+    const ctx = textureCanvas.getContext('2d');
+    ctx.fillStyle = '#020909'; ctx.fillRect(0, 0, 2048, 1024);
 
-    // Secondary Thin Wireframe Topology Structural Grid Ring
-    const wireSphere = new THREE.Mesh(
-      new THREE.SphereGeometry(globeRadius + 0.005, 22, 22),
-      new THREE.MeshBasicMaterial({ color: 0x35e58e, wireframe: true, transparent: true, opacity: 0.04 })
+    // Mathematical representation of continental boundaries for real-time projection mapping
+    function renderProceduralLandmasses() {
+      ctx.fillStyle = '#06261b'; // Deep glowing emerald undertone
+      ctx.strokeStyle = '#22c55e'; // High-intensity outline trace
+      ctx.lineWidth = 1.5;
+      
+      // Simple coordinate mapping polygons for major structural global landmass blocks
+      const continents = [
+        [[300,200],[450,150],[600,250],[550,500],[450,550],[350,450]], // North America
+        [[450,550],[520,600],[580,750],[500,900],[420,700]], // South America
+        [[850,150],[1100,100],[1400,150],[1600,300],[1500,600],[1200,500],[950,400]], // Eurasia
+        [[900,420],[1100,450],[1150,650],[1050,800],[920,700],[860,550]], // Africa
+        [[1450,650],[1650,680],[1700,800],[1500,850]] // Australia
+      ];
+      
+      continents.forEach(poly => {
+        ctx.beginPath();
+        poly.forEach((pt, idx) => { if(idx===0) ctx.moveTo(pt[0],pt[1]); else ctx.lineTo(pt[0],pt[1]); });
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+      });
+    }
+    renderProceduralLandmasses();
+
+    const texture = new THREE.CanvasTexture(textureCanvas);
+    
+    // Core Solid Textured Planet Mesh Element Fusing Continental Outlines
+    const landSphere = new THREE.Mesh(
+      new THREE.SphereGeometry(globeRadius, 64, 64),
+      new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 0.88 })
     );
-    globeGroup.add(wireSphere);
+    globeGroup.add(landSphere);
 
-    // Geolocation Vector Conversion Projection Equation Function
-    function latLongToVector3(lat, lon, radius) {
-      const phi = (90 - lat) * (Math.PI / 180);
-      const theta = (lon + 180) * (Math.PI / 180);
+    // --- HIGH DENSITY NETWORK SPLINE AND CLOUD MATRIX CHANNELS ---
+    // Creates the complex network data traffic layers wrapping the physical earth structures
+    const dataGridGeo = new THREE.BufferGeometry();
+    const particleCount = 2800;
+    const positions = new Float32Array(particleCount * 3);
+    
+    for(let i=0; i<particleCount*3; i+=3) {
+      const u = Math.random(); const v = Math.random();
+      const theta = u * 2.0 * Math.PI; const phi = Math.acos(2.0 * v - 1.0);
+      positions[i] = globeRadius * Math.sin(phi) * Math.cos(theta);
+      positions[i+1] = globeRadius * Math.sin(phi) * Math.sin(theta);
+      positions[i+2] = globeRadius * Math.cos(phi);
+    }
+    dataGridGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const dataGridMat = new THREE.PointsMaterial({ color: 0x35e58e, size: 0.012, transparent: true, opacity: 0.35 });
+    const dataGridPoints = new THREE.Points(dataGridGeo, dataGridMat);
+    globeGroup.add(dataGridPoints);
+
+    // Coordinate Conversion Equation Engine
+    function geoToVector(lat, lon, radius) {
+      const phi = (90 - lat) * (Math.PI / 180); const theta = (lon + 180) * (Math.PI / 180);
       return new THREE.Vector3(
         -radius * Math.sin(phi) * Math.cos(theta),
         radius * Math.cos(phi),
@@ -541,135 +548,128 @@
       );
     }
 
-    // Node & Infrastructure Arc Object Registration Array Iterations
+    // Process Active Node Hardware Markers and Network Arcs
     const markers = [];
-    const markerGeo = new THREE.SphereGeometry(0.06, 16, 16);
+    const markerGeo = new THREE.SphereGeometry(0.045, 16, 16);
     const markerMat = new THREE.MeshBasicMaterial({ color: 0x35e58e });
 
     locations.forEach((loc, i) => {
-      const pos = latLongToVector3(loc.lat, loc.lon, globeRadius);
-      const marker = new THREE.Mesh(markerGeo, markerMat.clone());
-      marker.position.copy(pos);
+      const currentPos = geoToVector(loc.lat, loc.lon, globeRadius);
+      const marker = new THREE.Mesh(markerGeo, markerMat);
+      marker.position.copy(currentPos);
       marker.userData = { name: loc.name };
-      
-      // Secondary Node Halo Pulse Loop Component Element
-      const ring = new THREE.Mesh(
-        new THREE.RingGeometry(0.09, 0.13, 32),
-        new THREE.MeshBasicMaterial({ color: 0x35e58e, side: THREE.DoubleSide, transparent: true, opacity: 0.6 })
-      );
-      ring.lookAt(new THREE.Vector3(0,0,0));
-      marker.add(ring);
 
-      // Raycaster Mesh Interface Proxy Component Box Shield
-      const hitArea = new THREE.Mesh(
-        new THREE.SphereGeometry(0.24, 8, 8),
-        new THREE.MeshBasicMaterial({ visible: false })
+      // Micro Active Ring Halo Node Element
+      const pulseRing = new THREE.Mesh(
+        new THREE.RingGeometry(0.06, 0.1, 16),
+        new THREE.MeshBasicMaterial({ color: 0x35e58e, side: THREE.DoubleSide, transparent: true, opacity: 0.8 })
       );
-      marker.add(hitArea);
+      pulseRing.lookAt(new THREE.Vector3(0,0,0));
+      marker.add(pulseRing);
+      
+      // Invisible Target Click Buffer Box Shield
+      const targetShield = new THREE.Mesh(new THREE.SphereGeometry(0.2, 8, 8), new THREE.MeshBasicMaterial({ visible: false }));
+      marker.add(targetShield);
 
       globeGroup.add(marker);
       markers.push(marker);
 
-      // Generate Connection Intersections Topology Frameworks
-      if (i < locations.length - 1) {
-        const nextPos = latLongToVector3(locations[i+1].lat, locations[i+1].lon, globeRadius);
-        const mid = new THREE.Vector3().addVectors(pos, nextPos).multiplyScalar(0.5).normalize().multiplyScalar(globeRadius + 0.4);
-        const curve = new THREE.QuadraticBezierCurve3(pos, mid, nextPos);
-        const points = curve.getPoints(40);
-        const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-        const line = new THREE.Line(lineGeo, new THREE.LineBasicMaterial({ color: 0x35e58e, transparent: true, opacity: 0.15 }));
-        globeGroup.add(line);
-      }
-    });
-
-    camera.position.z = 8;
-    const controlsTarget = new THREE.Vector3(0, 0, 0);
-
-    // Vector Raycasting Selection Pipeline Operations Configurations
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
-    let isFlying = false;
-
-    window.addEventListener('mousemove', (e) => {
-      const rect = container.getBoundingClientRect();
-      mouse.x = ((e.clientX - rect.left) / container.offsetWidth) * 2 - 1;
-      mouse.y = -((e.clientY - rect.top) / container.offsetHeight) * 2 + 1;
-      
-      tooltip.style.left = (e.clientX + 15) + 'px';
-      tooltip.style.top = (e.clientY + 15) + 'px';
-    });
-
-    // Node Interaction Vector Click Event Listener Processing Handles
-    container.addEventListener('click', () => {
-      raycaster.setFromCamera(mouse, camera);
-      const intersects = raycaster.intersectObjects(markers, true);
-
-      if (intersects.length > 0) {
-        let baseObject = intersects[0].object;
-        if (baseObject.parent && baseObject.parent.type === "Mesh") {
-          baseObject = baseObject.parent;
+      // Weave the complex transit routes across active server locations
+      locations.forEach((targetLoc, j) => {
+        if (i !== j && i < j) {
+          const targetPos = geoToVector(targetLoc.lat, targetLoc.lon, globeRadius);
+          const midPoint = new THREE.Vector3().addVectors(currentPos, targetPos).multiplyScalar(0.5).normalize().multiplyScalar(globeRadius + 0.35);
+          const transitPath = new THREE.QuadraticBezierCurve3(currentPos, midPoint, targetPos);
+          
+          const pathPoints = transitPath.getPoints(30);
+          const arcGeo = new THREE.BufferGeometry().setFromPoints(pathPoints);
+          const arcLine = new THREE.Line(arcGeo, new THREE.LineBasicMaterial({ color: 0x35e58e, transparent: true, opacity: 0.16 }));
+          globeGroup.add(arcLine);
         }
+      });
+    });
+
+    camera.position.z = 7.5;
+    const cameraTarget = new THREE.Vector3(0, 0, 0);
+
+    // Vector Raycasting Tracking Matrix System Configurations
+    const targetRaycaster = new THREE.Raycaster();
+    const cursorVector = new THREE.Vector2();
+    let lockCameraRotation = false;
+
+    window.addEventListener('mousemove', (event) => {
+      const surfaceBounds = container.getBoundingClientRect();
+      cursorVector.x = ((event.clientX - surfaceBounds.left) / container.offsetWidth) * 2 - 1;
+      cursorVector.y = -((event.clientY - surfaceBounds.top) / container.offsetHeight) * 2 + 1;
+      
+      tooltip.style.left = `${event.clientX + 16}px`;
+      tooltip.style.top = `${event.clientY + 16}px`;
+    });
+
+    // Node Interaction Transition Engine Click Processing
+    container.addEventListener('click', () => {
+      targetRaycaster.setFromCamera(cursorVector, camera);
+      const crossIntersects = targetRaycaster.intersectObjects(markers, true);
+
+      if (crossIntersects.length > 0) {
+        let selectedNode = crossIntersects[0].object;
+        if (selectedNode.parent && selectedNode.parent.type === "Mesh") selectedNode = selectedNode.parent;
         
-        const worldPos = new THREE.Vector3();
-        baseObject.getWorldPosition(worldPos);
-        const zoomCamPos = worldPos.clone().normalize().multiplyScalar(7.2);
+        const nodeWorldCoords = new THREE.Vector3();
+        selectedNode.getWorldPosition(nodeWorldCoords);
+        const targetedCameraPosition = nodeWorldCoords.clone().normalize().multiplyScalar(6.5);
         
-        isFlying = true;
+        lockCameraRotation = true;
         resetBtn.classList.add('visible');
         tooltip.style.display = 'block';
-        tooltip.innerHTML = `<span style="color:var(--green);font-size:10px;text-transform:uppercase;letter-spacing:0.1em;">Active Hub Infrastructure</span><br>${baseObject.userData.name}`;
+        tooltip.innerHTML = `<span style="color:var(--green);font-size:10px;font-weight:700;text-transform:uppercase;">ACTIVE MATRIX HUB</span><br>${selectedNode.userData.name}`;
 
-        gsap.to(camera.position, { x: zoomCamPos.x, y: zoomCamPos.y, z: zoomCamPos.z, duration: 1.6, ease: "power2.inOut" });
-        gsap.to(controlsTarget, { 
-          x: worldPos.x, y: worldPos.y, z: worldPos.z, 
-          duration: 1.6, ease: "power2.inOut", onUpdate: () => camera.lookAt(controlsTarget) 
-        });
+        gsap.to(camera.position, { x: targetedCameraPosition.x, y: targetedCameraPosition.y, z: targetedCameraPosition.z, duration: 1.4, ease: "power3.inOut" });
+        gsap.to(cameraTarget, { x: nodeWorldCoords.x, y: nodeWorldCoords.y, z: nodeWorldCoords.z, duration: 1.4, ease: "power3.inOut", onUpdate: () => camera.lookAt(cameraTarget) });
       }
     });
 
-    // Reset Camera Matrix Position Target View Execution Sequence handles
+    // Return Camera View Coordinates Array to Default Positioning Setup
     resetBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      isFlying = true;
-      tooltip.style.display = 'none';
+      e.stopPropagation(); lockCameraRotation = true; tooltip.style.display = 'none';
       
-      gsap.to(camera.position, { x: 0, y: 0, z: 8, duration: 1.8, ease: "expo.inOut" });
-      gsap.to(controlsTarget, { 
-        x: 0, y: 0, z: 0, duration: 1.8, ease: "expo.inOut",
-        onUpdate: () => camera.lookAt(controlsTarget),
-        onComplete: () => { isFlying = false; resetBtn.classList.remove('visible'); }
+      gsap.to(camera.position, { x: 0, y: 0, z: 7.5, duration: 1.6, ease: "expo.inOut" });
+      gsap.to(cameraTarget, { 
+        x: 0, y: 0, z: 0, duration: 1.6, ease: "expo.inOut",
+        onUpdate: () => camera.lookAt(cameraTarget),
+        onComplete: () => { lockCameraRotation = false; resetBtn.classList.remove('visible'); }
       });
     });
 
-    // Rendering Core Frame Execution Animation Cycle Loop Tracker Pipelines
-    function animate() {
-      requestAnimationFrame(animate);
+    // Constant Render Animation Refresh Pipeline Loop execution
+    function renderFrameLoop() {
+      requestAnimationFrame(renderFrameLoop);
       
-      const pulseTime = Date.now() * 0.006;
+      const timingEngine = Date.now() * 0.005;
       markers.forEach((m, idx) => {
-        if(m.children[0]) {
-          const ringScale = 1 + Math.sin(pulseTime + idx) * 0.4;
-          m.children[0].scale.set(ringScale, ringScale, 1);
-          m.children[0].material.opacity = 0.7 - (ringScale * 0.3);
+        if (m.children[0]) {
+          const scaledPulse = 1 + Math.sin(timingEngine + idx) * 0.35;
+          m.children[0].scale.set(scaledPulse, scaledPulse, 1);
+          m.children[0].material.opacity = 0.8 - (scaledPulse * 0.4);
         }
       });
 
-      if (!isFlying) {
-        globeGroup.rotation.y += 0.0025;
+      if (!lockCameraRotation) {
+        globeGroup.rotation.y += 0.0022;
+        globeGroup.rotation.x = 0.15; // Set matching angle elevation tilt aspect from blueprint image
         camera.lookAt(0, 0, 0);
       }
       
       renderer.render(scene, camera);
     }
 
-    // Viewport Scaled Geometric Re-Calculation Matrix Sync Update Listeners
     window.addEventListener('resize', () => {
       camera.aspect = container.offsetWidth / container.offsetHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(container.offsetWidth, container.offsetHeight);
     });
 
-    animate();
+    renderFrameLoop();
   </script>
 </body>
 </html>
