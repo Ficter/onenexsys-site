@@ -6,7 +6,6 @@
   <title>OneNexsys | Enterprise IT Infrastructure</title>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
     :root {
@@ -14,7 +13,7 @@
       --card: rgba(4, 15, 15, 0.85);
       --card-hover: rgba(6, 22, 22, 0.95);
       --green: #35e58e;
-      --green-glow: rgba(53, 229, 142, 0.15);
+      --green-glow: rgba(53, 229, 142, 0.2);
       --text: #f7fbfa;
       --muted: rgba(236, 248, 245, 0.7);
       --muted-dark: rgba(236, 248, 245, 0.4);
@@ -29,13 +28,12 @@
       color: var(--text);
       background-color: var(--bg);
       background-image: 
-        radial-gradient(circle at 80% 20%, rgba(53, 229, 142, 0.07), transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(53, 229, 142, 0.08), transparent 50%),
         radial-gradient(circle at 15% 60%, rgba(53, 229, 142, 0.03), transparent 40%);
       line-height: 1.5;
       overflow-x: hidden;
     }
 
-    /* Subtle Architectural Background Grid */
     body::before {
       content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
       background-image: 
@@ -47,7 +45,7 @@
     .container { width: min(100% - 64px, var(--max-width)); margin-inline: auto; }
     .accent { color: var(--green); }
 
-    /* Header Navigation Layout */
+    /* Header */
     header {
       position: sticky; top: 0; z-index: 100;
       background: rgba(2, 7, 7, 0.85);
@@ -82,7 +80,7 @@
     .btn-secondary { border: 1px solid rgba(255, 255, 255, 0.15); background: transparent; color: #fff; }
     .btn-secondary:hover { border-color: var(--green); background: rgba(53, 229, 142, 0.04); }
 
-    /* Hero Layout Section */
+    /* Hero Section */
     .hero { padding: 70px 0 60px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
     .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; }
     .label { color: var(--green); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
@@ -90,26 +88,30 @@
     .hero-copy { color: var(--muted); font-size: 0.95rem; max-width: 500px; margin-bottom: 32px; line-height: 1.6; }
     .hero-actions { display: flex; gap: 16px; margin-bottom: 48px; }
 
-    /* Inline Feature Sets */
     .feature-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .feature-item { border-left: 1px solid rgba(255, 255, 255, 0.08); padding-left: 16px; }
     .feature-item svg { width: 20px; height: 20px; color: var(--green); margin-bottom: 8px; display: block; }
     .feature-item strong { display: block; font-size: 0.85rem; margin-bottom: 4px; font-weight: 700; }
     .feature-item span { display: block; color: var(--muted-dark); font-size: 0.75rem; line-height: 1.4; }
 
-    /* Enterprise 3D Visualizer Container Box */
-    .hero-visual { position: relative; height: 540px; width: 100%; display: flex; align-items: center; justify-content: center; }
+    /* High-Fidelity Visualizer Container Box */
+    .hero-visual { position: relative; height: 550px; width: 100%; display: flex; align-items: center; justify-content: center; }
     #globe-container { width: 100%; height: 100%; }
     
-    /* Radial Base Shading to Match reference Depth */
+    /* Layered Glow Rings at Base of Globe */
     .globe-ambience {
-      position: absolute; width: 80%; height: 80%; border-radius: 50%; pointer-events: none;
-      background: radial-gradient(circle, transparent 40%, var(--bg) 70%),
-                  radial-gradient(circle, rgba(53, 229, 142, 0.1) 0%, transparent 65%);
-      z-index: 2;
+      position: absolute; width: 100%; height: 100%; pointer-events: none; z-index: 1;
+      background: radial-gradient(circle at 50% 50%, transparent 40%, var(--bg) 68%);
+    }
+    
+    .globe-base-rings {
+      position: absolute; bottom: 15px; width: 320px; height: 80px; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(53, 229, 142, 0.15) 0%, transparent 70%);
+      border: 1px solid rgba(53, 229, 142, 0.2); border-radius: 50%; transform: rotateX(75deg);
+      box-shadow: 0 0 30px rgba(53, 229, 142, 0.1), inset 0 0 30px rgba(53, 229, 142, 0.1);
     }
 
-    /* Operational Statistics Matrix Bar */
+    /* Metrics Section */
     .metrics-row { padding-top: 32px; }
     .metrics-grid {
       display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px;
@@ -121,7 +123,7 @@
     .metric-card strong { display: block; font-size: 1.6rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
     .metric-card span { color: var(--muted-dark); font-size: 0.8rem; white-space: nowrap; }
 
-    /* Structural Services Matrix Grid */
+    /* Services Section */
     .section { padding: 80px 0; }
     .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
     .section-head h2 { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; margin-top: 4px; }
@@ -137,7 +139,7 @@
     .service-card h3 { font-size: 1.05rem; margin-bottom: 10px; font-weight: 700; }
     .service-card p { color: var(--muted-dark); font-size: 0.85rem; line-height: 1.5; }
 
-    /* Asymmetric Corporate Data Architecture Layout */
+    /* Infrastructure Section */
     .infra-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start; }
     .infra-image {
       height: 250px; margin-top: 24px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.06);
@@ -152,7 +154,7 @@
     .check-item strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
     .check-item span { color: var(--muted-dark); font-size: 0.85rem; line-height: 1.45; }
 
-    /* Operational Conversion Call To Action Panel */
+    /* CTA Section */
     .cta {
       display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center;
       padding: 44px 48px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06);
@@ -166,7 +168,7 @@
     .cta h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.02em; }
     .cta p { color: var(--muted-dark); font-size: 0.95rem; }
 
-    /* Footer Systems Layout */
+    /* Footer */
     footer { padding: 60px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.04); background: #010404; }
     .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; }
     .footer-brand { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
@@ -182,7 +184,7 @@
     }
     .socials a:hover { border-color: var(--green); color: var(--green); }
 
-    /* Absolute Fluid Scaling Adaptations */
+    /* Responsiveness */
     @media (max-width: 1024px) {
       .container { width: min(100% - 40px, var(--max-width)); }
       .nav-links, .btn-nav { display: none; }
@@ -214,7 +216,7 @@
 <body>
   <header>
     <div class="container nav">
-      <a href="#" class="brand" aria-label="OneNexsys Corporate Home">
+      <a href="#" class="brand">
         <span class="brand-mark">N</span>
         <span class="brand-text"><strong>OneNexsys</strong><span>Building Secure. Delivering Trust.</span></span>
       </a>
@@ -247,22 +249,22 @@
             <div class="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               <strong>Secure by Design</strong>
-              <span>Enterprise-grade security at every layer.</span>
+              <span>Enterprise-grade security.</span>
             </div>
             <div class="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               <strong>High Performance</strong>
-              <span>Built for speed, uptime and reliability.</span>
+              <span>Built for speed and uptime.</span>
             </div>
             <div class="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l-7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
               <strong>Scalable Solutions</strong>
-              <span>Infrastructure that grows as you grow.</span>
+              <span>Grows seamlessly with your load.</span>
             </div>
             <div class="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              <strong>24/7 Expert Support</strong>
-              <span>Always-on support from real infrastructure experts.</span>
+              <strong>24/7 Support</strong>
+              <span>Direct access to core engineering.</span>
             </div>
           </div>
         </div>
@@ -270,6 +272,7 @@
         <div class="hero-visual">
           <div class="globe-ambience"></div>
           <div id="globe-container"></div>
+          <div class="globe-base-rings"></div>
         </div>
       </div>
     </section>
@@ -406,19 +409,9 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // High-Density Node Point Geo Coordinates Matrix Mapping
-    const connectionHubs = [
-      { lat: 40.7128, lon: -74.0060 },  // New York
-      { lat: 51.5074, lon: -0.1278 },   // London
-      { lat: 35.6762, lon: 139.6503 },  // Tokyo
-      { lat: 1.3521, lon: 103.8198 },   // Singapore
-      { lat: -33.8688, lon: 151.2093 }, // Sydney
-      { lat: 22.3193, lon: 114.1694 }   // Hong Kong
-    ];
-
     const container = document.getElementById('globe-container');
 
-    // WebGL Canvas Scene Initialization
+    // Setup Scene
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -429,119 +422,120 @@
     const globeGroup = new THREE.Group();
     scene.add(globeGroup);
 
-    const radius = 2.6;
+    const radius = 2.5;
 
-    // --- HIGH RESOLUTION PROCEDURAL TEXTURE GENERATOR FOR GEOGRAPHIC CONTINENTS ---
+    // --- CRITICAL SOLUTION: HIGH-RESOLUTION TRANSPARENT DATA MAP IMAGE ASSET ---
+    // Using a reliable high-density global particle map texture layout
+    const textureLoader = new THREE.TextureLoader();
+    const worldMapTexture = textureLoader.load('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80', () => {
+      // Force trigger initial redraw calculation once image buffers complete
+      renderer.render(scene, camera);
+    });
+
+    // Create a canvas texture to convert a clean, dense geographic matrix directly into points
     const mapCanvas = document.createElement('canvas');
     mapCanvas.width = 2048; mapCanvas.height = 1024;
     const ctx = mapCanvas.getContext('2d');
-    
-    ctx.fillStyle = '#020707';
-    ctx.fillRect(0, 0, 2048, 1024);
 
-    // High-fidelity polygonal trace tracking realistic structural landmass silhouettes
-    function drawDetailedGeography() {
-      ctx.fillStyle = '#041d17';       // Emerald continental body mass fill
-      ctx.strokeStyle = '#35e58e';   // Luminescent vector borders
-      ctx.lineWidth = 2;
+    const baseImage = new Image();
+    baseImage.crossOrigin = "anonymous";
+    // Using a clear, crisp high-density world projection map vector source
+    baseImage.src = "https://pub-c0621147da884ca0bda14e41ba925691.r2.dev/world-alpha.png";
 
-      const topography = [
-        [[320,220],[360,180],[460,160],[520,220],[610,260],[570,380],[530,520],[440,540],[340,420]], // North America
-        [[440,540],[510,580],[570,720],[520,880],[460,820],[410,640]],                             // South America
-        [[840,180],[980,120],[1200,100],[1450,140],[1680,240],[1620,440],[1250,480],[920,420]],    // Eurasia
-        [[880,440],[1020,440],[1120,540],[1140,680],[1040,820],[940,760],[860,580]],               // Africa
-        [[1440,640],[1580,640],[1640,740],[1520,800],[1420,740]]                                    // Australia
-      ];
-
-      topography.forEach(polygon => {
-        ctx.beginPath();
-        polygon.forEach((coord, index) => {
-          if (index === 0) ctx.moveTo(coord[0], coord[1]);
-          else ctx.lineTo(coord[0], coord[1]);
-        });
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-      });
-    }
-    drawDetailedGeography();
-
-    const worldTexture = new THREE.CanvasTexture(mapCanvas);
-    
-    // Core Geographic Earth Sphere Fusing The True Reference Boundaries
-    const geographicSphere = new THREE.Mesh(
-      new THREE.SphereGeometry(radius, 64, 64),
-      new THREE.MeshBasicMaterial({ map: worldTexture, transparent: true, opacity: 0.95 })
-    );
-    globeGroup.add(geographicSphere);
-
-    // --- HIGH-DENSITY ENTERPRISE FIBER SPLINE SYSTEM AND DATA WAVE MATRIX ---
-    const matrixGeo = new THREE.BufferGeometry();
-    const fiberPointsCount = 2500;
-    const coordinateArray = new Float32Array(fiberPointsCount * 3);
-
-    for (let i = 0; i < fiberPointsCount * 3; i += 3) {
-      const u = Math.random(); const v = Math.random();
-      const theta = u * 2.0 * Math.PI; const phi = Math.acos(2.0 * v - 1.0);
-      coordinateArray[i] = radius * Math.sin(phi) * Math.cos(theta);
-      coordinateArray[i+1] = radius * Math.sin(phi) * Math.sin(theta);
-      coordinateArray[i+2] = radius * Math.cos(phi);
-    }
-    matrixGeo.setAttribute('position', new THREE.BufferAttribute(coordinateArray, 3));
-    const matrixMat = new THREE.PointsMaterial({ color: 0x35e58e, size: 0.014, transparent: true, opacity: 0.4 });
-    const globalMatrixWave = new THREE.Points(matrixGeo, matrixMat);
-    globeGroup.add(globalMatrixWave);
-
-    // Vector Spherical Coordinate Positioning Engine
-    function calculateVectorPos(lat, lon, sphereRadius) {
-      const phi = (90 - lat) * (Math.PI / 180);
-      const theta = (lon + 180) * (Math.PI / 180);
-      return new THREE.Vector3(
-        -sphereRadius * Math.sin(phi) * Math.cos(theta),
-        sphereRadius * Math.cos(phi),
-        sphereRadius * Math.sin(phi) * Math.sin(theta)
-      );
-    }
-
-    // Processing Active Server Infrastructure Nodes and Link Arcs
-    const activeNodes = [];
-    const nodeMarkerGeo = new THREE.SphereGeometry(0.045, 16, 16);
-    const nodeMarkerMat = new THREE.MeshBasicMaterial({ color: 0x35e58e });
-
-    connectionHubs.forEach((hub, i) => {
-      const hubVector = calculateVectorPos(hub.lat, hub.lon, radius);
-      const markerMesh = new THREE.Mesh(nodeMarkerGeo, nodeMarkerMat);
-      markerMesh.position.copy(hubVector);
-      globeGroup.add(markerMesh);
-      activeNodes.push(markerMesh);
-
-      // Weave the complex interconnection paths across active hubs
-      connectionHubs.forEach((targetHub, j) => {
-        if (i < j) {
-          const targetVector = calculateVectorPos(targetHub.lat, targetHub.lon, radius);
-          const controlArcPoint = new THREE.Vector3().addVectors(hubVector, targetVector).multiplyScalar(0.5).normalize().multiplyScalar(radius + 0.4);
-          const bezierSpline = new THREE.QuadraticBezierCurve3(hubVector, controlArcPoint, targetVector);
-          
-          const splinePoints = bezierSpline.getPoints(32);
-          const pathGeometry = new THREE.BufferGeometry().setFromPoints(splinePoints);
-          const arcLineTrack = new THREE.Line(pathGeometry, new THREE.LineBasicMaterial({ color: 0x35e58e, transparent: true, opacity: 0.2 }));
-          globeGroup.add(arcLineTrack);
-        }
-      });
-    });
-
-    camera.position.z = 7.2;
-
-    // Fixed Engineering Tilt Setup Matching Reference Image
-    globeGroup.rotation.x = 0.25; 
-    globeGroup.rotation.z = -0.1;
-
-    // Real-Time Frame Rendering Pipeline Loop Execution
-    function executeAnimationPipeline() {
-      requestAnimationFrame(executeAnimationPipeline);
+    baseImage.onload = function() {
+      ctx.drawImage(baseImage, 0, 0, 2048, 1024);
+      const imgData = ctx.getImageData(0, 0, 2048, 1024).data;
       
-      // Continuous rotational path tracing
-      globeGroup.rotation.y += 0.0025;
+      const dotPositions = [];
+      const densitySample = 3; // Ultra-fine sampling layout matching the reference image density
+
+      for (let y = 0; y < 1024; y += densitySample) {
+        for (let x = 0; x < 2048; x += densitySample) {
+          const alphaIndex = ((y * 2048) + x) * 4 + 3;
+          if (imgData[alphaIndex] > 128) {
+            // Map flat canvas coordinate matrix directly into exact 3D global spherical values
+            const lon = (x / 2048) * 360 - 180;
+            const lat = -((y / 1024) * 180 - 90);
+            
+            const phi = (90 - lat) * (Math.PI / 180);
+            const theta = (lon + 180) * (Math.PI / 180);
+
+            dotPositions.push(
+              -radius * Math.sin(phi) * Math.cos(theta),
+              radius * Math.cos(phi),
+              radius * Math.sin(phi) * Math.sin(theta)
+            );
+          }
+        }
+      }
+
+      // Render the Dense Glowing Continent Points Layer
+      const particleGeo = new THREE.BufferGeometry();
+      particleGeo.setAttribute('position', new THREE.Float32BufferAttribute(dotPositions, 3));
+      
+      const particleMat = new THREE.PointsMaterial({
+        color: 0x35e58e,
+        size: 0.035,
+        transparent: true,
+        opacity: 0.85,
+        blending: THREE.AdditiveBlending
+      });
+
+      const continentParticles = new THREE.Points(particleGeo, particleMat);
+      globeGroup.add(continentParticles);
+
+      // Weave the interconnecting network mesh lines around the generated dots
+      generateNetworkMesh(dotPositions);
+    };
+
+    // --- HIGH INTENSITY DENSE CONNECTIVITY DATA LINES ---
+    function generateNetworkMesh(positions) {
+      const lineMaterial = new THREE.LineBasicMaterial({
+        color: 0x35e58e,
+        transparent: true,
+        opacity: 0.12,
+        blending: THREE.AdditiveBlending
+      });
+
+      const lineGeometry = new THREE.BufferGeometry();
+      const linePoints = [];
+
+      // Sample random connection lines across the dense land masses
+      for (let i = 0; i < positions.length; i += 90) {
+        const p1 = new THREE.Vector3(positions[i], positions[i+1], positions[i+2]);
+        
+        for (let j = i + 90; j < i + 400; j += 90) {
+          if (j < positions.length) {
+            const p2 = new THREE.Vector3(positions[j], positions[j+1], positions[j+2]);
+            
+            if (p1.distanceTo(p2) < 1.2) {
+              // Create realistic curved network arcs bowing outwards from the world structure
+              const midPoint = new THREE.Vector3().addVectors(p1, p2).multiplyScalar(0.5).normalize().multiplyScalar(radius + 0.15);
+              const curve = new THREE.QuadraticBezierCurve3(p1, midPoint, p2);
+              linePoints.push(...curve.getPoints(8));
+            }
+          }
+        }
+      }
+
+      lineGeometry.setFromPoints(linePoints);
+      const networkMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
+      globeGroup.add(networkMesh);
+    }
+
+    // Camera Orientation Settings
+    camera.position.z = 6.2;
+
+    // Set precise visual angle tilt matching the target layout image
+    globeGroup.rotation.x = 0.38; 
+    globeGroup.rotation.z = -0.15;
+
+    // Animation Loop Pipeline Execution
+    function render() {
+      requestAnimationFrame(render);
+      
+      // Continuous smooth horizontal rotation matching the interactive live design
+      globeGroup.rotation.y += 0.0018;
       
       renderer.render(scene, camera);
     }
@@ -552,7 +546,7 @@
       renderer.setSize(container.offsetWidth, container.offsetHeight);
     });
 
-    executeAnimationPipeline();
+    render();
   </script>
 </body>
 </html>
