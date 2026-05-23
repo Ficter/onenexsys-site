@@ -126,51 +126,6 @@
     .service-card h3 { font-size: 1.05rem; margin-bottom: 10px; font-weight: 700; }
     .service-card p { color: var(--muted-dark); font-size: 0.85rem; line-height: 1.5; }
 
-    /* Infrastructure Panel */
-    .infra-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start; }
-    .infra-image {
-      height: 250px; margin-top: 24px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.06);
-      background: linear-gradient(rgba(2, 7, 7, 0.2), rgba(2, 7, 7, 0.5)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80') center/cover;
-    }
-    .check-list { display: flex; flex-direction: column; gap: 24px; }
-    .check-item { display: flex; gap: 14px; }
-    .check-icon {
-      width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--green-glow);
-      display: grid; place-items: center; color: var(--green); font-size: 0.75rem; flex-shrink: 0; margin-top: 2px; background: rgba(53, 229, 142, 0.02);
-    }
-    .check-item strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
-    .check-item span { color: var(--muted-dark); font-size: 0.85rem; line-height: 1.45; }
-
-    /* Call To Action Conversions Area */
-    .cta {
-      display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center;
-      padding: 44px 48px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06);
-      background: radial-gradient(circle at 90% 50%, rgba(53, 229, 142, 0.08), transparent 40%), linear-gradient(180deg, #041313, #020707);
-    }
-    .cta-icon-box {
-      width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--green-glow);
-      display: grid; place-items: center; color: var(--green); background: rgba(53, 229, 142, 0.02);
-    }
-    .cta-icon-box svg { width: 22px; height: 22px; }
-    .cta h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.02em; }
-    .cta p { color: var(--muted-dark); font-size: 0.95rem; }
-
-    /* Footer Layout */
-    footer { padding: 60px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.04); background: #010404; }
-    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; }
-    .footer-brand { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
-    .footer-copy { color: var(--muted-dark); font-size: 0.8rem; }
-    .footer-title { color: var(--green); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
-    .footer-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 24px; font-size: 0.85rem; color: var(--muted); }
-    .footer-links a { text-decoration: none; color: var(--muted); }
-    .footer-links a:hover { color: #fff; }
-    .socials { display: flex; gap: 12px; }
-    .socials a {
-      width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.08);
-      display: grid; place-items: center; font-size: 0.8rem; color: var(--muted-dark); text-transform: uppercase; text-decoration: none; transition: all 0.2s;
-    }
-    .socials a:hover { border-color: var(--green); color: var(--green); }
-
     @media (max-width: 1024px) {
       .nav-links { display: none; }
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
@@ -180,14 +135,6 @@
       .hero-visual { height: 450px; }
       .metrics-grid { grid-template-columns: repeat(3, 1fr); }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .infra-grid { grid-template-columns: 1fr; }
-      .cta { grid-template-columns: 1fr; text-align: center; justify-items: center; }
-      .footer-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      .metrics-grid { grid-template-columns: 1fr; }
-      .metric-card { border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.05); }
-      .services-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -281,36 +228,6 @@
         </div>
       </div>
     </section>
-
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="label">Our Services</div>
-            <h2>End-to-End Infrastructure Solutions</h2>
-          </div>
-          <a href="#services" class="view-link">View All Services →</a>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-            <h3>Cloud Solutions</h3>
-            <p>Scalable cloud infrastructure hosting and migrations built for workload optimization.</p>
-          </article>
-          <article class="service-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-            <h3>Data Center Services</h3>
-            <p>Reliable colocation, hosting, and physical data center matrix architectures.</p>
-          </article>
-          <article class="service-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
-            <h3>Network Solutions</h3>
-            <p>High-performance dark fiber networks keeping core frameworks completely connected.</p>
-          </article>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -319,19 +236,6 @@
         <div class="footer-brand"><span class="brand-mark">N</span><span class="brand-text"><strong>OneNexsys</strong></span></div>
         <div class="footer-copy">© <span id="year"></span> OneNexsys. All Rights Reserved.</div>
       </div>
-      <div>
-        <div class="footer-title">Quick Links</div>
-        <div class="footer-links">
-          <a href="#">Home</a><a href="#infrastructure">Infrastructure</a>
-          <a href="#about">About Us</a><a href="#career">Career</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-title">Follow Us</div>
-        <div class="socials">
-          <a href="#">LN</a><a href="#">X</a><a href="#">YT</a>
-        </div>
-      </div>
     </div>
   </footer>
 
@@ -339,7 +243,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
     const container = document.getElementById('globe-container');
 
-    // Scene setup
+    // Scene Setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -352,102 +256,153 @@
 
     const globeRadius = 2.4;
 
-    // Build standard network baseline matrices using pure mathematical loop algorithms
-    const positions = [];
-    const particleCount = 4500;
+    // --- IMMUTABLE LOCAL CORE VECTOR COORDINATES MATRIX ---
+    // Production-safe data framework representing genuine shoreline silhouettes
+    const landContours = [
+      // North America Outline
+      { lat: [70, 65, 55, 45, 35, 25, 20, 15, 20, 30, 45, 60, 70], lon: [-160, -140, -120, -125, -120, -105, -100, -90, -80, -80, -60, -65, -100] },
+      // South America Outline
+      { lat: [10, 5, -5, -20, -40, -55, -50, -40, -20, -5, 10], lon: [-75, -80, -80, -70, -75, -70, -65, -50, -40, -35, -60] },
+      // Africa Outline
+      { lat: [35, 30, 15, 5, -15, -30, -34, -20, 5, 10, 30, 37, 35], lon: [-5, 15, 40, 50, 40, 30, 20, 10, 10, -15, -10, 0, -5] },
+      // Eurasia Structure
+      { lat: [70, 75, 70, 60, 50, 40, 35, 30, 10, 15, 25, 35, 40, 55, 65], lon: [20, 60, 100, 140, 140, 120, 105, 90, 105, 75, 45, 30, 0, 10, 0] },
+      // Australia System
+      { lat: [-15, -20, -35, -38, -32, -22, -12, -15], lon: [125, 115, 115, 145, 150, 150, 140, 125] }
+    ];
 
-    for (let i = 0; i < particleCount; i++) {
-      // Golden spiral distribution algorithm coordinates over a sphere matrix
-      const phi = Math.acos(-1 + (2 * i) / particleCount);
-      const theta = Math.sqrt(particleCount * Math.PI) * phi;
+    const pointCoordinates = [];
 
-      // Add mathematical variation to emulate structural continent density maps
-      const waveFactor = Math.sin(phi * 8) * Math.cos(theta * 6);
-      if (waveFactor > -0.25) { 
-        const x = globeRadius * Math.sin(phi) * Math.cos(theta);
-        const y = globeRadius * Math.cos(phi);
-        const z = globeRadius * Math.sin(phi) * Math.sin(theta);
-        positions.push(x, y, z);
+    // Interpolate points natively between landmarks to build solid continent boundaries
+    landContours.forEach(region => {
+      for (let i = 0; i < region.lat.length; i++) {
+        const nextIndex = (i + 1) % region.lat.length;
+        const startLat = region.lat[i];
+        const startLon = region.lon[i];
+        const endLat = region.lat[nextIndex];
+        const endLon = region.lon[nextIndex];
+
+        // Fill inner land spaces with dense scanning points
+        const densitySteps = 35;
+        for (let j = 0; j < densitySteps; j++) {
+          const ratio = j / densitySteps;
+          const currentLat = startLat + (endLat - startLat) * ratio;
+          const currentLon = startLon + (endLon - startLon) * ratio;
+
+          // Convert linear angles to 3D Cartesian vectors
+          const phi = (90 - currentLat) * (Math.PI / 180);
+          const theta = (currentLon + 180) * (Math.PI / 180);
+
+          const x = -globeRadius * Math.sin(phi) * Math.cos(theta);
+          const y = globeRadius * Math.cos(phi);
+          const z = globeRadius * Math.sin(phi) * Math.sin(theta);
+
+          // Add minor positional scattering for a clean, non-rigid appearance
+          pointCoordinates.push(
+            x + (Math.random() - 0.5) * 0.05,
+            y + (Math.random() - 0.5) * 0.05,
+            z + (Math.random() - 0.5) * 0.05
+          );
+        }
+      }
+    });
+
+    // Generate inner continent surface filler particles
+    for (let i = 0; i < 3000; i++) {
+      const phi = Math.random() * Math.PI;
+      const theta = Math.random() * Math.PI * 2;
+
+      // Filter particles mathematically to keep them inside land clusters
+      const lat = 90 - (phi * 180 / Math.PI);
+      const lon = (theta * 180 / Math.PI) - 180;
+
+      let insideLandmass = false;
+      if (lat > -60 && lat < 75) {
+        if (lon > -165 && lon < -35 && lat > -55 && lat < 70) insideLandmass = true; // Americas
+        if (lon > -20 && lon < 52 && lat > -35 && lat < 40) insideLandmass = true;   // Africa
+        if (lon > -10 && lon < 145 && lat > 10 && lat < 75) insideLandmass = true;  // Eurasia
+        if (lon > 110 && lon < 155 && lat > -40 && lat < -10) insideLandmass = true; // Australia
+      }
+
+      if (insideLandmass) {
+        pointCoordinates.push(
+          -globeRadius * Math.sin(phi) * Math.cos(theta),
+          globeRadius * Math.cos(phi),
+          globeRadius * Math.sin(phi) * Math.sin(theta)
+        );
       }
     }
 
-    // Render Matrix Base Points
+    // Render Clean High-Density Continent Points
     const particleGeometry = new THREE.BufferGeometry();
-    particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(pointCoordinates, 3));
     
     const particleMaterial = new THREE.PointsMaterial({
       color: 0x35e58e,
-      size: 0.035,
-      transparent: true,
-      opacity: 0.45,
-      blending: THREE.AdditiveBlending
-    });
-
-    const baseGlobePoints = new THREE.Points(particleGeometry, particleMaterial);
-    mainGroup.add(baseGlobePoints);
-
-    // --- INTERCONNECTING WAVE PATHWAY DATA ARCS ---
-    const lineGroup = new THREE.Group();
-    mainGroup.add(lineGroup);
-
-    const arcsCount = 12;
-    for (let i = 0; i < arcsCount; i++) {
-      const arcPoints = [];
-      const segments = 64;
-      const cruiseTilt = Math.random() * Math.PI;
-      const rotationalOffset = Math.random() * Math.PI * 2;
-
-      for (let j = 0; j <= segments; j++) {
-        const angle = (j / segments) * Math.PI * 2;
-        
-        // Mathematical modulation to create sine-wave structural variations along coordinates
-        const dynamicRadius = globeRadius + Math.sin(j * 0.15) * 0.04;
-        
-        const x = dynamicRadius * Math.cos(angle) * Math.sin(cruiseTilt);
-        const y = dynamicRadius * Math.sin(angle) * Math.cos(rotationalOffset);
-        const z = dynamicRadius * Math.cos(cruiseTilt);
-        
-        arcPoints.push(x, y, z);
-      }
-
-      const arcGeometry = new THREE.BufferGeometry();
-      const internalFloatArray = new Float32Array(arcPoints);
-      arcGeometry.setAttribute('position', new THREE.BufferAttribute(internalFloatArray, 3));
-      
-      const arcMaterial = new THREE.LineBasicMaterial({
-        color: 0x35e58e,
-        transparent: true,
-        opacity: 0.18,
-        blending: THREE.AdditiveBlending
-      });
-      
-      const structuralArc = new THREE.Line(arcGeometry, arcMaterial);
-      lineGroup.add(structuralArc);
-    }
-
-    // --- INTERSECTION TERMINAL TERMINUS NODES ---
-    const nodesCount = 24;
-    const nodeCoords = [];
-    for (let i = 0; i < nodesCount; i++) {
-      const sampleIndex = Math.floor(Math.random() * (positions.length / 3)) * 3;
-      nodeCoords.push(
-        positions[sampleIndex] * 1.01,
-        positions[sampleIndex + 1] * 1.01,
-        positions[sampleIndex + 2] * 1.01
-      );
-    }
-
-    const nodeGeometry = new THREE.BufferGeometry();
-    nodeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(nodeCoords, 3));
-    const nodeMaterial = new THREE.PointsMaterial({
-      color: 0x76ffd0,
-      size: 0.08,
+      size: 0.045, // Sharp glowing point diameter matching the target mockup
       transparent: true,
       opacity: 0.85,
       blending: THREE.AdditiveBlending
     });
-    const networkNodes = new THREE.Points(nodeGeometry, nodeMaterial);
-    mainGroup.add(networkNodes);
+
+    const continentPoints = new THREE.Points(particleGeometry, particleMaterial);
+    mainGroup.add(continentPoints);
+
+    // --- INTERCONNECTING BEZIER DATA PATHWAYS ---
+    const connectionGroup = new THREE.Group();
+    mainGroup.add(connectionGroup);
+
+    const anchorNodes = [];
+    for (let i = 0; i < 20; i++) {
+      const sampleIdx = Math.floor(Math.random() * (pointCoordinates.length / 3)) * 3;
+      anchorNodes.push(new THREE.Vector3(
+        pointCoordinates[sampleIdx],
+        pointCoordinates[sampleIdx + 1],
+        pointCoordinates[sampleIdx + 2]
+      ).normalize().multiplyScalar(globeRadius + 0.02));
+    }
+
+    const pathLinesGeometry = new THREE.BufferGeometry();
+    const linearPathVectorCollection = [];
+
+    for (let i = 0; i < anchorNodes.length; i++) {
+      const nextNode = anchorNodes[(i + 1) % anchorNodes.length];
+      const p1 = anchorNodes[i];
+      const p2 = nextNode;
+
+      const midPlaneVector = new THREE.Vector3().addVectors(p1, p2).multiplyScalar(0.5).normalize().multiplyScalar(globeRadius + 0.25);
+      const quadraticCurve = new THREE.QuadraticBezierCurve3(p1, midPlaneVector, p2);
+
+      quadraticCurve.getPoints(12).forEach(pt => {
+        linearPathVectorCollection.push(pt.x, pt.y, pt.z);
+      });
+    }
+
+    pathLinesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linearPathVectorCollection, 3));
+    const linesMaterial = new THREE.LineBasicMaterial({
+      color: 0x35e58e,
+      transparent: true,
+      opacity: 0.25,
+      blending: THREE.AdditiveBlending
+    });
+    const networkMeshArcs = new THREE.Line(pathLinesGeometry, linesMaterial);
+    connectionGroup.add(networkMeshArcs);
+
+    // --- BRIGHT ENDPOINT TERMINALS ---
+    const nodeGeometry = new THREE.BufferGeometry();
+    const nodesCoordsArray = [];
+    anchorNodes.forEach(n => nodesCoordsArray.push(n.x, n.y, n.z));
+    nodeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(nodesCoordsArray, 3));
+    
+    const nodeMaterial = new THREE.PointsMaterial({
+      color: 0x76ffd0,
+      size: 0.09,
+      transparent: true,
+      opacity: 0.95,
+      blending: THREE.AdditiveBlending
+    });
+    const terminalPoints = new THREE.Points(nodeGeometry, nodeMaterial);
+    mainGroup.add(terminalPoints);
 
     // --- BASE RADAR ALIGNMENT RINGS ---
     const radarBaseGroup = new THREE.Group();
@@ -471,18 +426,17 @@
     radarBaseGroup.add(makeRadarRingInstance(1.8, 0.2));
     radarBaseGroup.add(makeRadarRingInstance(2.4, 0.06));
 
-    // View Orientation Matrix Coordinates
+    // Position Camera and Apply Perspective Angles
     camera.position.z = 6.2;
-    mainGroup.rotation.x = 0.4;
-    mainGroup.rotation.z = -0.1;
+    mainGroup.rotation.x = 0.42;
+    mainGroup.rotation.z = -0.08;
 
-    // Animation Render Pipeline Loop
+    // Animation Loop
     function animate() {
       requestAnimationFrame(animate);
       
-      mainGroup.rotation.y += 0.0025;
-      lineGroup.rotation.x += 0.001;
-      lineGroup.rotation.y -= 0.001;
+      mainGroup.rotation.y += 0.002;
+      connectionGroup.rotation.y += 0.001;
       
       renderer.render(scene, camera);
     }
