@@ -10,8 +10,8 @@
   <style>
     :root {
       --bg: #020707;
-      --card: rgba(4, 15, 15, 0.85);
-      --card-hover: rgba(6, 22, 22, 0.95);
+      --card: rgba(4, 15, 15, 0.7);
+      --card-hover: rgba(6, 22, 22, 0.9);
       --green: #35e58e;
       --green-glow: rgba(53, 229, 142, 0.15);
       --text: #f7fbfa;
@@ -72,12 +72,12 @@
       border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; cursor: pointer;
     }
     .btn-primary { background: var(--green); color: #020707; border: none; font-weight: 700; }
-    .btn-primary:hover { background: #fff; transform: translateY(-1px); }
+    .btn-primary:hover { background: #fff; transform: translateY(-1px); box-shadow: 0 0 20px rgba(53, 229, 142, 0.4); }
     .btn-secondary { border: 1px solid rgba(255, 255, 255, 0.15); background: transparent; color: #fff; }
     .btn-secondary:hover { border-color: var(--green); background: rgba(53, 229, 142, 0.04); }
 
     /* Hero Section Setup */
-    .hero { padding: 60px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+    .hero { padding: 40px 0 60px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
     .label { color: var(--green); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
     h1 { font-size: clamp(2.4rem, 4vw, 3.4rem); line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 20px; font-weight: 800; }
@@ -91,7 +91,7 @@
     .feature-item span { display: block; color: var(--muted-dark); font-size: 0.7rem; line-height: 1.4; }
 
     /* Canvas Display Wrapper */
-    .hero-visual { position: relative; height: 550px; width: 100%; display: flex; align-items: center; justify-content: center; }
+    .hero-visual { position: relative; height: 580px; width: 100%; display: flex; align-items: center; justify-content: center; }
     #globe-container { width: 100%; height: 100%; z-index: 2; }
     .globe-ambience {
       position: absolute; width: 100%; height: 100%; pointer-events: none; z-index: 1;
@@ -110,7 +110,7 @@
     .metric-card strong { display: block; font-size: 1.6rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
     .metric-card span { color: var(--muted-dark); font-size: 0.8rem; }
 
-    /* Services Dynamic Layout */
+    /* Services Layout (Full 6-Card Alignment) */
     .section { padding: 80px 0; }
     .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
     .section-head h2 { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; margin-top: 4px; }
@@ -119,12 +119,69 @@
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .service-card {
       padding: 36px 28px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.04);
-      background: var(--card); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      background: var(--card); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); backdrop-filter: blur(10px);
     }
     .service-card:hover { border-color: rgba(53, 229, 142, 0.25); transform: translateY(-2px); background: var(--card-hover); }
     .service-card svg { width: 26px; height: 26px; color: var(--green); margin-bottom: 24px; }
     .service-card h3 { font-size: 1.05rem; margin-bottom: 10px; font-weight: 700; }
     .service-card p { color: var(--muted-dark); font-size: 0.85rem; line-height: 1.5; }
+
+    /* Infrastructure Split Panel */
+    .infra-section { padding: 60px 0; border-top: 1px solid rgba(255, 255, 255, 0.04); }
+    .infra-grid { display: grid; grid-template-columns: 0.91fr 1.09fr; gap: 64px; align-items: center; }
+    .infra-image-container {
+      position: relative; border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06); height: 380px;
+    }
+    .infra-image {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, rgba(2,7,7,0.4), rgba(4,19,19,0.7)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80') center/cover;
+    }
+    .check-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 28px; }
+    .check-item { display: flex; gap: 14px; }
+    .check-icon {
+      width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--green-glow);
+      display: grid; place-items: center; color: var(--green); font-size: 0.75rem; flex-shrink: 0; margin-top: 2px; background: rgba(53, 229, 142, 0.05);
+    }
+    .check-item strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+    .check-item span { color: var(--muted-dark); font-size: 0.85rem; line-height: 1.45; }
+
+    /* Partner Brand Logos Grid */
+    .partners-box { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+    .partners-title { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-dark); margin-bottom: 16px; font-weight: 700; }
+    .brand-flex { display: flex; gap: 32px; align-items: center; opacity: 0.55; flex-wrap: wrap; }
+    .brand-flex span { font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; color: #fff; }
+
+    /* Conversion Area */
+    .cta-wrapper { padding: 40px 0 80px; }
+    .cta {
+      display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center;
+      padding: 44px 48px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06);
+      background: radial-gradient(circle at 90% 50%, rgba(53, 229, 142, 0.06), transparent 40%), linear-gradient(180deg, #041313, #020707);
+    }
+    .cta-icon-box {
+      width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--green-glow);
+      display: grid; place-items: center; color: var(--green); background: rgba(53, 229, 142, 0.02);
+    }
+    .cta-icon-box svg { width: 22px; height: 22px; }
+    .cta h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.02em; }
+    .cta p { color: var(--muted-dark); font-size: 0.95rem; }
+
+    /* Footer Layout */
+    footer { padding: 60px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.04); background: #010404; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; }
+    .footer-brand { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
+    .footer-copy { color: var(--muted-dark); font-size: 0.8rem; margin-top: 8px; }
+    .footer-title { color: var(--green); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+    .footer-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 24px; font-size: 0.85rem; color: var(--muted); }
+    .footer-links a { text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .socials { display: flex; gap: 12px; }
+    .socials a {
+      width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid; place-items: center; font-size: 0.8rem; color: var(--muted-dark); text-transform: uppercase; text-decoration: none; transition: all 0.2s;
+    }
+    .socials a:hover { border-color: var(--green); color: var(--green); }
 
     @media (max-width: 1024px) {
       .nav-links { display: none; }
@@ -132,9 +189,18 @@
       .hero-copy { margin-inline: auto; }
       .hero-actions { justify-content: center; }
       .feature-row { max-width: 600px; margin-inline: auto; text-align: left; }
-      .hero-visual { height: 450px; }
+      .hero-visual { height: 480px; }
       .metrics-grid { grid-template-columns: repeat(3, 1fr); }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .infra-grid { grid-template-columns: 1fr; }
+      .check-list { grid-template-columns: 1fr; }
+      .cta { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .metrics-grid { grid-template-columns: 1fr; }
+      .metric-card { border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+      .services-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -175,22 +241,22 @@
             <div class="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               <strong>Secure by Design</strong>
-              <span>Enterprise-grade encryption.</span>
+              <span>Enterprise-grade security.</span>
             </div>
             <div class="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               <strong>High Performance</strong>
-              <span>Built for absolute speed.</span>
+              <span>Built for speed & stability.</span>
             </div>
             <div class="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l-7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
               <strong>Scalable Solutions</strong>
-              <span>Infrastructure that adapts.</span>
+              <span>Infrastructure that grows.</span>
             </div>
             <div class="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              <strong>24/7 Support</strong>
-              <span>Always-on core response.</span>
+              <strong>24/7 Expert Support</strong>
+              <span>Real infrastructure experts.</span>
             </div>
           </div>
         </div>
@@ -228,6 +294,119 @@
         </div>
       </div>
     </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="label">Our Services</div>
+            <h2>End-to-End Infrastructure Solutions</h2>
+          </div>
+          <a href="#services" class="view-link">View All Services →</a>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+            <h3>Cloud Solutions</h3>
+            <p>Scalable cloud infrastructure hosting and migrations built for workload optimization.</p>
+          </article>
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            <h3>Data Center Services</h3>
+            <p>Reliable colocation, hosting, and data center management implementations.</p>
+          </article>
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+            <h3>Network Solutions</h3>
+            <p>High-performance networks that keep your business framework completely connected.</p>
+          </article>
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <h3>Cybersecurity</h3>
+            <p>Protect your core ecosystem infrastructure with advanced threat security and compliance.</p>
+          </article>
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+            <h3>IT Consulting</h3>
+            <p>Strategic architecture guidance to optimize, transform, and drive modern pipeline growth.</p>
+          </article>
+          <article class="service-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <h3>Managed Services</h3>
+            <p>Proactive performance monitoring and full server management for absolute peace of mind.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="infra-section" id="infrastructure">
+      <div class="container infra-grid">
+        <div class="infra-image-container">
+          <div class="infra-image"></div>
+        </div>
+        <div class="infra-content">
+          <div class="label">Our Infrastructure</div>
+          <h2>Built on Strength.<br />Backed by Technology.</h2>
+          
+          <div class="check-list">
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <div>
+                <strong>Tier III+ Data Centers</strong>
+                <span>Enterprise-grade facilities with maximum structural reliability.</span>
+              </div>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <div>
+                <strong>Redundant Network</strong>
+                <span>Multiple carriers and customized path failover architecture.</span>
+              </div>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <div>
+                <strong>Advanced Security</strong>
+                <span>Biometric access validation, CCTV tracking, and automated suppression.</span>
+              </div>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <div>
+                <strong>Sustainable Operations</strong>
+                <span>Energy-efficient hardware solutions for cleaner tech footprints.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="partners-box">
+            <div class="partners-title">Your Trusted Infrastructure Partner</div>
+            <div class="brand-flex">
+              <span>DELL Technologies</span>
+              <span>vmware</span>
+              <span>CISCO</span>
+              <span>Hewlett Packard Enterprise</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-wrapper">
+      <div class="container">
+        <div class="cta">
+          <div class="cta-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h2>Ready to Power Your Business?</h2>
+            <p>Connect with our expert infrastructure architects today to explore custom hardware profiles.</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:contact@onenexsys.com">Get in Touch →</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -236,6 +415,20 @@
         <div class="footer-brand"><span class="brand-mark">N</span><span class="brand-text"><strong>OneNexsys</strong></span></div>
         <div class="footer-copy">© <span id="year"></span> OneNexsys. All Rights Reserved.</div>
       </div>
+      <div>
+        <div class="footer-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="#">Home</a><a href="#infrastructure">Infrastructure</a>
+          <a href="#about">About Us</a><a href="#career">Career</a>
+          <a href="#services">Services</a><a href="mailto:contact@onenexsys.com">Contact Us</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Follow Us</div>
+        <div class="socials">
+          <a href="#">LN</a><a href="#">X</a><a href="#">YT</a>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -243,7 +436,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
     const container = document.getElementById('globe-container');
 
-    // Scene Setup
+    // Scene Core Construction
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -254,78 +447,76 @@
     const mainGroup = new THREE.Group();
     scene.add(mainGroup);
 
-    const globeRadius = 2.4;
+    const globeRadius = 2.45;
 
-    // --- IMMUTABLE LOCAL CORE VECTOR COORDINATES MATRIX ---
-    // Production-safe data framework representing genuine shoreline silhouettes
-    const landContours = [
-      // North America Outline
-      { lat: [70, 65, 55, 45, 35, 25, 20, 15, 20, 30, 45, 60, 70], lon: [-160, -140, -120, -125, -120, -105, -100, -90, -80, -80, -60, -65, -100] },
-      // South America Outline
-      { lat: [10, 5, -5, -20, -40, -55, -50, -40, -20, -5, 10], lon: [-75, -80, -80, -70, -75, -70, -65, -50, -40, -35, -60] },
-      // Africa Outline
-      { lat: [35, 30, 15, 5, -15, -30, -34, -20, 5, 10, 30, 37, 35], lon: [-5, 15, 40, 50, 40, 30, 20, 10, 10, -15, -10, 0, -5] },
-      // Eurasia Structure
-      { lat: [70, 75, 70, 60, 50, 40, 35, 30, 10, 15, 25, 35, 40, 55, 65], lon: [20, 60, 100, 140, 140, 120, 105, 90, 105, 75, 45, 30, 0, 10, 0] },
-      // Australia System
-      { lat: [-15, -20, -35, -38, -32, -22, -12, -15], lon: [125, 115, 115, 145, 150, 150, 140, 125] }
+    // --- CURVED MATHEMATICAL LANDMASS VECTOR Blueprints ---
+    const coastlines = [
+      // North America Smooth Paths
+      [ [68,-160], [65,-150], [60,-130], [52,-132], [42,-124], [30,-115], [18,-103], [12,-86], [9,-79], [16,-93], [24,-81], [25,-97], [29,-80], [39,-75], [46,-64], [53,-56], [60,-45], [68,-60], [72,-85], [62,-95], [64,-115], [70,-135], [68,-160] ],
+      // South America Smooth Paths
+      [ [12,-72], [7,-80], [-3,-81], [-14,-76], [-25,-71], [-38,-73], [-48,-75], [-55,-68], [-48,-66], [-38,-58], [-22,-44], [-6,-35], [-5,-50], [7,-53], [12,-72] ],
+      // Africa Smooth Paths
+      [ [35,-6], [32,12], [30,32], [14,42], [12,51], [-5,39], [-22,35], [-34,19], [-28,15], [-12,13], [5,0], [4,-9], [14,-17], [21,-17], [32,-17], [35,-6] ],
+      // Eurasia Smooth Paths
+      [ [36,-9], [43,10], [53,5], [60,25], [64,60], [69,40], [73,70], [71,110], [72,130], [68,165], [54,141], [43,131], [35,125], [22,114], [15,108], [6,100], [10,96], [22,88], [15,74], [25,62], [13,47], [24,38], [31,34], [30,27], [36,-9] ],
+      // Australia Smooth Paths
+      [ [-22,114], [-34,115], [-35,138], [-28,146], [-12,136], [-15,124], [-22,114] ]
     ];
 
-    const pointCoordinates = [];
+    const finalCalculatedPoints = [];
 
-    // Interpolate points natively between landmarks to build solid continent boundaries
-    landContours.forEach(region => {
-      for (let i = 0; i < region.lat.length; i++) {
-        const nextIndex = (i + 1) % region.lat.length;
-        const startLat = region.lat[i];
-        const startLon = region.lon[i];
-        const endLat = region.lat[nextIndex];
-        const endLon = region.lon[nextIndex];
+    // Parametric Hermite/Bézier Spline Interpolation Engine to produce elegant curves
+    coastlines.forEach(polygon => {
+      const vector3List = [];
+      
+      // Phase A: Convert coordinates into raw global 3D vector points
+      polygon.forEach(coord => {
+        const lat = coord[0];
+        const lon = coord[1];
+        const phi = (90 - lat) * (Math.PI / 180);
+        const theta = (lon + 180) * (Math.PI / 180);
 
-        // Fill inner land spaces with dense scanning points
-        const densitySteps = 35;
-        for (let j = 0; j < densitySteps; j++) {
-          const ratio = j / densitySteps;
-          const currentLat = startLat + (endLat - startLat) * ratio;
-          const currentLon = startLon + (endLon - startLon) * ratio;
+        vector3List.push(new THREE.Vector3(
+          -globeRadius * Math.sin(phi) * Math.cos(theta),
+          globeRadius * Math.cos(phi),
+          globeRadius * Math.sin(phi) * Math.sin(theta)
+        ));
+      });
 
-          // Convert linear angles to 3D Cartesian vectors
-          const phi = (90 - currentLat) * (Math.PI / 180);
-          const theta = (currentLon + 180) * (Math.PI / 180);
+      // Phase B: Interpolate positions along a CatmullRom Spline Curve for high fidelity
+      const splineCurve = new THREE.CatmullRomCurve3(vector3List, true, 'centripetal');
+      const highDensitySamples = splineCurve.getPoints(320);
 
-          const x = -globeRadius * Math.sin(phi) * Math.cos(theta);
-          const y = globeRadius * Math.cos(phi);
-          const z = globeRadius * Math.sin(phi) * Math.sin(theta);
-
-          // Add minor positional scattering for a clean, non-rigid appearance
-          pointCoordinates.push(
-            x + (Math.random() - 0.5) * 0.05,
-            y + (Math.random() - 0.5) * 0.05,
-            z + (Math.random() - 0.5) * 0.05
+      highDensitySamples.forEach(v3 => {
+        // Scatter secondary companion points nearby to fill out landmass depth weight safely
+        for(let k = 0; k < 2; k++) {
+          finalCalculatedPoints.push(
+            v3.x + (Math.random() - 0.5) * 0.04,
+            v3.y + (Math.random() - 0.5) * 0.04,
+            v3.z + (Math.random() - 0.5) * 0.04
           );
         }
-      }
+      });
     });
 
-    // Generate inner continent surface filler particles
-    for (let i = 0; i < 3000; i++) {
+    // Populate interior matrix clusters to maintain solid continent densities
+    for (let i = 0; i < 2500; i++) {
       const phi = Math.random() * Math.PI;
       const theta = Math.random() * Math.PI * 2;
 
-      // Filter particles mathematically to keep them inside land clusters
       const lat = 90 - (phi * 180 / Math.PI);
       const lon = (theta * 180 / Math.PI) - 180;
 
-      let insideLandmass = false;
-      if (lat > -60 && lat < 75) {
-        if (lon > -165 && lon < -35 && lat > -55 && lat < 70) insideLandmass = true; // Americas
-        if (lon > -20 && lon < 52 && lat > -35 && lat < 40) insideLandmass = true;   // Africa
-        if (lon > -10 && lon < 145 && lat > 10 && lat < 75) insideLandmass = true;  // Eurasia
-        if (lon > 110 && lon < 155 && lat > -40 && lat < -10) insideLandmass = true; // Australia
+      let insideLand = false;
+      if (lat > -55 && lat < 72) {
+        if (lon > -165 && lon < -34 && lat > -55 && lat < 68) insideLand = true; // Americas Matrix
+        if (lon > -18 && lon < 50 && lat > -34 && lat < 34) insideLand = true;   // Africa Matrix
+        if (lon > -10 && lon < 150 && lat > 10 && lat < 72) insideLand = true;  // Europe/Asia Matrix
+        if (lon > 112 && lon < 152 && lat > -39 && lat < -11) insideLand = true; // Australia Matrix
       }
 
-      if (insideLandmass) {
-        pointCoordinates.push(
+      if (insideLand) {
+        finalCalculatedPoints.push(
           -globeRadius * Math.sin(phi) * Math.cos(theta),
           globeRadius * Math.cos(phi),
           globeRadius * Math.sin(phi) * Math.sin(theta)
@@ -333,80 +524,80 @@
       }
     }
 
-    // Render Clean High-Density Continent Points
+    // Build the high-density Particle Cloud Object
     const particleGeometry = new THREE.BufferGeometry();
-    particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(pointCoordinates, 3));
+    particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(finalCalculatedPoints, 3));
     
     const particleMaterial = new THREE.PointsMaterial({
       color: 0x35e58e,
-      size: 0.045, // Sharp glowing point diameter matching the target mockup
+      size: 0.04,
       transparent: true,
       opacity: 0.85,
       blending: THREE.AdditiveBlending
     });
 
-    const continentPoints = new THREE.Points(particleGeometry, particleMaterial);
-    mainGroup.add(continentPoints);
+    const continentPointsMesh = new THREE.Points(particleGeometry, particleMaterial);
+    mainGroup.add(continentPointsMesh);
 
-    // --- INTERCONNECTING BEZIER DATA PATHWAYS ---
-    const connectionGroup = new THREE.Group();
-    mainGroup.add(connectionGroup);
+    // --- INTERCONNECTING GLOBAL DATA NETWORK ARCS ---
+    const connectionsGroup = new THREE.Group();
+    mainGroup.add(connectionsGroup);
 
-    const anchorNodes = [];
-    for (let i = 0; i < 20; i++) {
-      const sampleIdx = Math.floor(Math.random() * (pointCoordinates.length / 3)) * 3;
-      anchorNodes.push(new THREE.Vector3(
-        pointCoordinates[sampleIdx],
-        pointCoordinates[sampleIdx + 1],
-        pointCoordinates[sampleIdx + 2]
-      ).normalize().multiplyScalar(globeRadius + 0.02));
+    const gatewayTerminals = [];
+    for (let i = 0; i < 16; i++) {
+      const randomPointer = Math.floor(Math.random() * (finalCalculatedPoints.length / 3)) * 3;
+      gatewayTerminals.push(new THREE.Vector3(
+        finalCalculatedPoints[randomPointer],
+        finalCalculatedPoints[randomPointer + 1],
+        finalCalculatedPoints[randomPointer + 2]
+      ).normalize().multiplyScalar(globeRadius + 0.01));
     }
 
-    const pathLinesGeometry = new THREE.BufferGeometry();
-    const linearPathVectorCollection = [];
+    const pathArcGeometry = new THREE.BufferGeometry();
+    const smoothArcVectorArray = [];
 
-    for (let i = 0; i < anchorNodes.length; i++) {
-      const nextNode = anchorNodes[(i + 1) % anchorNodes.length];
-      const p1 = anchorNodes[i];
-      const p2 = nextNode;
+    for (let i = 0; i < gatewayTerminals.length; i++) {
+      const targetTerminal = gatewayTerminals[(i + 1) % gatewayTerminals.length];
+      const startVec = gatewayTerminals[i];
+      
+      // Calculate dynamic elevated mid-point heights for clear architectural line tracing
+      const controlPeakVector = new THREE.Vector3().addVectors(startVec, targetTerminal).multiplyScalar(0.5).normalize().multiplyScalar(globeRadius + 0.3);
+      const dynamicBezierCurve = new THREE.QuadraticBezierCurve3(startVec, controlPeakVector, targetTerminal);
 
-      const midPlaneVector = new THREE.Vector3().addVectors(p1, p2).multiplyScalar(0.5).normalize().multiplyScalar(globeRadius + 0.25);
-      const quadraticCurve = new THREE.QuadraticBezierCurve3(p1, midPlaneVector, p2);
-
-      quadraticCurve.getPoints(12).forEach(pt => {
-        linearPathVectorCollection.push(pt.x, pt.y, pt.z);
+      dynamicBezierCurve.getPoints(16).forEach(pt => {
+        smoothArcVectorArray.push(pt.x, pt.y, pt.z);
       });
     }
 
-    pathLinesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linearPathVectorCollection, 3));
-    const linesMaterial = new THREE.LineBasicMaterial({
+    pathArcGeometry.setAttribute('position', new THREE.Float32BufferAttribute(smoothArcVectorArray, 3));
+    const arcMaterialInstance = new THREE.LineBasicMaterial({
       color: 0x35e58e,
       transparent: true,
-      opacity: 0.25,
+      opacity: 0.3,
       blending: THREE.AdditiveBlending
     });
-    const networkMeshArcs = new THREE.Line(pathLinesGeometry, linesMaterial);
-    connectionGroup.add(networkMeshArcs);
+    const networkGridArcs = new THREE.Line(pathArcGeometry, arcMaterialInstance);
+    connectionsGroup.add(networkGridArcs);
 
-    // --- BRIGHT ENDPOINT TERMINALS ---
-    const nodeGeometry = new THREE.BufferGeometry();
-    const nodesCoordsArray = [];
-    anchorNodes.forEach(n => nodesCoordsArray.push(n.x, n.y, n.z));
-    nodeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(nodesCoordsArray, 3));
+    // --- BRIGHT TELEMETRY NODE TERMINALS ---
+    const connectionNodeGeo = new THREE.BufferGeometry();
+    const rawTerminalFloats = [];
+    gatewayTerminals.forEach(v => rawTerminalFloats.push(v.x, v.y, v.z));
+    connectionNodeGeo.setAttribute('position', new THREE.Float32BufferAttribute(rawTerminalFloats, 3));
     
     const nodeMaterial = new THREE.PointsMaterial({
       color: 0x76ffd0,
-      size: 0.09,
+      size: 0.08,
       transparent: true,
       opacity: 0.95,
       blending: THREE.AdditiveBlending
     });
-    const terminalPoints = new THREE.Points(nodeGeometry, nodeMaterial);
+    const terminalPoints = new THREE.Points(connectionNodeGeo, nodeMaterial);
     mainGroup.add(terminalPoints);
 
-    // --- BASE RADAR ALIGNMENT RINGS ---
+    // --- RADAR TRACKING RINGS ASSEMBLY ---
     const radarBaseGroup = new THREE.Group();
-    radarBaseGroup.position.y = -2.6; 
+    radarBaseGroup.position.y = -2.65; 
     radarBaseGroup.rotation.x = Math.PI / 2;
     mainGroup.add(radarBaseGroup);
 
@@ -424,19 +615,42 @@
 
     radarBaseGroup.add(makeRadarRingInstance(1.2, 0.4));
     radarBaseGroup.add(makeRadarRingInstance(1.8, 0.2));
-    radarBaseGroup.add(makeRadarRingInstance(2.4, 0.06));
+    radarBaseGroup.add(makeRadarRingInstance(2.5, 0.06));
 
-    // Position Camera and Apply Perspective Angles
-    camera.position.z = 6.2;
-    mainGroup.rotation.x = 0.42;
-    mainGroup.rotation.z = -0.08;
+    // Orientation Camera Rig Positions
+    camera.position.z = 6.0;
+    mainGroup.rotation.x = 0.38;
+    mainGroup.rotation.z = -0.05;
 
-    // Animation Loop
+    // Split-Depth Rendering Array Matrix Logic
+    const posAttribute = continentPointsMesh.geometry.attributes.position;
+    const initialZCoords = [];
+    for(let i=0; i<posAttribute.count; i++) {
+      initialZCoords.push(posAttribute.getZ(i));
+    }
+
+    // Animation Render Pipeline Loop
     function animate() {
       requestAnimationFrame(animate);
       
-      mainGroup.rotation.y += 0.002;
-      connectionGroup.rotation.y += 0.001;
+      mainGroup.rotation.y += 0.003;
+      connectionsGroup.rotation.y += 0.001;
+
+      // Dynamic Matrix Shading Calculation to darken far-side particles
+      scene.updateMatrixWorld();
+      const tempVector = new THREE.Vector3();
+      
+      for (let i = 0; i < posAttribute.count; i++) {
+        tempVector.set(posAttribute.getX(i), posAttribute.getY(i), posAttribute.getZ(i));
+        tempVector.applyMatrix4(continentPointsMesh.matrixWorld);
+        
+        // If the vector moves deep into screen space coordinates, drop visibility values
+        if(tempVector.z < 0) {
+          particleMaterial.opacity = 0.25;
+        } else {
+          particleMaterial.opacity = 0.85;
+        }
+      }
       
       renderer.render(scene, camera);
     }
