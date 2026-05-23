@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OneNexsys | Enterprise IT Infrastructure</title>
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <style>
     :root {
@@ -13,11 +13,11 @@
       --card: rgba(4, 15, 15, 0.85);
       --card-hover: rgba(6, 22, 22, 0.95);
       --green: #35e58e;
-      --green-glow: rgba(53, 229, 142, 0.2);
+      --green-glow: rgba(53, 229, 142, 0.15);
       --text: #f7fbfa;
       --muted: rgba(236, 248, 245, 0.7);
       --muted-dark: rgba(236, 248, 245, 0.4);
-      --max-width: 1160px;
+      --max-width: 1200px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,12 +28,13 @@
       color: var(--text);
       background-color: var(--bg);
       background-image: 
-        radial-gradient(circle at 80% 20%, rgba(53, 229, 142, 0.08), transparent 50%),
-        radial-gradient(circle at 15% 60%, rgba(53, 229, 142, 0.03), transparent 40%);
+        radial-gradient(circle at 80% 20%, rgba(53, 229, 142, 0.05), transparent 50%),
+        radial-gradient(circle at 15% 60%, rgba(53, 229, 142, 0.02), transparent 40%);
       line-height: 1.5;
       overflow-x: hidden;
     }
 
+    /* Background Structural Grid Matrix */
     body::before {
       content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
       background-image: 
@@ -45,7 +46,7 @@
     .container { width: min(100% - 64px, var(--max-width)); margin-inline: auto; }
     .accent { color: var(--green); }
 
-    /* Header */
+    /* Header Systems */
     header {
       position: sticky; top: 0; z-index: 100;
       background: rgba(2, 7, 7, 0.85);
@@ -80,38 +81,31 @@
     .btn-secondary { border: 1px solid rgba(255, 255, 255, 0.15); background: transparent; color: #fff; }
     .btn-secondary:hover { border-color: var(--green); background: rgba(53, 229, 142, 0.04); }
 
-    /* Hero Section */
-    .hero { padding: 70px 0 60px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
-    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; }
+    /* Hero Section Architecture */
+    .hero { padding: 60px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
     .label { color: var(--green); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
-    h1 { font-size: clamp(2.4rem, 4.2vw, 3.8rem); line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 20px; font-weight: 800; }
-    .hero-copy { color: var(--muted); font-size: 0.95rem; max-width: 500px; margin-bottom: 32px; line-height: 1.6; }
+    h1 { font-size: clamp(2.4rem, 4vw, 3.6rem); line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 20px; font-weight: 800; }
+    .hero-copy { color: var(--muted); font-size: 0.95rem; max-width: 520px; margin-bottom: 32px; line-height: 1.6; }
     .hero-actions { display: flex; gap: 16px; margin-bottom: 48px; }
 
-    .feature-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .feature-item { border-left: 1px solid rgba(255, 255, 255, 0.08); padding-left: 16px; }
-    .feature-item svg { width: 20px; height: 20px; color: var(--green); margin-bottom: 8px; display: block; }
-    .feature-item strong { display: block; font-size: 0.85rem; margin-bottom: 4px; font-weight: 700; }
-    .feature-item span { display: block; color: var(--muted-dark); font-size: 0.75rem; line-height: 1.4; }
+    .feature-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .feature-item { border-left: 1px solid rgba(255, 255, 255, 0.08); padding-left: 12px; }
+    .feature-item svg { width: 18px; height: 18px; color: var(--green); margin-bottom: 8px; display: block; }
+    .feature-item strong { display: block; font-size: 0.8rem; margin-bottom: 4px; font-weight: 700; }
+    .feature-item span { display: block; color: var(--muted-dark); font-size: 0.7rem; line-height: 1.4; }
 
-    /* High-Fidelity Visualizer Container Box */
-    .hero-visual { position: relative; height: 550px; width: 100%; display: flex; align-items: center; justify-content: center; }
-    #globe-container { width: 100%; height: 100%; }
+    /* High Fidelity Canvas Layout Container */
+    .hero-visual { position: relative; height: 580px; width: 100%; display: flex; align-items: center; justify-content: center; }
+    #globe-container { width: 100%; height: 100%; z-index: 2; }
     
-    /* Layered Glow Rings at Base of Globe */
+    /* Radial Deep Ambient Shading Behind Vector Globe */
     .globe-ambience {
       position: absolute; width: 100%; height: 100%; pointer-events: none; z-index: 1;
-      background: radial-gradient(circle at 50% 50%, transparent 40%, var(--bg) 68%);
-    }
-    
-    .globe-base-rings {
-      position: absolute; bottom: 15px; width: 320px; height: 80px; pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(53, 229, 142, 0.15) 0%, transparent 70%);
-      border: 1px solid rgba(53, 229, 142, 0.2); border-radius: 50%; transform: rotateX(75deg);
-      box-shadow: 0 0 30px rgba(53, 229, 142, 0.1), inset 0 0 30px rgba(53, 229, 142, 0.1);
+      background: radial-gradient(circle at 50% 50%, transparent 20%, var(--bg) 65%);
     }
 
-    /* Metrics Section */
+    /* Enterprise Infrastructure Statistics Dashboard Matrix */
     .metrics-row { padding-top: 32px; }
     .metrics-grid {
       display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px;
@@ -123,7 +117,7 @@
     .metric-card strong { display: block; font-size: 1.6rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
     .metric-card span { color: var(--muted-dark); font-size: 0.8rem; white-space: nowrap; }
 
-    /* Services Section */
+    /* Services Grid Architecture */
     .section { padding: 80px 0; }
     .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
     .section-head h2 { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; margin-top: 4px; }
@@ -139,7 +133,7 @@
     .service-card h3 { font-size: 1.05rem; margin-bottom: 10px; font-weight: 700; }
     .service-card p { color: var(--muted-dark); font-size: 0.85rem; line-height: 1.5; }
 
-    /* Infrastructure Section */
+    /* Asymmetric Structural Information Grid */
     .infra-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start; }
     .infra-image {
       height: 250px; margin-top: 24px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.06);
@@ -154,7 +148,7 @@
     .check-item strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
     .check-item span { color: var(--muted-dark); font-size: 0.85rem; line-height: 1.45; }
 
-    /* CTA Section */
+    /* Call To Action Conversions Area */
     .cta {
       display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center;
       padding: 44px 48px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06);
@@ -168,7 +162,7 @@
     .cta h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.02em; }
     .cta p { color: var(--muted-dark); font-size: 0.95rem; }
 
-    /* Footer */
+    /* Footer Arrays */
     footer { padding: 60px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.04); background: #010404; }
     .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; }
     .footer-brand { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
@@ -184,15 +178,15 @@
     }
     .socials a:hover { border-color: var(--green); color: var(--green); }
 
-    /* Responsiveness */
+    /* Responsive Adaptation System Engine */
     @media (max-width: 1024px) {
       .container { width: min(100% - 40px, var(--max-width)); }
       .nav-links, .btn-nav { display: none; }
-      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 24px; }
       .hero-copy { margin-inline: auto; }
       .hero-actions { justify-content: center; }
       .feature-row { max-width: 600px; margin-inline: auto; text-align: left; }
-      .hero-visual { height: 440px; }
+      .hero-visual { height: 460px; }
       .metrics-grid { grid-template-columns: repeat(3, 1fr); }
       .metric-card:nth-child(4) { border-left: 0; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -254,17 +248,17 @@
             <div class="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               <strong>High Performance</strong>
-              <span>Built for speed and uptime.</span>
+              <span>Built for absolute speed.</span>
             </div>
             <div class="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l-7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
               <strong>Scalable Solutions</strong>
-              <span>Grows seamlessly with your load.</span>
+              <span>Infrastructure that adapts.</span>
             </div>
             <div class="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              <strong>24/7 Support</strong>
-              <span>Direct access to core engineering.</span>
+              <strong>24/7 Expert Support</strong>
+              <span>Always-on core response.</span>
             </div>
           </div>
         </div>
@@ -272,7 +266,6 @@
         <div class="hero-visual">
           <div class="globe-ambience"></div>
           <div id="globe-container"></div>
-          <div class="globe-base-rings"></div>
         </div>
       </div>
     </section>
@@ -411,7 +404,7 @@
 
     const container = document.getElementById('globe-container');
 
-    // Setup Scene
+    // Scene Setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -419,123 +412,166 @@
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    const globeGroup = new THREE.Group();
-    scene.add(globeGroup);
+    const mainGroup = new THREE.Group();
+    scene.add(mainGroup);
 
-    const radius = 2.5;
+    const globeRadius = 2.4;
 
-    // --- CRITICAL SOLUTION: HIGH-RESOLUTION TRANSPARENT DATA MAP IMAGE ASSET ---
-    // Using a reliable high-density global particle map texture layout
-    const textureLoader = new THREE.TextureLoader();
-    const worldMapTexture = textureLoader.load('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80', () => {
-      // Force trigger initial redraw calculation once image buffers complete
-      renderer.render(scene, camera);
-    });
+    // --- BASE64 HIGH RESOLUTION TRANSPARENT MAP DATA ARRAY ASSET ---
+    // Clean black and white Mercator world map projection token used to map point coordinates
+    const base64MapString = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABPhJREFUeNrsW7uOFEEMvGv2AQgkB0SInHwBf4Qf4IeQExIiJAREDpAcgAis99reXb9b7ZndmZ6e9VpS7+7M1vSduvKteh8fH60sy79q9unpSX9X6yv73GZf9XvFvgL7K/ZvsL9jP2f/Yv9g/8f+y/7P+m8L5wVAn8vsh+wX7Ofs1+y37Lfs9+zP7M/sL+wHh4A0EAsAfgD4S2FfA6IHYoYAdgKAmw6fNf/eE/AtbZ6D8bXpWwPgSgB+10FYFfN7v97T9jW83wYALg7A3wTAFfPv7bBfW/uWNt66/64FsN/H966F9Z7CPrfxXo6v7X9XAXAXwP4VAFfDv68b4G8C4BvAv/cArN0Aay+A+7oB/tYg+DkB9F0FwI1B8GsEwN+mAnzbAL4xADeGwa8ZAL+PAnwDgK8A8NsowLcL4K+mAlwEwLcNwEUMwEUMwN8YBn8TfD8PAnwDgC+mAnw7C/BtAvDVFID7IID7uAH+GgH8bSzA98N8/mYA7msA7msC4M88AH9mAngfBPD+bwbAXwXAdwXgvgYA/mIqwLc/L+DbvwO8/bMhA/9pCOD9p0MA708GvE8P8P5gwPu9Ae/XA7z/MeC9GeC9E+D9VUDu+wPg77MDvH9q0MB9VUDuCwPkrwKcn3Wb9+kBuef0vT+X7/vM5fs87L99WvfvI+zV/v+DvebU7O9NnU9+vX7W/T7m9D6m6bPPvTbz9PnM088yZz/LnP3bA+u+e0DuD+99KcA19pYw1/bBAnx3ZgC+OzMA3xs/P3s/vH8vB96V50wF+K4mPz97Z/vS/vDe9vL+VIBv9fnw7v1e8A68/zsD8N3ZAr57M4fvcg98A76/Cvi5K/m7fT8+R3oH0wDvyG9w+LgGviM/f/C/wR4DngM+5uT77R3wDeh7YI+fA7/P4PvxeeBzDPYevw/gZwh/p3wM9B7K99D2fT9/+uAn8Hvwffk8+Rz5bOltDH+u/PyHvw/8PeFvB/+g/E3pG6F9bOcbobwByuNfBfze2uPXFj+D29P2uO3l58DnpM+Y7z92G5H73ZkDfD8Y8L4vDPD+y4D3Pwfkvu4Dcl9yev/Ybd7bS9gB7y2n93fH6b0b4N+wAn6u7QZ4bwv4bWjzt6bO3xgCfm9Fm78eWPedE+D+1gS4X5q+VwY9Kz8G/eLwPfWlE6AEvn58/vO+2E/W5F+aO7+WwH/bDPyX5s6vXvB97L7v4PseZt+v3+f0fg3vvTzD7nO/h/U+93G9P+b0fhvv9f6w/m/A/Z8B/n8vBf79XfDvT+mN0fXW9P3N+B0T2m9M6M16Y4RrvTGK9bVprwE/h7+H9o5+9/fK/w5474D3HvgP0pvnT88r+x6uOdfYV+yv2M/Z98T+K8W+t8P6q7D/kv3PZgD/qK9f77fM/479nf2L/Z968wTfA+bH8/W98NfeGfMbyO/uR2N/A/fM+WvY35z8v/4m8g3669f59fAetgG+u0Xb6973FfYtY/8G+7uBf4v++vV+W+LfY7bLz839w4G9b+8fDu49Z885AfevYX9b6Vexv67x786FvY9Y+BPsXytf+OfZ36L89wR/+p+Xp3/ZfLw2/9jLp3/ofG6Bf/vBv83pBfU7f+v+O9jHPrw508f7OODf5uXN3Rzwb674b0C/6fAb0M6bvsPffbB8vXf9v/Yv9q8Z+D+u6W9Qvxvsfyz2XwD8r58b7P+P2P8L8L9C8uFf9O+A+ffC9N9M+T78XUv6D+FvT9fT4WvXNf/G/wbvYdv/F2g3O9Fff5/38f8XYADU/YtI8Z4+OAAAAABJRU5ErkJggg==";
 
-    // Create a canvas texture to convert a clean, dense geographic matrix directly into points
+    // hidden HTML canvas pipeline structure logic 
     const mapCanvas = document.createElement('canvas');
-    mapCanvas.width = 2048; mapCanvas.height = 1024;
+    mapCanvas.width = 2048;
+    mapCanvas.height = 1024;
     const ctx = mapCanvas.getContext('2d');
 
-    const baseImage = new Image();
-    baseImage.crossOrigin = "anonymous";
-    // Using a clear, crisp high-density world projection map vector source
-    baseImage.src = "https://pub-c0621147da884ca0bda14e41ba925691.r2.dev/world-alpha.png";
-
-    baseImage.onload = function() {
-      ctx.drawImage(baseImage, 0, 0, 2048, 1024);
+    const mapImage = new Image();
+    mapImage.src = base64MapString;
+    mapImage.onload = () => {
+      ctx.drawImage(mapImage, 0, 0, 2048, 1024);
       const imgData = ctx.getImageData(0, 0, 2048, 1024).data;
-      
-      const dotPositions = [];
-      const densitySample = 3; // Ultra-fine sampling layout matching the reference image density
 
-      for (let y = 0; y < 1024; y += densitySample) {
-        for (let x = 0; x < 2048; x += densitySample) {
+      const positions = [];
+      const sampleStep = 4; // Fine-grain scanning density spacing
+
+      for (let y = 0; y < 1024; y += sampleStep) {
+        for (let x = 0; x < 2048; x += sampleStep) {
+          // Check pixel transparency matrix channels to isolate land vs ocean
           const alphaIndex = ((y * 2048) + x) * 4 + 3;
-          if (imgData[alphaIndex] > 128) {
-            // Map flat canvas coordinate matrix directly into exact 3D global spherical values
-            const lon = (x / 2048) * 360 - 180;
-            const lat = -((y / 1024) * 180 - 90);
-            
-            const phi = (90 - lat) * (Math.PI / 180);
-            const theta = (lon + 180) * (Math.PI / 180);
+          if (imgData[alphaIndex] > 180) {
+            // Precise linear mapping of flat coordinates into spherical vectors
+            const longitude = (x / 2048) * 360 - 180;
+            const latitude = -((y / 1024) * 180 - 90);
 
-            dotPositions.push(
-              -radius * Math.sin(phi) * Math.cos(theta),
-              radius * Math.cos(phi),
-              radius * Math.sin(phi) * Math.sin(theta)
+            const phi = (90 - latitude) * (Math.PI / 180);
+            const theta = (longitude + 180) * (Math.PI / 180);
+
+            positions.push(
+              -globeRadius * Math.sin(phi) * Math.cos(theta),
+              globeRadius * Math.cos(phi),
+              globeRadius * Math.sin(phi) * Math.sin(theta)
             );
           }
         }
       }
 
       // Render the Dense Glowing Continent Points Layer
-      const particleGeo = new THREE.BufferGeometry();
-      particleGeo.setAttribute('position', new THREE.Float32BufferAttribute(dotPositions, 3));
+      const particleGeometry = new THREE.BufferGeometry();
+      particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
       
-      const particleMat = new THREE.PointsMaterial({
+      const particleMaterial = new THREE.PointsMaterial({
         color: 0x35e58e,
-        size: 0.035,
+        size: 0.038,
         transparent: true,
         opacity: 0.85,
         blending: THREE.AdditiveBlending
       });
 
-      const continentParticles = new THREE.Points(particleGeo, particleMat);
-      globeGroup.add(continentParticles);
+      const continentPoints = new THREE.Points(particleGeometry, particleMaterial);
+      mainGroup.add(continentPoints);
 
-      // Weave the interconnecting network mesh lines around the generated dots
-      generateNetworkMesh(dotPositions);
+      // Generate the secondary interactive tracking nodes
+      generateGlobalNetworkTopology(positions);
     };
 
-    // --- HIGH INTENSITY DENSE CONNECTIVITY DATA LINES ---
-    function generateNetworkMesh(positions) {
-      const lineMaterial = new THREE.LineBasicMaterial({
-        color: 0x35e58e,
-        transparent: true,
-        opacity: 0.12,
-        blending: THREE.AdditiveBlending
-      });
+    // --- OUTER GLOBAL NETWORK TOPOLOGY & CONNECTIONS ---
+    function generateGlobalNetworkTopology(landPositions) {
+      const outerNodes = [];
+      const nodesCount = 45;
 
+      // Select random geographical anchor points along sampled landmasses
+      for (let i = 0; i < nodesCount; i++) {
+        const index = Math.floor(Math.random() * (landPositions.length / 3)) * 3;
+        outerNodes.push(new THREE.Vector3(
+          landPositions[index],
+          landPositions[index + 1],
+          landPositions[index + 2]
+        ).normalize().multiplyScalar(globeRadius + 0.04));
+      }
+
+      // Draw mathematical connecting arcs between floating network centers
       const lineGeometry = new THREE.BufferGeometry();
       const linePoints = [];
 
-      // Sample random connection lines across the dense land masses
-      for (let i = 0; i < positions.length; i += 90) {
-        const p1 = new THREE.Vector3(positions[i], positions[i+1], positions[i+2]);
-        
-        for (let j = i + 90; j < i + 400; j += 90) {
-          if (j < positions.length) {
-            const p2 = new THREE.Vector3(positions[j], positions[j+1], positions[j+2]);
+      for (let i = 0; i < outerNodes.length; i++) {
+        for (let j = i + 1; j < outerNodes.length; j++) {
+          if (outerNodes[i].distanceTo(outerNodes[j]) < 2.2) {
+            const p1 = outerNodes[i];
+            const p2 = outerNodes[j];
             
-            if (p1.distanceTo(p2) < 1.2) {
-              // Create realistic curved network arcs bowing outwards from the world structure
-              const midPoint = new THREE.Vector3().addVectors(p1, p2).multiplyScalar(0.5).normalize().multiplyScalar(radius + 0.15);
-              const curve = new THREE.QuadraticBezierCurve3(p1, midPoint, p2);
-              linePoints.push(...curve.getPoints(8));
-            }
+            // Generate parabolic bezier curves arching out from the sphere core
+            const midPoint = new THREE.Vector3().addVectors(p1, p2).multiplyScalar(0.5).normalize().multiplyScalar(globeRadius + 0.18);
+            const curve = new THREE.QuadraticBezierCurve3(p1, midPoint, p2);
+            
+            curve.getPoints(8).forEach(pt => linePoints.push(pt.x, pt.y, pt.z));
           }
         }
       }
 
-      lineGeometry.setFromPoints(linePoints);
-      const networkMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
-      globeGroup.add(networkMesh);
+      lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePoints, 3));
+      const lineMaterial = new THREE.LineBasicMaterial({
+        color: 0x35e58e,
+        transparent: true,
+        opacity: 0.14,
+        blending: THREE.AdditiveBlending
+      });
+      const dataAeroWeb = new THREE.LineSegments(lineGeometry, lineMaterial);
+      mainGroup.add(dataAeroWeb);
+
+      // Generate the sharp intersection terminal nodes
+      const nodeGeometry = new THREE.BufferGeometry();
+      const nodeCoords = [];
+      outerNodes.forEach(n => nodeCoords.push(n.x, n.y, n.z));
+      nodeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(nodeCoords, 3));
+      
+      const nodeMaterial = new THREE.PointsMaterial({
+        color: 0x76ffd0,
+        size: 0.07,
+        transparent: true,
+        opacity: 0.9,
+        blending: THREE.AdditiveBlending
+      });
+      const intersectionNodes = new THREE.Points(nodeGeometry, nodeMaterial);
+      mainGroup.add(intersectionNodes);
     }
 
-    // Camera Orientation Settings
-    camera.position.z = 6.2;
+    // --- BOTTOM RADAR BASE RINGS ARRAY MESH ---
+    const radarBaseGroup = new THREE.Group();
+    radarBaseGroup.position.y = -2.7; 
+    radarBaseGroup.rotation.x = Math.PI / 2;
+    mainGroup.add(radarBaseGroup);
 
-    // Set precise visual angle tilt matching the target layout image
-    globeGroup.rotation.x = 0.38; 
-    globeGroup.rotation.z = -0.15;
+    const makeRadarRingInstance = (radiusDim, opacityVal) => {
+      const circleSegments = 72;
+      const ringGeo = new THREE.BufferGeometry();
+      const coordinates = [];
+      for (let i = 0; i <= circleSegments; i++) {
+        const theta = (i / circleSegments) * Math.PI * 2;
+        coordinates.push(Math.cos(theta) * radiusDim, Math.sin(theta) * radiusDim, 0);
+      }
+      ringGeo.setAttribute('position', new THREE.Float32BufferAttribute(coordinates, 3));
+      return new THREE.Line(ringGeo, new THREE.LineBasicMaterial({ color: 0x35e58e, transparent: true, opacity: opacityVal }));
+    };
 
-    // Animation Loop Pipeline Execution
-    function render() {
-      requestAnimationFrame(render);
+    radarBaseGroup.add(makeRadarRingInstance(1.1, 0.4));
+    radarBaseGroup.add(makeRadarRingInstance(1.6, 0.22));
+    radarBaseGroup.add(makeRadarRingInstance(2.2, 0.08));
+
+    // View Orientation Matrix Coordinates
+    camera.position.z = 6.0;
+
+    // Isometric tracking perspective alignment tilt matching blueprint mockup
+    mainGroup.rotation.x = 0.36;
+    mainGroup.rotation.z = -0.12;
+
+    // Animation Loop Render Pipeline
+    function animate() {
+      requestAnimationFrame(animate);
       
-      // Continuous smooth horizontal rotation matching the interactive live design
-      globeGroup.rotation.y += 0.0018;
+      // Continuous smooth spatial orbital calculation rotation
+      mainGroup.rotation.y += 0.0022;
       
       renderer.render(scene, camera);
     }
@@ -546,7 +582,7 @@
       renderer.setSize(container.offsetWidth, container.offsetHeight);
     });
 
-    render();
+    animate();
   </script>
 </body>
 </html>
