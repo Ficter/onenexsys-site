@@ -449,27 +449,20 @@
 
     const globeRadius = 2.45;
 
-    // --- CURVED MATHEMATICAL LANDMASS VECTOR Blueprints ---
+    // CURVED MATHEMATICAL LANDMASS VECTOR Blueprints
     const coastlines = [
-      // North America Smooth Paths
       [ [68,-160], [65,-150], [60,-130], [52,-132], [42,-124], [30,-115], [18,-103], [12,-86], [9,-79], [16,-93], [24,-81], [25,-97], [29,-80], [39,-75], [46,-64], [53,-56], [60,-45], [68,-60], [72,-85], [62,-95], [64,-115], [70,-135], [68,-160] ],
-      // South America Smooth Paths
       [ [12,-72], [7,-80], [-3,-81], [-14,-76], [-25,-71], [-38,-73], [-48,-75], [-55,-68], [-48,-66], [-38,-58], [-22,-44], [-6,-35], [-5,-50], [7,-53], [12,-72] ],
-      // Africa Smooth Paths
       [ [35,-6], [32,12], [30,32], [14,42], [12,51], [-5,39], [-22,35], [-34,19], [-28,15], [-12,13], [5,0], [4,-9], [14,-17], [21,-17], [32,-17], [35,-6] ],
-      // Eurasia Smooth Paths
       [ [36,-9], [43,10], [53,5], [60,25], [64,60], [69,40], [73,70], [71,110], [72,130], [68,165], [54,141], [43,131], [35,125], [22,114], [15,108], [6,100], [10,96], [22,88], [15,74], [25,62], [13,47], [24,38], [31,34], [30,27], [36,-9] ],
-      // Australia Smooth Paths
       [ [-22,114], [-34,115], [-35,138], [-28,146], [-12,136], [-15,124], [-22,114] ]
     ];
 
     const finalCalculatedPoints = [];
 
-    // Parametric Hermite/Bézier Spline Interpolation Engine to produce elegant curves
     coastlines.forEach(polygon => {
       const vector3List = [];
       
-      // Phase A: Convert coordinates into raw global 3D vector points
       polygon.forEach(coord => {
         const lat = coord[0];
         const lon = coord[1];
@@ -483,12 +476,10 @@
         ));
       });
 
-      // Phase B: Interpolate positions along a CatmullRom Spline Curve for high fidelity
       const splineCurve = new THREE.CatmullRomCurve3(vector3List, true, 'centripetal');
       const highDensitySamples = splineCurve.getPoints(320);
 
       highDensitySamples.forEach(v3 => {
-        // Scatter secondary companion points nearby to fill out landmass depth weight safely
         for(let k = 0; k < 2; k++) {
           finalCalculatedPoints.push(
             v3.x + (Math.random() - 0.5) * 0.04,
@@ -499,7 +490,6 @@
       });
     });
 
-    // Populate interior matrix clusters to maintain solid continent densities
     for (let i = 0; i < 2500; i++) {
       const phi = Math.random() * Math.PI;
       const theta = Math.random() * Math.PI * 2;
@@ -509,10 +499,10 @@
 
       let insideLand = false;
       if (lat > -55 && lat < 72) {
-        if (lon > -165 && lon < -34 && lat > -55 && lat < 68) insideLand = true; // Americas Matrix
-        if (lon > -18 && lon < 50 && lat > -34 && lat < 34) insideLand = true;   // Africa Matrix
-        if (lon > -10 && lon < 150 && lat > 10 && lat < 72) insideLand = true;  // Europe/Asia Matrix
-        if (lon > 112 && lon < 152 && lat > -39 && lat < -11) insideLand = true; // Australia Matrix
+        if (lon > -165 && lon < -34 && lat > -55 && lat < 68) insideLand = true;
+        if (lon > -18 && lon < 50 && lat > -34 && lat < 34) insideLand = true;
+        if (lon > -10 && lon < 150 && lat > 10 && lat < 72) insideLand = true;
+        if (lon > 112 && lon < 152 && lat > -39 && lat < -11) insideLand = true;
       }
 
       if (insideLand) {
@@ -524,7 +514,6 @@
       }
     }
 
-    // Build the high-density Particle Cloud Object
     const particleGeometry = new THREE.BufferGeometry();
     particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(finalCalculatedPoints, 3));
     
@@ -539,7 +528,7 @@
     const continentPointsMesh = new THREE.Points(particleGeometry, particleMaterial);
     mainGroup.add(continentPointsMesh);
 
-    // --- INTERCONNECTING GLOBAL DATA NETWORK ARCS ---
+    // INTERCONNECTING GLOBAL DATA NETWORK ARCS
     const connectionsGroup = new THREE.Group();
     mainGroup.add(connectionsGroup);
 
@@ -560,7 +549,6 @@
       const targetTerminal = gatewayTerminals[(i + 1) % gatewayTerminals.length];
       const startVec = gatewayTerminals[i];
       
-      // Calculate dynamic elevated mid-point heights for clear architectural line tracing
       const controlPeakVector = new THREE.Vector3().addVectors(startVec, targetTerminal).multiplyScalar(0.5).normalize().multiplyScalar(globeRadius + 0.3);
       const dynamicBezierCurve = new THREE.QuadraticBezierCurve3(startVec, controlPeakVector, targetTerminal);
 
@@ -579,7 +567,7 @@
     const networkGridArcs = new THREE.Line(pathArcGeometry, arcMaterialInstance);
     connectionsGroup.add(networkGridArcs);
 
-    // --- BRIGHT TELEMETRY NODE TERMINALS ---
+    // BRIGHT TELEMETRY NODE TERMINALS
     const connectionNodeGeo = new THREE.BufferGeometry();
     const rawTerminalFloats = [];
     gatewayTerminals.forEach(v => rawTerminalFloats.push(v.x, v.y, v.z));
@@ -595,7 +583,7 @@
     const terminalPoints = new THREE.Points(connectionNodeGeo, nodeMaterial);
     mainGroup.add(terminalPoints);
 
-    // --- RADAR TRACKING RINGS ASSEMBLY ---
+    // RADAR TRACKING RINGS ASSEMBLY
     const radarBaseGroup = new THREE.Group();
     radarBaseGroup.position.y = -2.65; 
     radarBaseGroup.rotation.x = Math.PI / 2;
@@ -617,26 +605,18 @@
     radarBaseGroup.add(makeRadarRingInstance(1.8, 0.2));
     radarBaseGroup.add(makeRadarRingInstance(2.5, 0.06));
 
-    // Orientation Camera Rig Positions
     camera.position.z = 6.0;
     mainGroup.rotation.x = 0.38;
     mainGroup.rotation.z = -0.05;
 
-    // Split-Depth Rendering Array Matrix Logic
     const posAttribute = continentPointsMesh.geometry.attributes.position;
-    const initialZCoords = [];
-    for(let i=0; i<posAttribute.count; i++) {
-      initialZCoords.push(posAttribute.getZ(i));
-    }
 
-    // Animation Render Pipeline Loop
     function animate() {
       requestAnimationFrame(animate);
       
       mainGroup.rotation.y += 0.003;
       connectionsGroup.rotation.y += 0.001;
 
-      // Dynamic Matrix Shading Calculation to darken far-side particles
       scene.updateMatrixWorld();
       const tempVector = new THREE.Vector3();
       
@@ -644,7 +624,6 @@
         tempVector.set(posAttribute.getX(i), posAttribute.getY(i), posAttribute.getZ(i));
         tempVector.applyMatrix4(continentPointsMesh.matrixWorld);
         
-        // If the vector moves deep into screen space coordinates, drop visibility values
         if(tempVector.z < 0) {
           particleMaterial.opacity = 0.25;
         } else {
