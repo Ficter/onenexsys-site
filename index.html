@@ -436,7 +436,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
     const container = document.getElementById('globe-container');
 
-    // Setup WebGL rendering context core structures
+    // Scene & Viewport initializations
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 100);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -449,41 +449,12 @@
     scene.add(mainGroup);
 
     const baseRadius = 2.4;
-
-    // Step 1: Generate an ultra-high performance visibility texture in local memory
-    // This removes external image dependencies and prevents CORS blocks completely
-    const canvasMap = document.createElement('canvas');
-    canvasMap.width = 512;
-    canvasMap.height = 256;
-    const ctx = canvasMap.getContext('2d');
-
-    // Fill with water layer (dark background)
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0, 0, canvasMap.width, canvasMap.height);
-
-    // Draw perfectly proportioned crisp landmass vectors
-    ctx.fillStyle = '#ffffff';
-    
-    // North America
-    ctx.beginPath(); ctx.moveTo(40, 40); ctx.lineTo(160, 35); ctx.lineTo(190, 80); ctx.lineTo(120, 110); ctx.lineTo(80, 110); ctx.closePath(); ctx.fill();
-    // South America
-    ctx.beginPath(); ctx.moveTo(115, 110); ctx.lineTo(150, 125); ctx.lineTo(170, 150); ctx.lineTo(135, 210); ctx.lineTo(120, 210); ctx.closePath(); ctx.fill();
-    // Africa
-    ctx.beginPath(); ctx.moveTo(220, 105); ctx.lineTo(265, 100); ctx.lineTo(290, 130); ctx.lineTo(275, 190); ctx.lineTo(245, 190); ctx.lineTo(225, 140); ctx.closePath(); ctx.fill();
-    // Eurasia
-    ctx.beginPath(); ctx.moveTo(200, 40); ctx.lineTo(440, 30); ctx.lineTo(450, 90); ctx.lineTo(390, 120); ctx.lineTo(340, 115); ctx.lineTo(310, 85); ctx.closePath(); ctx.fill();
-    // Australia
-    ctx.beginPath(); ctx.moveTo(410, 155); ctx.lineTo(460, 160); ctx.lineTo(450, 190); ctx.lineTo(405, 185); ctx.closePath(); ctx.fill();
-
-    // Pull pixel context coordinates directly from memory buffer
-    const mapImgData = ctx.getImageData(0, 0, canvasMap.width, canvasMap.height);
-
-    // Step 2: Extract data matrix arrays into a perfect distribution field
     const verticesArray = [];
-    const samplingPointsCount = 8500;
+    const totalPoints = 9000;
 
-    for (let i = 0; i < samplingPointsCount; i++) {
-      const transmissionOffset = 2 / samplingPointsCount;
+    // Procedural mathematical structural map logic loops
+    for (let i = 0; i < totalPoints; i++) {
+      const transmissionOffset = 2 / totalPoints;
       const goldenRatioIncrement = Math.PI * (3 - Math.sqrt(5));
       
       const verticalAxisY = ((i * transmissionOffset) - 1) + (transmissionOffset / 2);
@@ -493,27 +464,26 @@
       const coordinateX = Math.cos(rotationalTheta) * radiusAtHeight;
       const coordinateZ = Math.sin(rotationalTheta) * radiusAtHeight;
 
-      // Map 3D points directly to 2D image coordinates
-      const uFactor = 1 - (Math.atan2(coordinateZ, coordinateX) + Math.PI) / (Math.PI * 2);
-      const vFactor = (Math.asin(verticalAxisY) + Math.PI / 2) / Math.PI;
+      // Extract angular locations to build structured procedural continents
+      const longitude = Math.atan2(coordinateZ, coordinateX);
+      const latitude = Math.acos(verticalAxisY);
 
-      const pixelX = Math.min(Math.floor(uFactor * canvasMap.width), canvasMap.width - 1);
-      const pixelY = Math.min(Math.floor((1 - vFactor) * canvasMap.height), canvasMap.height - 1);
-      const pixelIndex = (pixelY * canvasMap.width + pixelX) * 4;
+      // Multi-layered harmonic frequency function simulating global geography blocks
+      const layer1 = Math.sin(longitude * 3.5) * Math.cos(latitude * 2.5);
+      const layer2 = Math.cos(longitude * 6.0 + 1.2) * Math.sin(latitude * 4.0);
+      const compositeNoise = layer1 * 0.7 + layer2 * 0.3;
 
-      // Read white pixel visibility channel values
-      const isLand = mapImgData.data[pixelIndex] > 128;
-
-      if (isLand || Math.random() < 0.04) {
-        const dynamicRadius = baseRadius + (isLand ? 0 : (Math.random() - 0.5) * 0.01);
+      // Filter point density thresholds to produce distinct stylized land formations
+      if (compositeNoise > -0.15) {
         verticesArray.push(
-          coordinateX * dynamicRadius,
-          verticalAxisY * dynamicRadius,
-          coordinateZ * dynamicRadius
+          coordinateX * baseRadius,
+          verticalAxisY * baseRadius,
+          coordinateZ * baseRadius
         );
       }
     }
 
+    // Build particle vector data matrix arrays
     const globeGeometry = new THREE.BufferGeometry();
     globeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(verticesArray, 3));
 
@@ -528,12 +498,12 @@
     const standardGlobeMesh = new THREE.Points(globeGeometry, coreParticleMaterial);
     mainGroup.add(standardGlobeMesh);
 
-    // Network Pipeline Infrastructure Arcs Generation
+    // Dynamic Server Network Arc Pathways Framework Generation
     const frameworkConnectionsGroup = new THREE.Group();
     mainGroup.add(frameworkConnectionsGroup);
 
     const anchorTerminalNodes = [];
-    for (let m = 0; m < 14; m++) {
+    for (let m = 0; m < 12; m++) {
       const targetIndex = Math.floor(Math.random() * (verticesArray.length / 3)) * 3;
       anchorTerminalNodes.push(new THREE.Vector3(
         verticesArray[targetIndex],
@@ -550,11 +520,11 @@
       const endingPoint = anchorTerminalNodes[(i + 1) % anchorTerminalNodes.length];
 
       const absoluteMidpoint = new THREE.Vector3().addVectors(startingPoint, endingPoint).multiplyScalar(0.5);
-      const verticalArcOffset = baseRadius + 0.38;
+      const verticalArcOffset = baseRadius + 0.35;
       absoluteMidpoint.normalize().multiplyScalar(verticalArcOffset);
 
       const smoothBezierCurve = new THREE.QuadraticBezierCurve3(startingPoint, absoluteMidpoint, endingPoint);
-      const pointsCollected = smoothBezierCurve.getPoints(28);
+      const pointsCollected = smoothBezierCurve.getPoints(30);
 
       for (let j = 0; j < pointsCollected.length; j++) {
         networkInterconnectVectors.push(pointsCollected[j].x, pointsCollected[j].y, pointsCollected[j].z);
@@ -565,14 +535,14 @@
     const structuralLineMaterial = new THREE.LineBasicMaterial({
       color: 0x35e58e,
       transparent: true,
-      opacity: 0.28,
+      opacity: 0.25,
       blending: THREE.AdditiveBlending
     });
 
     const networkPipelineGrid = new THREE.Line(networkInterconnectGeometry, structuralLineMaterial);
     frameworkConnectionsGroup.add(networkPipelineGrid);
 
-    // Active Node Terminals Generation
+    // Active Interface Node Pin Terminals Generation
     const nodeGeometryInstance = new THREE.BufferGeometry();
     const terminalFloatsArray = [];
     anchorTerminalNodes.forEach(v => terminalFloatsArray.push(v.x, v.y, v.z));
@@ -580,7 +550,7 @@
     
     const nodeMaterialConfiguration = new THREE.PointsMaterial({
       color: 0x76ffd0,
-      size: 0.08,
+      size: 0.075,
       transparent: true,
       opacity: 0.95,
       blending: THREE.AdditiveBlending
@@ -588,7 +558,7 @@
     const terminalActiveNodesPoints = new THREE.Points(nodeGeometryInstance, nodeMaterialConfiguration);
     mainGroup.add(terminalActiveNodesPoints);
 
-    // Radar Perimeter Tracking Systems Implementation
+    // Perimeter Telemetry Radar System Framework Ring Generation
     const telemetryRadarGroup = new THREE.Group();
     telemetryRadarGroup.position.y = -2.55;
     telemetryRadarGroup.rotation.x = Math.PI / 2;
@@ -610,22 +580,22 @@
     telemetryRadarGroup.add(initializeTelemetryRing(1.9, 0.18));
     telemetryRadarGroup.add(initializeTelemetryRing(2.6, 0.05));
 
-    // Global Position Tuning Configuration
+    // Spatial Position Tuning Configurations
     camera.position.z = 5.8;
     mainGroup.rotation.x = 0.35;
     mainGroup.rotation.z = -0.02;
 
-    // Steady-State Execution Thread
+    // Steady-State Frame Update Loop Execution
     function animate() {
       requestAnimationFrame(animate);
       
-      mainGroup.rotation.y += 0.002;
-      frameworkConnectionsGroup.rotation.y += 0.0006;
+      mainGroup.rotation.y += 0.0025;
+      frameworkConnectionsGroup.rotation.y += 0.0008;
 
       renderer.render(scene, camera);
     }
 
-    // Adaptive Resizing Viewport Matrix Correction
+    // Adaptive Resize Viewport Event Corrections
     window.addEventListener('resize', () => {
       if (!container.offsetWidth || !container.offsetHeight) return;
       camera.aspect = container.offsetWidth / container.offsetHeight;
