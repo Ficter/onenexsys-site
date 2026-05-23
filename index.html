@@ -436,7 +436,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
     const container = document.getElementById('globe-container');
 
-    // Scene & Viewport initializations
+    // Basic Viewport Setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 100);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -450,84 +450,91 @@
 
     const baseRadius = 2.4;
     const verticesArray = [];
-    const totalPoints = 9000;
 
-    // Procedural mathematical structural map logic loops
-    for (let i = 0; i < totalPoints; i++) {
-      const transmissionOffset = 2 / totalPoints;
-      const goldenRatioIncrement = Math.PI * (3 - Math.sqrt(5));
-      
-      const verticalAxisY = ((i * transmissionOffset) - 1) + (transmissionOffset / 2);
-      const radiusAtHeight = Math.sqrt(1 - verticalAxisY * verticalAxisY);
-      const rotationalTheta = i * goldenRatioIncrement;
+    // Pre-computed, mathematical vector arrays simulating geographic clusters
+    const continentalSeeds = [
+      { lat: 0.7, lon: -1.2, size: 1.4 },  // North America cluster
+      { lat: -0.3, lon: -0.9, size: 1.1 }, // South America cluster
+      { lat: 0.9, lon: 0.2, size: 1.3 },   // Eurasia block
+      { lat: 0.1, lon: 0.4, size: 0.9 },   // Africa region
+      { lat: -0.5, lon: 2.3, size: 0.8 }   // Australia network cluster
+    ];
 
-      const coordinateX = Math.cos(rotationalTheta) * radiusAtHeight;
-      const coordinateZ = Math.sin(rotationalTheta) * radiusAtHeight;
+    // Generate high-density, sharp continental point matrices
+    const totalPointsTarget = 8500;
+    for (let i = 0; i < totalPointsTarget; i++) {
+      const u = Math.random();
+      const v = Math.random();
+      const theta = u * 2.0 * Math.PI;
+      const phi = Math.acos(2.0 * v - 1.0);
 
-      // Extract angular locations to build structured procedural continents
-      const longitude = Math.atan2(coordinateZ, coordinateX);
-      const latitude = Math.acos(verticalAxisY);
+      const x = Math.sin(phi) * Math.cos(theta);
+      const y = Math.sin(phi) * Math.sin(theta);
+      const z = Math.cos(phi);
 
-      // Multi-layered harmonic frequency function simulating global geography blocks
-      const layer1 = Math.sin(longitude * 3.5) * Math.cos(latitude * 2.5);
-      const layer2 = Math.cos(longitude * 6.0 + 1.2) * Math.sin(latitude * 4.0);
-      const compositeNoise = layer1 * 0.7 + layer2 * 0.3;
+      // Check proximity to geographic data centers to filter space
+      let isLand = false;
+      for (let s = 0; s < continentalSeeds.length; s++) {
+        const seed = continentalSeeds[s];
+        const dist = Math.sqrt(Math.pow(phi - (seed.lat + Math.PI/2), 2) + Math.pow(theta - (seed.lon + Math.PI), 2));
+        if (dist < seed.size * (0.6 + Math.sin(theta * 3) * 0.15)) {
+          isLand = true;
+          break;
+        }
+      }
 
-      // Filter point density thresholds to produce distinct stylized land formations
-      if (compositeNoise > -0.15) {
-        verticesArray.push(
-          coordinateX * baseRadius,
-          verticalAxisY * baseRadius,
-          coordinateZ * baseRadius
-        );
+      // Add structured density masking logic for a clean technical pattern layout
+      if (isLand && (i % 7 !== 0)) {
+        verticesArray.push(x * baseRadius, y * baseRadius, z * baseRadius);
+      } else if (!isLand && (i % 22 === 0)) {
+        // Subtle ambient ocean grid mapping
+        verticesArray.push(x * baseRadius, y * baseRadius, z * baseRadius);
       }
     }
 
-    // Build particle vector data matrix arrays
     const globeGeometry = new THREE.BufferGeometry();
     globeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(verticesArray, 3));
 
     const coreParticleMaterial = new THREE.PointsMaterial({
       color: 0x35e58e,
-      size: 0.038,
+      size: 0.032,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.8,
       blending: THREE.AdditiveBlending
     });
 
     const standardGlobeMesh = new THREE.Points(globeGeometry, coreParticleMaterial);
     mainGroup.add(standardGlobeMesh);
 
-    // Dynamic Server Network Arc Pathways Framework Generation
+    // Live Server Core Arcs Infrastructure Setup
     const frameworkConnectionsGroup = new THREE.Group();
     mainGroup.add(frameworkConnectionsGroup);
 
     const anchorTerminalNodes = [];
-    for (let m = 0; m < 12; m++) {
-      const targetIndex = Math.floor(Math.random() * (verticesArray.length / 3)) * 3;
-      anchorTerminalNodes.push(new THREE.Vector3(
-        verticesArray[targetIndex],
-        verticesArray[targetIndex + 1],
-        verticesArray[targetIndex + 2]
-      ));
+    // Select specific points out of the matrix coordinates to act as networking hubs
+    for (let m = 0; m < 14; m++) {
+      const idx = Math.floor(Math.random() * (verticesArray.length / 3)) * 3;
+      if(verticesArray[idx]) {
+        anchorTerminalNodes.push(new THREE.Vector3(verticesArray[idx], verticesArray[idx+1], verticesArray[idx+2]));
+      }
     }
 
     const networkInterconnectGeometry = new THREE.BufferGeometry();
     const networkInterconnectVectors = [];
 
     for (let i = 0; i < anchorTerminalNodes.length; i++) {
-      const startingPoint = anchorTerminalNodes[i];
-      const endingPoint = anchorTerminalNodes[(i + 1) % anchorTerminalNodes.length];
+      const p1 = anchorTerminalNodes[i];
+      const p2 = anchorTerminalNodes[(i + 1) % anchorTerminalNodes.length];
 
-      const absoluteMidpoint = new THREE.Vector3().addVectors(startingPoint, endingPoint).multiplyScalar(0.5);
-      const verticalArcOffset = baseRadius + 0.35;
-      absoluteMidpoint.normalize().multiplyScalar(verticalArcOffset);
+      const midPoint = new THREE.Vector3().addVectors(p1, p2).multiplyScalar(0.5);
+      const arcHeight = baseRadius + 0.4;
+      midPoint.normalize().multiplyScalar(arcHeight);
 
-      const smoothBezierCurve = new THREE.QuadraticBezierCurve3(startingPoint, absoluteMidpoint, endingPoint);
-      const pointsCollected = smoothBezierCurve.getPoints(30);
+      const smoothCurve = new THREE.QuadraticBezierCurve3(p1, midPoint, p2);
+      const points = smoothCurve.getPoints(35);
 
-      for (let j = 0; j < pointsCollected.length; j++) {
-        networkInterconnectVectors.push(pointsCollected[j].x, pointsCollected[j].y, pointsCollected[j].z);
+      for (let j = 0; j < points.length; j++) {
+        networkInterconnectVectors.push(points[j].x, points[j].y, points[j].z);
       }
     }
 
@@ -535,14 +542,14 @@
     const structuralLineMaterial = new THREE.LineBasicMaterial({
       color: 0x35e58e,
       transparent: true,
-      opacity: 0.25,
+      opacity: 0.3,
       blending: THREE.AdditiveBlending
     });
 
     const networkPipelineGrid = new THREE.Line(networkInterconnectGeometry, structuralLineMaterial);
     frameworkConnectionsGroup.add(networkPipelineGrid);
 
-    // Active Interface Node Pin Terminals Generation
+    // Active Node Terminals UI Layer
     const nodeGeometryInstance = new THREE.BufferGeometry();
     const terminalFloatsArray = [];
     anchorTerminalNodes.forEach(v => terminalFloatsArray.push(v.x, v.y, v.z));
@@ -550,52 +557,52 @@
     
     const nodeMaterialConfiguration = new THREE.PointsMaterial({
       color: 0x76ffd0,
-      size: 0.075,
+      size: 0.08,
       transparent: true,
-      opacity: 0.95,
+      opacity: 0.9,
       blending: THREE.AdditiveBlending
     });
     const terminalActiveNodesPoints = new THREE.Points(nodeGeometryInstance, nodeMaterialConfiguration);
     mainGroup.add(terminalActiveNodesPoints);
 
-    // Perimeter Telemetry Radar System Framework Ring Generation
+    // Base Telemetry Radar Framework Rings
     const telemetryRadarGroup = new THREE.Group();
-    telemetryRadarGroup.position.y = -2.55;
+    telemetryRadarGroup.position.y = -2.6;
     telemetryRadarGroup.rotation.x = Math.PI / 2;
     mainGroup.add(telemetryRadarGroup);
 
     const initializeTelemetryRing = (targetRadius, visibilityOpacity) => {
-      const loopSegments = 64;
-      const ringBufferGeometry = new THREE.BufferGeometry();
-      const ringCoordinates = [];
-      for (let i = 0; i <= loopSegments; i++) {
-        const thetaAngle = (i / loopSegments) * Math.PI * 2;
-        ringCoordinates.push(Math.cos(thetaAngle) * targetRadius, Math.sin(thetaAngle) * targetRadius, 0);
+      const segments = 64;
+      const ringGeom = new THREE.BufferGeometry();
+      const coords = [];
+      for (let i = 0; i <= segments; i++) {
+        const thetaAngle = (i / segments) * Math.PI * 2;
+        coords.push(Math.cos(thetaAngle) * targetRadius, Math.sin(thetaAngle) * targetRadius, 0);
       }
-      ringBufferGeometry.setAttribute('position', new THREE.Float32BufferAttribute(ringCoordinates, 3));
-      return new THREE.Line(ringBufferGeometry, new THREE.LineBasicMaterial({ color: 0x35e58e, transparent: true, opacity: visibilityOpacity }));
+      ringGeom.setAttribute('position', new THREE.Float32BufferAttribute(coords, 3));
+      return new THREE.Line(ringGeom, new THREE.LineBasicMaterial({ color: 0x35e58e, transparent: true, opacity: visibilityOpacity }));
     };
 
-    telemetryRadarGroup.add(initializeTelemetryRing(1.3, 0.35));
-    telemetryRadarGroup.add(initializeTelemetryRing(1.9, 0.18));
-    telemetryRadarGroup.add(initializeTelemetryRing(2.6, 0.05));
+    telemetryRadarGroup.add(initializeTelemetryRing(1.4, 0.4));
+    telemetryRadarGroup.add(initializeTelemetryRing(2.0, 0.2));
+    telemetryRadarGroup.add(initializeTelemetryRing(2.7, 0.06));
 
-    // Spatial Position Tuning Configurations
-    camera.position.z = 5.8;
-    mainGroup.rotation.x = 0.35;
-    mainGroup.rotation.z = -0.02;
+    // Final Stage Layout Spacing adjustments
+    camera.position.z = 6.0;
+    mainGroup.rotation.x = 0.4;
+    mainGroup.rotation.z = -0.1;
 
-    // Steady-State Frame Update Loop Execution
+    // Steady Frame Loop Engine Animation
     function animate() {
       requestAnimationFrame(animate);
       
-      mainGroup.rotation.y += 0.0025;
-      frameworkConnectionsGroup.rotation.y += 0.0008;
+      mainGroup.rotation.y += 0.003;
+      frameworkConnectionsGroup.rotation.y += 0.001;
 
       renderer.render(scene, camera);
     }
 
-    // Adaptive Resize Viewport Event Corrections
+    // Dynamic Viewport Resize Tracking Corrections
     window.addEventListener('resize', () => {
       if (!container.offsetWidth || !container.offsetHeight) return;
       camera.aspect = container.offsetWidth / container.offsetHeight;
