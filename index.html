@@ -45,7 +45,7 @@
     .container { width: min(100% - 64px, var(--max-width)); margin-inline: auto; }
     .accent { color: var(--green); }
 
-    /* Header Systems */
+    /* Navigation Systems */
     header {
       position: sticky; top: 0; z-index: 100;
       background: rgba(2, 7, 7, 0.85);
@@ -76,7 +76,7 @@
     .btn-secondary { border: 1px solid rgba(255, 255, 255, 0.15); background: transparent; color: #fff; }
     .btn-secondary:hover { border-color: var(--green); background: rgba(53, 229, 142, 0.04); }
 
-    /* Hero Section Setup */
+    /* Hero Fold Layout */
     .hero { padding: 40px 0 60px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
     .label { color: var(--green); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; }
@@ -90,7 +90,7 @@
     .feature-item strong { display: block; font-size: 0.8rem; margin-bottom: 4px; font-weight: 700; }
     .feature-item span { display: block; color: var(--muted-dark); font-size: 0.7rem; line-height: 1.4; }
 
-    /* Canvas Display Wrapper */
+    /* Canvas Viewport */
     .hero-visual { position: relative; height: 580px; width: 100%; display: flex; align-items: center; justify-content: center; }
     #globe-container { width: 100%; height: 100%; z-index: 2; }
     .globe-ambience {
@@ -98,7 +98,7 @@
       background: radial-gradient(circle at 50% 50%, transparent 20%, var(--bg) 68%);
     }
 
-    /* Metrics Architecture */
+    /* Core Trust Metrics Grid */
     .metrics-row { padding-top: 32px; }
     .metrics-grid {
       display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px;
@@ -110,7 +110,7 @@
     .metric-card strong { display: block; font-size: 1.6rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
     .metric-card span { color: var(--muted-dark); font-size: 0.8rem; }
 
-    /* Services Layout (Full 6-Card Alignment) */
+    /* Services Sections */
     .section { padding: 80px 0; }
     .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
     .section-head h2 { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; margin-top: 4px; }
@@ -126,7 +126,7 @@
     .service-card h3 { font-size: 1.05rem; margin-bottom: 10px; font-weight: 700; }
     .service-card p { color: var(--muted-dark); font-size: 0.85rem; line-height: 1.5; }
 
-    /* Infrastructure Split Panel */
+    /* Infrastructure Split Panel Layout */
     .infra-section { padding: 60px 0; border-top: 1px solid rgba(255, 255, 255, 0.04); }
     .infra-grid { display: grid; grid-template-columns: 0.91fr 1.09fr; gap: 64px; align-items: center; }
     .infra-image-container {
@@ -135,7 +135,7 @@
     }
     .infra-image {
       width: 100%; height: 100%;
-      background: linear-gradient(135deg, rgba(2,7,7,0.4), rgba(4,19,19,0.7)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80') center/cover;
+      background: linear-gradient(135deg, rgba(2,7,7,0.4), rgba(4,19,19,0.7)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&w=80') center/cover;
     }
     .check-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 28px; }
     .check-item { display: flex; gap: 14px; }
@@ -146,13 +146,13 @@
     .check-item strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
     .check-item span { color: var(--muted-dark); font-size: 0.85rem; line-height: 1.45; }
 
-    /* Partner Brand Logos Grid */
+    /* Enterprise Partner Track */
     .partners-box { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
     .partners-title { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-dark); margin-bottom: 16px; font-weight: 700; }
     .brand-flex { display: flex; gap: 32px; align-items: center; opacity: 0.55; flex-wrap: wrap; }
     .brand-flex span { font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; color: #fff; }
 
-    /* Conversion Area */
+    /* Conversion Container */
     .cta-wrapper { padding: 40px 0 80px; }
     .cta {
       display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center;
@@ -167,7 +167,7 @@
     .cta h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.02em; }
     .cta p { color: var(--muted-dark); font-size: 0.95rem; }
 
-    /* Footer Layout */
+    /* Footer Framework */
     footer { padding: 60px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.04); background: #010404; }
     .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; }
     .footer-brand { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
@@ -436,10 +436,11 @@
     document.getElementById("year").textContent = new Date().getFullYear();
     const container = document.getElementById('globe-container');
 
-    // Scene Core Construction
+    // WebGL Context Creation
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 100);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    
     renderer.setSize(container.offsetWidth, container.offsetHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
@@ -447,194 +448,163 @@
     const mainGroup = new THREE.Group();
     scene.add(mainGroup);
 
-    const globeRadius = 2.45;
+    const baseRadius = 2.4;
 
-    // CURVED MATHEMATICAL LANDMASS VECTOR Blueprints
-    const coastlines = [
-      [ [68,-160], [65,-150], [60,-130], [52,-132], [42,-124], [30,-115], [18,-103], [12,-86], [9,-79], [16,-93], [24,-81], [25,-97], [29,-80], [39,-75], [46,-64], [53,-56], [60,-45], [68,-60], [72,-85], [62,-95], [64,-115], [70,-135], [68,-160] ],
-      [ [12,-72], [7,-80], [-3,-81], [-14,-76], [-25,-71], [-38,-73], [-48,-75], [-55,-68], [-48,-66], [-38,-58], [-22,-44], [-6,-35], [-5,-50], [7,-53], [12,-72] ],
-      [ [35,-6], [32,12], [30,32], [14,42], [12,51], [-5,39], [-22,35], [-34,19], [-28,15], [-12,13], [5,0], [4,-9], [14,-17], [21,-17], [32,-17], [35,-6] ],
-      [ [36,-9], [43,10], [53,5], [60,25], [64,60], [69,40], [73,70], [71,110], [72,130], [68,165], [54,141], [43,131], [35,125], [22,114], [15,108], [6,100], [10,96], [22,88], [15,74], [25,62], [13,47], [24,38], [31,34], [30,27], [36,-9] ],
-      [ [-22,114], [-34,115], [-35,138], [-28,146], [-12,136], [-15,124], [-22,114] ]
-    ];
+    // Mathematical Analytical Vector Population Engine
+    const verticesArray = [];
+    const pointsQuantity = 4500;
 
-    const finalCalculatedPoints = [];
-
-    coastlines.forEach(polygon => {
-      const vector3List = [];
+    for (let i = 0; i < pointsQuantity; i++) {
+      // Clean Fibonacci Spherical Distribution
+      const transmissionOffset = 2 / pointsQuantity;
+      const goldenRatioIncrement = Math.PI * (3 - Math.sqrt(5));
       
-      polygon.forEach(coord => {
-        const lat = coord[0];
-        const lon = coord[1];
-        const phi = (90 - lat) * (Math.PI / 180);
-        const theta = (lon + 180) * (Math.PI / 180);
+      const verticalAxisY = ((i * transmissionOffset) - 1) + (transmissionOffset / 2);
+      const radiusAtHeight = Math.sqrt(1 - verticalAxisY * verticalAxisY);
+      const rotationalTheta = i * goldenRatioIncrement;
 
-        vector3List.push(new THREE.Vector3(
-          -globeRadius * Math.sin(phi) * Math.cos(theta),
-          globeRadius * Math.cos(phi),
-          globeRadius * Math.sin(phi) * Math.sin(theta)
-        ));
-      });
+      const coordinateX = Math.cos(rotationalTheta) * radiusAtHeight;
+      const coordinateZ = Math.sin(rotationalTheta) * radiusAtHeight;
 
-      const splineCurve = new THREE.CatmullRomCurve3(vector3List, true, 'centripetal');
-      const highDensitySamples = splineCurve.getPoints(320);
+      // Analytical Landmass Masking Matrix Calculation
+      const computedLatitude = Math.asin(verticalAxisY) * (180 / Math.PI);
+      const computedLongitude = Math.atan2(coordinateZ, coordinateX) * (180 / Math.PI);
 
-      highDensitySamples.forEach(v3 => {
-        for(let k = 0; k < 2; k++) {
-          finalCalculatedPoints.push(
-            v3.x + (Math.random() - 0.5) * 0.04,
-            v3.y + (Math.random() - 0.5) * 0.04,
-            v3.z + (Math.random() - 0.5) * 0.04
-          );
-        }
-      });
-    });
-
-    for (let i = 0; i < 2500; i++) {
-      const phi = Math.random() * Math.PI;
-      const theta = Math.random() * Math.PI * 2;
-
-      const lat = 90 - (phi * 180 / Math.PI);
-      const lon = (theta * 180 / Math.PI) - 180;
-
-      let insideLand = false;
-      if (lat > -55 && lat < 72) {
-        if (lon > -165 && lon < -34 && lat > -55 && lat < 68) insideLand = true;
-        if (lon > -18 && lon < 50 && lat > -34 && lat < 34) insideLand = true;
-        if (lon > -10 && lon < 150 && lat > 10 && lat < 72) insideLand = true;
-        if (lon > 112 && lon < 152 && lat > -39 && lat < -11) insideLand = true;
+      let structuralDensityMask = false;
+      
+      // Multi-Bound Continental Coordinate Isolation Blocks
+      if (computedLatitude > -55 && computedLatitude < 70) {
+        if (computedLongitude > -165 && computedLongitude < -35 && computedLatitude > -50 && computedLatitude < 65) structuralDensityMask = true; // Americas
+        if (computedLongitude > -15 && computedLongitude < 50 && computedLatitude > -32 && computedLatitude < 35) structuralDensityMask = true;   // Africa
+        if (computedLongitude > -10 && computedLongitude < 145 && computedLatitude > 12 && computedLatitude < 68) structuralDensityMask = true;  // Eurasia
+        if (computedLongitude > 110 && computedLongitude < 153 && computedLatitude > -38 && computedLatitude < -10) structuralDensityMask = true; // Oceania
       }
 
-      if (insideLand) {
-        finalCalculatedPoints.push(
-          -globeRadius * Math.sin(phi) * Math.cos(theta),
-          globeRadius * Math.cos(phi),
-          globeRadius * Math.sin(phi) * Math.sin(theta)
+      // Populate Continental Structural Mass Points
+      if (structuralDensityMask || Math.random() < 0.08) {
+        const dynamicRadius = baseRadius + (structuralDensityMask ? 0 : (Math.random() - 0.5) * 0.02);
+        verticesArray.push(
+          coordinateX * dynamicRadius,
+          verticalAxisY * dynamicRadius,
+          coordinateZ * dynamicRadius
         );
       }
     }
 
-    const particleGeometry = new THREE.BufferGeometry();
-    particleGeometry.setAttribute('position', new THREE.Float32BufferAttribute(finalCalculatedPoints, 3));
-    
-    const particleMaterial = new THREE.PointsMaterial({
+    const globeGeometry = new THREE.BufferGeometry();
+    globeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(verticesArray, 3));
+
+    const coreParticleMaterial = new THREE.PointsMaterial({
       color: 0x35e58e,
-      size: 0.04,
+      size: 0.035,
       transparent: true,
       opacity: 0.85,
       blending: THREE.AdditiveBlending
     });
 
-    const continentPointsMesh = new THREE.Points(particleGeometry, particleMaterial);
-    mainGroup.add(continentPointsMesh);
+    const standardGlobeMesh = new THREE.Points(globeGeometry, coreParticleMaterial);
+    mainGroup.add(standardGlobeMesh);
 
-    // INTERCONNECTING GLOBAL DATA NETWORK ARCS
-    const connectionsGroup = new THREE.Group();
-    mainGroup.add(connectionsGroup);
+    // Network Pipeline Infrastructure Arcs Generation
+    const frameworkConnectionsGroup = new THREE.Group();
+    mainGroup.add(frameworkConnectionsGroup);
 
-    const gatewayTerminals = [];
-    for (let i = 0; i < 16; i++) {
-      const randomPointer = Math.floor(Math.random() * (finalCalculatedPoints.length / 3)) * 3;
-      gatewayTerminals.push(new THREE.Vector3(
-        finalCalculatedPoints[randomPointer],
-        finalCalculatedPoints[randomPointer + 1],
-        finalCalculatedPoints[randomPointer + 2]
-      ).normalize().multiplyScalar(globeRadius + 0.01));
+    const anchorTerminalNodes = [];
+    for (let m = 0; m < 12; m++) {
+      const targetIndex = Math.floor(Math.random() * (verticesArray.length / 3)) * 3;
+      anchorTerminalNodes.push(new THREE.Vector3(
+        verticesArray[targetIndex],
+        verticesArray[targetIndex + 1],
+        verticesArray[targetIndex + 2]
+      ));
     }
 
-    const pathArcGeometry = new THREE.BufferGeometry();
-    const smoothArcVectorArray = [];
+    const networkInterconnectGeometry = new THREE.BufferGeometry();
+    const networkInterconnectVectors = [];
 
-    for (let i = 0; i < gatewayTerminals.length; i++) {
-      const targetTerminal = gatewayTerminals[(i + 1) % gatewayTerminals.length];
-      const startVec = gatewayTerminals[i];
-      
-      const controlPeakVector = new THREE.Vector3().addVectors(startVec, targetTerminal).multiplyScalar(0.5).normalize().multiplyScalar(globeRadius + 0.3);
-      const dynamicBezierCurve = new THREE.QuadraticBezierCurve3(startVec, controlPeakVector, targetTerminal);
+    for (let i = 0; i < anchorTerminalNodes.length; i++) {
+      const startingPoint = anchorTerminalNodes[i];
+      const endingPoint = anchorTerminalNodes[(i + 1) % anchorTerminalNodes.length];
 
-      dynamicBezierCurve.getPoints(16).forEach(pt => {
-        smoothArcVectorArray.push(pt.x, pt.y, pt.z);
-      });
+      const absoluteMidpoint = new THREE.Vector3().addVectors(startingPoint, endingPoint).multiplyScalar(0.5);
+      const verticalArcOffset = baseRadius + 0.35;
+      absoluteMidpoint.normalize().multiplyScalar(verticalArcOffset);
+
+      const smoothBezierCurve = new THREE.QuadraticBezierCurve3(startingPoint, absoluteMidpoint, endingPoint);
+      const pointsCollected = smoothBezierCurve.getPoints(24);
+
+      for (let j = 0; j < pointsCollected.length; j++) {
+        networkInterconnectVectors.push(pointsCollected[j].x, pointsCollected[j].y, pointsCollected[j].z);
+      }
     }
 
-    pathArcGeometry.setAttribute('position', new THREE.Float32BufferAttribute(smoothArcVectorArray, 3));
-    const arcMaterialInstance = new THREE.LineBasicMaterial({
+    networkInterconnectGeometry.setAttribute('position', new THREE.Float32BufferAttribute(networkInterconnectVectors, 3));
+    const structuralLineMaterial = new THREE.LineBasicMaterial({
       color: 0x35e58e,
       transparent: true,
-      opacity: 0.3,
+      opacity: 0.25,
       blending: THREE.AdditiveBlending
     });
-    const networkGridArcs = new THREE.Line(pathArcGeometry, arcMaterialInstance);
-    connectionsGroup.add(networkGridArcs);
 
-    // BRIGHT TELEMETRY NODE TERMINALS
-    const connectionNodeGeo = new THREE.BufferGeometry();
-    const rawTerminalFloats = [];
-    gatewayTerminals.forEach(v => rawTerminalFloats.push(v.x, v.y, v.z));
-    connectionNodeGeo.setAttribute('position', new THREE.Float32BufferAttribute(rawTerminalFloats, 3));
+    const networkPipelineGrid = new THREE.Line(networkInterconnectGeometry, structuralLineMaterial);
+    frameworkConnectionsGroup.add(networkPipelineGrid);
+
+    // Active Node Terminals Generation
+    const nodeGeometryInstance = new THREE.BufferGeometry();
+    const terminalFloatsArray = [];
+    anchorTerminalNodes.forEach(v => terminalFloatsArray.push(v.x, v.y, v.z));
+    nodeGeometryInstance.setAttribute('position', new THREE.Float32BufferAttribute(terminalFloatsArray, 3));
     
-    const nodeMaterial = new THREE.PointsMaterial({
+    const nodeMaterialConfiguration = new THREE.PointsMaterial({
       color: 0x76ffd0,
-      size: 0.08,
+      size: 0.075,
       transparent: true,
-      opacity: 0.95,
+      opacity: 0.9,
       blending: THREE.AdditiveBlending
     });
-    const terminalPoints = new THREE.Points(connectionNodeGeo, nodeMaterial);
-    mainGroup.add(terminalPoints);
+    const terminalActiveNodesPoints = new THREE.Points(nodeGeometryInstance, nodeMaterialConfiguration);
+    mainGroup.add(terminalActiveNodesPoints);
 
-    // RADAR TRACKING RINGS ASSEMBLY
-    const radarBaseGroup = new THREE.Group();
-    radarBaseGroup.position.y = -2.65; 
-    radarBaseGroup.rotation.x = Math.PI / 2;
-    mainGroup.add(radarBaseGroup);
+    // Radar Perimeter Tracking Systems Implementation
+    const telemetryRadarGroup = new THREE.Group();
+    telemetryRadarGroup.position.y = -2.55;
+    telemetryRadarGroup.rotation.x = Math.PI / 2;
+    mainGroup.add(telemetryRadarGroup);
 
-    const makeRadarRingInstance = (radiusDim, opacityVal) => {
-      const circleSegments = 72;
-      const ringGeo = new THREE.BufferGeometry();
-      const coordinates = [];
-      for (let i = 0; i <= circleSegments; i++) {
-        const theta = (i / circleSegments) * Math.PI * 2;
-        coordinates.push(Math.cos(theta) * radiusDim, Math.sin(theta) * radiusDim, 0);
+    const initializeTelemetryRing = (targetRadius, visibilityOpacity) => {
+      const loopSegments = 64;
+      const ringBufferGeometry = new THREE.BufferGeometry();
+      const ringCoordinates = [];
+      for (let i = 0; i <= loopSegments; i++) {
+        const thetaAngle = (i / loopSegments) * Math.PI * 2;
+        ringCoordinates.push(Math.cos(thetaAngle) * targetRadius, Math.sin(thetaAngle) * targetRadius, 0);
       }
-      ringGeo.setAttribute('position', new THREE.Float32BufferAttribute(coordinates, 3));
-      return new THREE.Line(ringGeo, new THREE.LineBasicMaterial({ color: 0x35e58e, transparent: true, opacity: opacityVal }));
+      ringBufferGeometry.setAttribute('position', new THREE.Float32BufferAttribute(ringCoordinates, 3));
+      return new THREE.Line(ringBufferGeometry, new THREE.LineBasicMaterial({ color: 0x35e58e, transparent: true, opacity: visibilityOpacity }));
     };
 
-    radarBaseGroup.add(makeRadarRingInstance(1.2, 0.4));
-    radarBaseGroup.add(makeRadarRingInstance(1.8, 0.2));
-    radarBaseGroup.add(makeRadarRingInstance(2.5, 0.06));
+    telemetryRadarGroup.add(initializeTelemetryRing(1.3, 0.35));
+    telemetryRadarGroup.add(initializeTelemetryRing(1.9, 0.18));
+    telemetryRadarGroup.add(initializeTelemetryRing(2.6, 0.05));
 
-    camera.position.z = 6.0;
-    mainGroup.rotation.x = 0.38;
-    mainGroup.rotation.z = -0.05;
+    // Global Position Tuning Configuration
+    camera.position.z = 5.8;
+    mainGroup.rotation.x = 0.35;
+    mainGroup.rotation.z = -0.02;
 
-    const posAttribute = continentPointsMesh.geometry.attributes.position;
-
+    // Steady-State Execution Thread
     function animate() {
       requestAnimationFrame(animate);
       
-      mainGroup.rotation.y += 0.003;
-      connectionsGroup.rotation.y += 0.001;
+      mainGroup.rotation.y += 0.0025;
+      frameworkConnectionsGroup.rotation.y += 0.0008;
 
-      scene.updateMatrixWorld();
-      const tempVector = new THREE.Vector3();
-      
-      for (let i = 0; i < posAttribute.count; i++) {
-        tempVector.set(posAttribute.getX(i), posAttribute.getY(i), posAttribute.getZ(i));
-        tempVector.applyMatrix4(continentPointsMesh.matrixWorld);
-        
-        if(tempVector.z < 0) {
-          particleMaterial.opacity = 0.25;
-        } else {
-          particleMaterial.opacity = 0.85;
-        }
-      }
-      
       renderer.render(scene, camera);
     }
 
+    // Adaptive Resizing Viewport Matrix Correction
     window.addEventListener('resize', () => {
+      if (!container.offsetWidth || !container.offsetHeight) return;
       camera.aspect = container.offsetWidth / container.offsetHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(container.offsetWidth, container.offsetHeight);
