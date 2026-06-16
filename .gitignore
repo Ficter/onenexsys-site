@@ -1,0 +1,14 @@
+# Working and backup folders
+outputs/
+outputs-backups/
+work/
+site/
+
+# Local/editor noise
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# Keep the Vercel deployment package tracked
+!site-vercel/

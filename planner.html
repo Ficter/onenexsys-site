@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infrastructure Planner | OneNexsys Singapore</title>
+  <meta name="description" content="Answer five quick questions and receive a tailored IT infrastructure service recommendation and suggested rollout plan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="canonical" href="https://onenexsys.com/planner.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Infrastructure Planner | OneNexsys Singapore">
+  <meta property="og:description" content="Answer five quick questions and receive a tailored IT infrastructure service recommendation and suggested rollout plan.">
+  <meta property="og:url" content="https://onenexsys.com/planner.html">
+  <meta property="og:image" content="https://onenexsys.com/assets/images/managed-support.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Infrastructure Planner | OneNexsys Singapore">
+  <meta name="twitter:description" content="Answer five quick questions and receive a tailored IT infrastructure service recommendation and suggested rollout plan.">
+  <meta name="twitter:image" content="https://onenexsys.com/assets/images/managed-support.webp">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"OneNexsys","url":"https://onenexsys.com","email":"contact@onenexsys.com","areaServed":"Singapore","address":{"@type":"PostalAddress","addressCountry":"SG"},"description":"Singapore-based IT infrastructure and managed services company."}</script>
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="header">
+  <div class="container nav">
+    <a class="logo" href="index.html">
+      <span class="logo-text">One<span>Nexsys</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="services.html#infrastructure">Infrastructure</a>
+      <a href="planner.html" aria-current="page">Planner</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-cta" href="contact.html">Talk to Our Team →</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+  </div>
+  <div class="container mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="services.html#infrastructure">Infrastructure</a>
+    <a href="planner.html" aria-current="page">Planner</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</header>
+<main id="main">
+
+<!-- ─── Page Hero ───────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container page-hero-content">
+    <div class="eyebrow">Interactive Planner</div>
+    <h1>Plan Your Next<br><span>Infrastructure Move</span></h1>
+    <p>Use the guided assessment to identify the strongest starting point for your network, security, deployment, or managed support needs.</p>
+  </div>
+</section>
+
+<!-- ─── Infrastructure Planner ─────────────────────────────────────── -->
+<section class="section planner" id="planner">
+  <div class="container">
+    <div class="planner-head">
+      <div class="section-label">Infrastructure Planner</div>
+      <h2>Find the Right Starting Point</h2>
+      <p>Answer five quick questions and get a practical service recommendation with a suggested rollout plan. No technical knowledge required.</p>
+    </div>
+
+    <div class="planner-shell" id="plannerShell">
+      <form class="planner-main" id="plannerForm">
+        <div class="planner-progress">
+          <div class="planner-progress-track" aria-hidden="true">
+            <div class="planner-progress-fill" id="plannerProgress"></div>
+          </div>
+          <span class="planner-step-count" id="plannerStepCount">Step 1 of 5</span>
+        </div>
+
+        <fieldset class="planner-step active" data-step="0">
+          <legend>How large is your organisation?</legend>
+          <p class="planner-help">An approximate headcount is enough.</p>
+          <div class="planner-options">
+            <label class="planner-option">
+              <input type="radio" name="size" value="small">
+              <span class="planner-option-content"><strong>1–10 people</strong><small>Small team or new operation</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="size" value="growing">
+              <span class="planner-option-content"><strong>11–50 people</strong><small>Growing business with shared systems</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="size" value="mid">
+              <span class="planner-option-content"><strong>51–200 people</strong><small>Established organisation with broader needs</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="size" value="large">
+              <span class="planner-option-content"><strong>More than 200</strong><small>Complex or multi-team environment</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="planner-step" data-step="1">
+          <legend>How many locations do you support?</legend>
+          <p class="planner-help">Include offices, branches, warehouses, and remote sites.</p>
+          <div class="planner-options">
+            <label class="planner-option">
+              <input type="radio" name="locations" value="one">
+              <span class="planner-option-content"><strong>One location</strong><small>A single office or operational site</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="locations" value="few">
+              <span class="planner-option-content"><strong>2–3 locations</strong><small>A small connected site footprint</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="locations" value="many">
+              <span class="planner-option-content"><strong>4 or more</strong><small>Multiple sites requiring coordination</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="locations" value="remote">
+              <span class="planner-option-content"><strong>Mostly remote</strong><small>Distributed users and devices</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="planner-step" data-step="2">
+          <legend>What best describes your current setup?</legend>
+          <p class="planner-help">Choose the closest match, even if it is not exact.</p>
+          <div class="planner-options">
+            <label class="planner-option">
+              <input type="radio" name="setup" value="new">
+              <span class="planner-option-content"><strong>Starting from scratch</strong><small>New office, move, or first formal setup</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="setup" value="basic">
+              <span class="planner-option-content"><strong>Basic and undocumented</strong><small>Systems work, but ownership is unclear</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="setup" value="mixed">
+              <span class="planner-option-content"><strong>Mixed or ageing systems</strong><small>Different vendors, older equipment, or recurring issues</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="setup" value="mature">
+              <span class="planner-option-content"><strong>Established and documented</strong><small>A solid environment needing specialist support</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="planner-step" data-step="3">
+          <legend>What is the main challenge right now?</legend>
+          <p class="planner-help">This shapes the first priority in the recommendation.</p>
+          <div class="planner-options">
+            <label class="planner-option">
+              <input type="radio" name="challenge" value="support">
+              <span class="planner-option-content"><strong>Day-to-day support</strong><small>Users, devices, troubleshooting, and IT ownership</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="challenge" value="network">
+              <span class="planner-option-content"><strong>Network reliability</strong><small>Wi-Fi, connectivity, switching, or performance</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="challenge" value="security">
+              <span class="planner-option-content"><strong>Security readiness</strong><small>Access, hardening, accounts, and device controls</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="challenge" value="deployment">
+              <span class="planner-option-content"><strong>New deployment or upgrade</strong><small>Rack, cabling, equipment, office, or site project</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="planner-step" data-step="4">
+          <legend>What level of support fits your team?</legend>
+          <p class="planner-help">This helps separate project work from ongoing coverage.</p>
+          <div class="planner-options">
+            <label class="planner-option">
+              <input type="radio" name="coverage" value="project">
+              <span class="planner-option-content"><strong>One-time project</strong><small>Plan, deploy, document, and hand over</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="coverage" value="advisory">
+              <span class="planner-option-content"><strong>Advice when needed</strong><small>Technical guidance and specialist assistance</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="coverage" value="managed">
+              <span class="planner-option-content"><strong>Ongoing managed support</strong><small>Regular ownership of users, devices, and systems</small></span>
+            </label>
+            <label class="planner-option">
+              <input type="radio" name="coverage" value="unsure">
+              <span class="planner-option-content"><strong>Not sure yet</strong><small>Recommend a sensible starting arrangement</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="planner-actions">
+          <button class="planner-back" id="plannerBack" type="button">← Previous</button>
+          <button class="btn btn-primary" id="plannerNext" type="button">Next Question →</button>
+        </div>
+        <p class="planner-alert" id="plannerAlert" aria-live="polite"></p>
+      </form>
+
+      <aside class="planner-side" aria-label="Assessment progress">
+        <span class="planner-side-label">Your assessment</span>
+        <h3>A clearer infrastructure plan in about one minute.</h3>
+        <div class="planner-preview-list">
+          <div class="planner-preview-item" data-preview="0"><span class="planner-preview-dot"></span><span>Organisation size</span></div>
+          <div class="planner-preview-item" data-preview="1"><span class="planner-preview-dot"></span><span>Location footprint</span></div>
+          <div class="planner-preview-item" data-preview="2"><span class="planner-preview-dot"></span><span>Current environment</span></div>
+          <div class="planner-preview-item" data-preview="3"><span class="planner-preview-dot"></span><span>Immediate priority</span></div>
+          <div class="planner-preview-item" data-preview="4"><span class="planner-preview-dot"></span><span>Preferred coverage</span></div>
+        </div>
+      </aside>
+
+      <div class="planner-result" id="plannerResult" aria-live="polite">
+        <div class="result-top">
+          <div>
+            <div class="result-kicker">Your suggested starting point</div>
+            <h3 id="resultTitle">Recommended Infrastructure Plan</h3>
+            <p class="result-summary" id="resultSummary"></p>
+          </div>
+          <div class="result-complexity" id="resultComplexity"></div>
+        </div>
+        <div class="result-grid">
+          <div class="result-panel">
+            <h4>Recommended services</h4>
+            <div class="result-services" id="resultServices"></div>
+          </div>
+          <div class="result-panel">
+            <h4>Suggested rollout</h4>
+            <div class="result-phases" id="resultPhases"></div>
+          </div>
+        </div>
+        <div class="result-actions">
+          <button class="btn btn-primary" id="plannerEnquire" type="button">Use This Plan in My Enquiry →</button>
+          <button class="btn btn-secondary" id="plannerRestart" type="button">Start Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── Contact Preview ────────────────────────────────────────────── -->
+<section class="compact-cta" id="contact">
+  <div class="container">
+    <div class="compact-cta-box">
+      <div>
+        <div class="section-label">Get in Touch</div>
+        <h2>Let's Build Something Reliable.</h2>
+        <p>Tell us what you're working with — we'll figure out what fits.</p>
+      </div>
+      <a class="btn btn-primary" href="contact.html">Get a Free Consultation →</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="logo" href="index.html">
+        <span class="logo-text">One<span>Nexsys</span></span>
+      </a>
+      <p>Singapore-based IT infrastructure and managed services. Built for businesses that can't afford downtime.</p>
+      <p style="margin-top:8px">© <span id="year"></span> OneNexsys. All rights reserved.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Quick Links</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="services.html#infrastructure">Infrastructure</a>
+        <a href="planner.html" aria-current="page">Planner</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-links">
+        <a href="mailto:contact@onenexsys.com">contact@onenexsys.com</a>
+        <span style="color:var(--muted);font-size:.88rem">Singapore</span>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
