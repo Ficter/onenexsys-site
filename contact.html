@@ -78,37 +78,32 @@
         <p>Tell us what you're working with — we'll figure out what fits.</p>
         <a class="contact-direct" href="mailto:contact@onenexsys.com">contact@onenexsys.com →</a>
       </div>
-      <form class="contact-form" id="contactForm" action="mailto:contact@onenexsys.com" method="post" enctype="text/plain">
+      <form class="contact-form" id="contactForm" action="/api/contact" method="post" novalidate>
         <div class="form-field">
-          <label for="contactName">Name</label>
-          <input id="contactName" name="name" type="text" autocomplete="name" required>
+          <label for="contactName">Name <span aria-hidden="true">*</span></label>
+          <input id="contactName" name="name" type="text" autocomplete="name" required aria-describedby="contactNameError">
+          <span class="form-error" id="contactNameError"></span>
         </div>
         <div class="form-field">
-          <label for="contactCompany">Company</label>
+          <label for="contactCompany">Company Name</label>
           <input id="contactCompany" name="company" type="text" autocomplete="organization">
         </div>
         <div class="form-field">
-          <label for="contactEmail">Email</label>
-          <input id="contactEmail" name="email" type="email" autocomplete="email" required>
+          <label for="contactEmail">Email Address <span aria-hidden="true">*</span></label>
+          <input id="contactEmail" name="email" type="email" autocomplete="email" required aria-describedby="contactEmailError">
+          <span class="form-error" id="contactEmailError"></span>
         </div>
         <div class="form-field">
-          <label for="contactService">Service needed</label>
-          <select id="contactService" name="service">
-            <option>Managed IT Support</option>
-            <option>Rack &amp; Stack</option>
-            <option>Network Solutions</option>
-            <option>Structured Cabling</option>
-            <option>Cybersecurity</option>
-            <option>IT Consulting</option>
-            <option>Not sure yet</option>
-          </select>
+          <label for="contactPhone">Phone Number</label>
+          <input id="contactPhone" name="phone" type="tel" autocomplete="tel">
         </div>
         <div class="form-field full">
-          <label for="contactMessage">What can we help with?</label>
-          <textarea id="contactMessage" name="message" required></textarea>
+          <label for="contactMessage">Message <span aria-hidden="true">*</span></label>
+          <textarea id="contactMessage" name="message" required aria-describedby="contactMessageError"></textarea>
+          <span class="form-error" id="contactMessageError"></span>
         </div>
-        <button class="btn btn-primary" type="submit">Get a Free Consultation →</button>
-        <p class="form-note">This opens your email app with the details filled in. Nothing is sent automatically.</p>
+        <button class="btn btn-primary" type="submit" id="contactSubmit">Request Consultation</button>
+        <p class="form-note">Your enquiry is sent securely to contact@onenexsys.com.</p>
         <p class="form-status" id="formStatus" aria-live="polite"></p>
       </form>
     </div>
