@@ -1,0 +1,23 @@
+.form-field input[aria-invalid="true"],
+.form-field textarea[aria-invalid="true"] {
+  border-color: #ff9e9e;
+  box-shadow: 0 0 0 3px rgba(255,158,158,.1);
+}
+
+.form-error {
+  min-height: 1.1em;
+  color: #ff9e9e;
+  font-size: .72rem;
+  line-height: 1.35;
+}
+
+.contact-form .btn:disabled {
+  cursor: wait;
+  opacity: .7;
+  transform: none;
+}
+
+.form-status { color: var(--muted); }
+.form-status.success { color: var(--emerald); }
+.form-status.error { color: #ff9e9e; }
+.form-status.pending { color: var(--muted); }
