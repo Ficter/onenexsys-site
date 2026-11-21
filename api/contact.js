@@ -39,6 +39,7 @@ function validate(fields) {
   if (!fields.email) errors.email = 'Please enter your email address.';
   else if (!isEmail(fields.email)) errors.email = 'Please enter a valid email address.';
   if (!fields.message) errors.message = 'Please enter a message.';
+  if (!fields.consent) errors.consent = 'Please tick the box so we can reply to you.';
 
   return errors;
 }
@@ -55,8 +56,15 @@ module.exports = async function handler(req, res) {
     company: clean(body.company, 160),
     email: clean(body.email, 180),
     phone: clean(body.phone, 80),
+    service: clean(body.service, 120),
+    website: clean(body.website, 200),
+    consent: clean(body.consent, 10),
     message: clean(body.message, 4000)
   };
+
+  if (fields.website) {
+    return res.status(200).json({ message: 'Thank you. Your enquiry has been sent.' });
+  }
 
   const errors = validate(fields);
   if (Object.keys(errors).length) {
@@ -72,6 +80,7 @@ module.exports = async function handler(req, res) {
     `Company: ${fields.company || 'Not provided'}`,
     `Email: ${fields.email}`,
     `Phone: ${fields.phone || 'Not provided'}`,
+    `Service: ${fields.service || 'Not specified'}`,
     '',
     'Message:',
     fields.message
@@ -83,6 +92,7 @@ module.exports = async function handler(req, res) {
     <p><strong>Company:</strong> ${escapeHtml(fields.company || 'Not provided')}</p>
     <p><strong>Email:</strong> ${escapeHtml(fields.email)}</p>
     <p><strong>Phone:</strong> ${escapeHtml(fields.phone || 'Not provided')}</p>
+    <p><strong>Service:</strong> ${escapeHtml(fields.service || 'Not specified')}</p>
     <p><strong>Message:</strong><br>${escapeHtml(fields.message)}</p>
   `;
 
