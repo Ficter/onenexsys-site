@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://onenexsys.com/</loc></url>
-  <url><loc>https://onenexsys.com/services.html</loc></url>
-  <url><loc>https://onenexsys.com/planner.html</loc></url>
-  <url><loc>https://onenexsys.com/about.html</loc></url>
-  <url><loc>https://onenexsys.com/contact.html</loc></url>
+  <url><loc>https://www.onenexsys.com/</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://www.onenexsys.com/about</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://www.onenexsys.com/services</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://www.onenexsys.com/planner</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://www.onenexsys.com/contact</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://www.onenexsys.com/privacy</loc><lastmod>2026-11-21</lastmod></url>
 </urlset>

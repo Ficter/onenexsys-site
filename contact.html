@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-SG">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0e14">
   <title>Contact OneNexsys | Singapore IT Support & Infrastructure</title>
   <meta name="description" content="Contact OneNexsys about managed IT support, networks, cybersecurity, cabling, rack deployment, or infrastructure consulting." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="canonical" href="https://onenexsys.com/contact.html">
+  <link rel="canonical" href="https://www.onenexsys.com/contact">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contact OneNexsys | Singapore IT Support & Infrastructure">
   <meta property="og:description" content="Contact OneNexsys about managed IT support, networks, cybersecurity, cabling, rack deployment, or infrastructure consulting.">
-  <meta property="og:url" content="https://onenexsys.com/contact.html">
-  <meta property="og:image" content="https://onenexsys.com/assets/images/managed-support.webp">
+  <meta property="og:url" content="https://www.onenexsys.com/contact">
+  <meta property="og:image" content="https://www.onenexsys.com/assets/images/managed-support.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact OneNexsys | Singapore IT Support & Infrastructure">
   <meta name="twitter:description" content="Contact OneNexsys about managed IT support, networks, cybersecurity, cabling, rack deployment, or infrastructure consulting.">
-  <meta name="twitter:image" content="https://onenexsys.com/assets/images/managed-support.webp">
+  <meta name="twitter:image" content="https://www.onenexsys.com/assets/images/managed-support.webp">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="site.webmanifest">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"OneNexsys","url":"https://onenexsys.com","email":"contact@onenexsys.com","areaServed":"Singapore","address":{"@type":"PostalAddress","addressCountry":"SG"},"description":"Singapore-based IT infrastructure and managed services company."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"OneNexsys","url":"https://www.onenexsys.com","email":"contact@onenexsys.com","areaServed":"Singapore","address":{"@type":"PostalAddress","addressCountry":"SG"},"description":"Singapore-based IT infrastructure and managed services company."}</script>
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/contact-form.css">
+  <link rel="stylesheet" href="assets/css/patch.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -77,6 +80,9 @@
         <h2>Let's Build Something Reliable.</h2>
         <p>Tell us what you're working with — we'll figure out what fits.</p>
         <a class="contact-direct" href="mailto:contact@onenexsys.com">contact@onenexsys.com →</a>
+        <!-- onx:direct -->
+        <p class="onx-reply">We reply within 1 working day.</p>
+        <!-- /onx:direct -->
       </div>
       <form class="contact-form" id="contactForm" action="/api/contact" method="post" novalidate>
         <div class="form-field">
@@ -97,13 +103,34 @@
           <label for="contactPhone">Phone Number</label>
           <input id="contactPhone" name="phone" type="tel" autocomplete="tel">
         </div>
-        <div class="form-field full">
+        <!-- onx:service -->
+<div class="form-field full">
+          <label for="contactService">What do you need?</label>
+          <select id="contactService" name="service"><option>Not sure yet</option><option>Windows 10 &amp; Microsoft 365 Rescue</option><option>Cyber Essentials Readiness</option><option>Office Network &amp; Cabling</option><option>Managed IT Support</option><option>Rack and stack</option><option>IT consulting</option></select>
+        </div>
+<!-- /onx:service -->
+
+<div class="form-field full">
           <label for="contactMessage">Message <span aria-hidden="true">*</span></label>
           <textarea id="contactMessage" name="message" required aria-describedby="contactMessageError"></textarea>
           <span class="form-error" id="contactMessageError"></span>
         </div>
-        <button class="btn btn-primary" type="submit" id="contactSubmit">Request Consultation</button>
-        <p class="form-note">Your enquiry is sent securely to contact@onenexsys.com.</p>
+        <!-- onx:consent -->
+<div class="form-field full" aria-hidden="true" hidden>
+          <label for="contactWebsite">Leave this empty</label>
+          <input id="contactWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form-field full">
+          <div class="consent-row">
+            <input id="contactConsent" name="consent" type="checkbox" value="yes" required aria-describedby="contactConsentError">
+            <label for="contactConsent">I agree that ONENEXSYS PTE. LTD. may use these details to reply to my enquiry, as described in the <a href="privacy.html">privacy policy</a>. <span aria-hidden="true">*</span></label>
+          </div>
+          <span class="form-error" id="contactConsentError"></span>
+        </div>
+<!-- /onx:consent -->
+
+<button class="btn btn-primary" type="submit" id="contactSubmit">Request Consultation</button>
+        <p class="form-note">Your enquiry is sent securely to contact@onenexsys.com. We reply within 1 working day. See our <a href="privacy.html">privacy policy</a>.</p>
         <p class="form-status" id="formStatus" aria-live="polite"></p>
       </form>
     </div>
@@ -117,7 +144,7 @@
         <span class="logo-text">One<span>Nexsys</span></span>
       </a>
       <p>Singapore-based IT infrastructure and managed services. Built for businesses that can't afford downtime.</p>
-      <p style="margin-top:8px">© <span id="year"></span> OneNexsys. All rights reserved.</p>
+      <p style="margin-top:8px">© <span id="year"></span> ONENEXSYS PTE. LTD. · All rights reserved.</p>
     </div>
     <div>
       <div class="footer-heading">Quick Links</div>
@@ -128,6 +155,7 @@
         <a href="services.html#infrastructure">Infrastructure</a>
         <a href="planner.html">Planner</a>
         <a href="contact.html" aria-current="page">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
     <div>
@@ -140,5 +168,6 @@
   </div>
 </footer>
 <script src="assets/js/site.js" defer></script>
+<script src="assets/js/contact-form.js" defer></script>
 </body>
 </html>
