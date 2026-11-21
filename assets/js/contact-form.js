@@ -10,12 +10,25 @@
   const fieldErrors = {
     name: document.getElementById('contactNameError'),
     email: document.getElementById('contactEmailError'),
-    message: document.getElementById('contactMessageError')
+    message: document.getElementById('contactMessageError'),
+    consent: document.getElementById('contactConsentError')
   };
 
   function setFormStatus(message, type = '') {
     formStatus.textContent = message;
     formStatus.className = `form-status ${type}`.trim();
+  }
+
+  function fallbackToMail(payload) {
+    setFormStatus('We could not send this online, so your email app is opening with the enquiry ready to send. ', 'error');
+    const link = document.createElement('a');
+    link.href = 'mailto:contact@onenexsys.com';
+    link.textContent = 'Email us directly';
+    formStatus.append(link);
+    const subject = 'OneNexsys enquiry from ' + (payload.name || 'website visitor');
+    const body = ['Name: ' + (payload.name || ''), 'Company: ' + (payload.company || ''), 'Email: ' + (payload.email || ''),
+      'Phone: ' + (payload.phone || ''), 'Service: ' + (payload.service || ''), '', payload.message || ''].join('\n');
+    window.location.href = 'mailto:contact@onenexsys.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body.slice(0, 1800));
   }
 
   function clearFieldErrors() {
@@ -45,6 +58,7 @@
     if (!email) errors.email = 'Please enter your email address.';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Please enter a valid email address.';
     if (!String(data.get('message') || '').trim()) errors.message = 'Please enter a message.';
+    if (!data.get('consent')) errors.consent = 'Please tick the box so we can reply to you.';
 
     return errors;
   }
@@ -95,6 +109,15 @@
 
     const payload = Object.fromEntries(new FormData(contactForm).entries());
 
+    if (payload.website) {
+      contactForm.reset();
+      setFormStatus('Thank you. Your enquiry has been sent.', 'success');
+      contactSubmit.disabled = false;
+      contactSubmit.textContent = 'Request Consultation';
+      return;
+    }
+    delete payload.website;
+
     try {
       const response = await fetch(contactForm.action, {
         method: 'POST',
@@ -105,6 +128,10 @@
 
       if (!response.ok) {
         if (result.errors) setFieldErrors(result.errors);
+        if (response.status >= 500) {
+          fallbackToMail(payload);
+          return;
+        }
         setFormStatus(result.message || 'The enquiry could not be sent. Please try again shortly.', 'error');
         return;
       }
